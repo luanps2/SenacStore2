@@ -54,7 +54,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.Senac_logo_svg;
-            pictureBox2.Location = new Point(59, 45);
+            pictureBox2.Location = new Point(51, 27);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(134, 89);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -73,7 +73,7 @@
             txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEmail.Font = new Font("Segoe UI", 9F);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(26, 173);
+            txtEmail.Location = new Point(21, 140);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Email";
             txtEmail.SelectedText = "";
@@ -94,7 +94,7 @@
             txtSenha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSenha.Font = new Font("Segoe UI", 9F);
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(26, 228);
+            txtSenha.Location = new Point(21, 182);
             txtSenha.Name = "txtSenha";
             txtSenha.PlaceholderText = "Senha";
             txtSenha.SelectedText = "";
@@ -114,7 +114,7 @@
             btnEntrar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnEntrar.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEntrar.ForeColor = Color.White;
-            btnEntrar.Location = new Point(26, 304);
+            btnEntrar.Location = new Point(21, 238);
             btnEntrar.Name = "btnEntrar";
             btnEntrar.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnEntrar.Size = new Size(200, 45);
@@ -125,7 +125,7 @@
             // lblCadastro
             // 
             lblCadastro.BackColor = Color.Transparent;
-            lblCadastro.Location = new Point(49, 362);
+            lblCadastro.Location = new Point(51, 305);
             lblCadastro.Name = "lblCadastro";
             lblCadastro.Size = new Size(147, 17);
             lblCadastro.TabIndex = 7;
@@ -136,7 +136,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(263, 441);
+            ClientSize = new Size(245, 361);
             Controls.Add(lblCadastro);
             Controls.Add(btnEntrar);
             Controls.Add(txtSenha);

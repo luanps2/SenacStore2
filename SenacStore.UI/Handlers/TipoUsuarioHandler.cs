@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using SenacStore.Application.Interfaces;
-using SenacStore.UI.Navigation;
+﻿using SenacStore.UI.Navigation;
 using SenacStore.UI.UserControls;
 
 namespace SenacStore.UI.Handlers
