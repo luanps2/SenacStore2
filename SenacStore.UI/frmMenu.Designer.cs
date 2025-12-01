@@ -201,7 +201,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Senac_logo_svg;
-            pictureBox1.Location = new Point(227, 21);
+            pictureBox1.Location = new Point(227, 6);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(585, 68);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -214,7 +214,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Vladimir Script", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(255, 128, 0);
-            label1.Location = new Point(478, 84);
+            label1.Location = new Point(479, 68);
             label1.Name = "label1";
             label1.Size = new Size(75, 39);
             label1.TabIndex = 0;

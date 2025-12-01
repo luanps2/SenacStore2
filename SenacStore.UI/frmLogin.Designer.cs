@@ -43,6 +43,7 @@
             btnEntrar = new Guna.UI2.WinForms.Guna2Button();
             lblCadastro = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnFechar = new Guna.UI2.WinForms.Guna2CircleButton();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -56,9 +57,9 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.Senac_logo_svg;
-            pictureBox2.Location = new Point(51, 27);
+            pictureBox2.Location = new Point(51, 12);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(134, 89);
+            pictureBox2.Size = new Size(134, 92);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
@@ -151,6 +152,18 @@
             btnFechar.TabIndex = 8;
             btnFechar.Text = "X";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Vladimir Script", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(255, 128, 0);
+            label1.Location = new Point(80, 100);
+            label1.Name = "label1";
+            label1.Size = new Size(75, 39);
+            label1.TabIndex = 9;
+            label1.Text = "Store";
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -162,6 +175,7 @@
             Controls.Add(txtSenha);
             Controls.Add(txtEmail);
             Controls.Add(pictureBox2);
+            Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
@@ -180,5 +194,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblCadastro;
         private Guna.UI2.WinForms.Guna2CircleButton btnFechar;
+        private Label label1;
     }
 }
