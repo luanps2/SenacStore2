@@ -25,11 +25,13 @@ namespace SenacStore.UI.Handlers
         {
             var tipos = _tipoRepo.ObterTodos().ToDictionary(t => t.Id, t => t.Nome);
 
+            // Inclui FotoUrl na projeção para permitir exibição no grid
             return _usuarioRepo.ObterTodos()
                 .Select(u => new {
                     u.Id,
                     u.Nome,
                     u.Email,
+                    FotoUrl = u.FotoUrl, // agora disponível
                     Tipo = tipos.ContainsKey(u.TipoUsuarioId) ? tipos[u.TipoUsuarioId] : "Desconhecido"
                 })
                 .ToList();

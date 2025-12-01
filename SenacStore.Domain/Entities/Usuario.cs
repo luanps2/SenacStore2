@@ -9,6 +9,9 @@
 
         public Guid TipoUsuarioId { get; set; }
         public TipoUsuario TipoUsuario { get; set; }
+
+        // Nova propriedade: armazena apenas o caminho/URL relativo da imagem (ex: "img/usuarios/usuario.jpg")
+        public string FotoUrl { get; set; }
     }
 
 }

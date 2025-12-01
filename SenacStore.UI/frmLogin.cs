@@ -40,7 +40,7 @@ namespace SenacStore.UI
                     return;
                 }
 
-                // Login OK → abrir tela principal
+                // Login OK → abrir tela principal passando o usuário
                 AbrirMenuPrincipal(usuario);
             }
             catch (Exception ex)
@@ -54,8 +54,7 @@ namespace SenacStore.UI
             // Esconde o login sem destruir a instância
             this.Hide();
 
-            using (var frm = new frmMenu())
-
+            using (var frm = new frmMenu(usuario))
             {
                 frm.ShowDialog(); // Mantém controle do fluxo da aplicação
             }

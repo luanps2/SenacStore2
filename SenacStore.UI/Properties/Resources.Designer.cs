@@ -63,6 +63,16 @@ namespace SenacStore.UI.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap addUser2 {
+            get {
+                object obj = ResourceManager.GetObject("addUser2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Senac_logo_svg {
             get {
                 object obj = ResourceManager.GetObject("Senac_logo.svg", resourceCulture);

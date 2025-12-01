@@ -16,14 +16,15 @@ public class UsuarioRepository : IUsuarioRepository
     {
         using var conn = _conexao.ObterConexao();
         using var cmd = new SqlCommand(@"
-            INSERT INTO Usuario (Id, Nome, Email, Senha, TipoUsuarioId)
-            VALUES (@Id, @Nome, @Email, @Senha, @TipoUsuarioId)", conn);
+            INSERT INTO Usuario (Id, Nome, Email, Senha, TipoUsuarioId, FotoUrl)
+            VALUES (@Id, @Nome, @Email, @Senha, @TipoUsuarioId, @FotoUrl)", conn);
 
         cmd.Parameters.AddWithValue("@Id", usuario.Id);
         cmd.Parameters.AddWithValue("@Nome", usuario.Nome);
         cmd.Parameters.AddWithValue("@Email", usuario.Email);
         cmd.Parameters.AddWithValue("@Senha", usuario.Senha);
         cmd.Parameters.AddWithValue("@TipoUsuarioId", usuario.TipoUsuarioId);
+        cmd.Parameters.AddWithValue("@FotoUrl", (object)usuario.FotoUrl ?? DBNull.Value);
 
         cmd.ExecuteNonQuery();
     }
@@ -33,7 +34,7 @@ public class UsuarioRepository : IUsuarioRepository
         using var conn = _conexao.ObterConexao();
         using var cmd = new SqlCommand(@"
             UPDATE Usuario 
-            SET Nome = @Nome, Email = @Email, Senha = @Senha, TipoUsuarioId = @TipoUsuarioId
+            SET Nome = @Nome, Email = @Email, Senha = @Senha, TipoUsuarioId = @TipoUsuarioId, FotoUrl = @FotoUrl
             WHERE Id = @Id", conn);
 
         cmd.Parameters.AddWithValue("@Id", usuario.Id);
@@ -41,6 +42,7 @@ public class UsuarioRepository : IUsuarioRepository
         cmd.Parameters.AddWithValue("@Email", usuario.Email);
         cmd.Parameters.AddWithValue("@Senha", usuario.Senha);
         cmd.Parameters.AddWithValue("@TipoUsuarioId", usuario.TipoUsuarioId);
+        cmd.Parameters.AddWithValue("@FotoUrl", (object)usuario.FotoUrl ?? DBNull.Value);
 
         cmd.ExecuteNonQuery();
     }
@@ -97,7 +99,7 @@ public class UsuarioRepository : IUsuarioRepository
 
     private Usuario Map(SqlDataReader reader)
     {
-        return new Usuario
+        var usuario = new Usuario
         {
             Id = reader.GetGuid(reader.GetOrdinal("Id")),
             Nome = reader.GetString(reader.GetOrdinal("Nome")),
@@ -105,5 +107,17 @@ public class UsuarioRepository : IUsuarioRepository
             Senha = reader.GetString(reader.GetOrdinal("Senha")),
             TipoUsuarioId = reader.GetGuid(reader.GetOrdinal("TipoUsuarioId"))
         };
+
+        var fotoOrdinal = reader.GetOrdinal("FotoUrl");
+        if (!reader.IsDBNull(fotoOrdinal))
+        {
+            usuario.FotoUrl = reader.GetString(fotoOrdinal);
+        }
+        else
+        {
+            usuario.FotoUrl = null;
+        }
+
+        return usuario;
     }
 }

@@ -35,6 +35,7 @@ CREATE TABLE Usuario (
     Email VARCHAR(150) NOT NULL UNIQUE,
     Senha VARCHAR(200) NOT NULL,
     TipoUsuarioId UNIQUEIDENTIFIER NOT NULL,
+    FotoUrl VARCHAR(500) NULL,
     FOREIGN KEY (TipoUsuarioId) REFERENCES TipoUsuario(Id)
 );
 GO
@@ -77,10 +78,10 @@ INSERT INTO TipoUsuario (Id, Nome) VALUES
 GO
 
 -- Usuários (senhas em texto plano apenas para ambiente de desenvolvimento)
-INSERT INTO Usuario (Id, Nome, Email, Senha, TipoUsuarioId) VALUES
-('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'Admin Plataforma', 'admin@marketplace.com', 'adminpass', '11111111-1111-1111-1111-111111111111'),
-('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'Loja Exemplo (Vendedor)', 'vendedor@loja.com', 'sellerpass', '22222222-2222-2222-2222-222222222222'),
-('cccccccc-cccc-cccc-cccc-cccccccccccc', 'Cliente Teste', 'cliente@exemplo.com', 'buyerpass', '33333333-3333-3333-3333-333333333333');
+INSERT INTO Usuario (Id, Nome, Email, Senha, TipoUsuarioId, FotoUrl) VALUES
+('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'Admin Plataforma', 'admin@marketplace.com', 'adminpass', '11111111-1111-1111-1111-111111111111', NULL),
+('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'Loja Exemplo (Vendedor)', 'vendedor@loja.com', 'sellerpass', '22222222-2222-2222-2222-222222222222', NULL),
+('cccccccc-cccc-cccc-cccc-cccccccccccc', 'Cliente Teste', 'cliente@exemplo.com', 'buyerpass', '33333333-3333-3333-3333-333333333333', NULL);
 GO
 
 -- Categorias típicas de marketplace

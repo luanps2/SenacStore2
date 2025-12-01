@@ -39,11 +39,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             txtNome = new Guna.UI2.WinForms.Guna2TextBox();
-            numPreco = new Guna.UI2.WinForms.Guna2NumericUpDown();
             cboCategoria = new Guna.UI2.WinForms.Guna2ComboBox();
             btnSalvar = new Guna.UI2.WinForms.Guna2Button();
             btnCancelar = new Guna.UI2.WinForms.Guna2Button();
-            ((System.ComponentModel.ISupportInitialize)numPreco).BeginInit();
+            txtPreco = new Guna.UI2.WinForms.Guna2TextBox();
             SuspendLayout();
             // 
             // txtNome
@@ -65,21 +64,10 @@
             txtNome.Size = new Size(239, 36);
             txtNome.TabIndex = 0;
             // 
-            // numPreco
-            // 
-            numPreco.BackColor = Color.Transparent;
-            numPreco.CustomizableEdges = customizableEdges3;
-            numPreco.Font = new Font("Segoe UI", 9F);
-            numPreco.Location = new Point(169, 145);
-            numPreco.Name = "numPreco";
-            numPreco.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            numPreco.Size = new Size(239, 36);
-            numPreco.TabIndex = 1;
-            // 
             // cboCategoria
             // 
             cboCategoria.BackColor = Color.Transparent;
-            cboCategoria.CustomizableEdges = customizableEdges5;
+            cboCategoria.CustomizableEdges = customizableEdges3;
             cboCategoria.DrawMode = DrawMode.OwnerDrawFixed;
             cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategoria.FocusedColor = Color.FromArgb(94, 148, 255);
@@ -89,13 +77,13 @@
             cboCategoria.ItemHeight = 30;
             cboCategoria.Location = new Point(169, 187);
             cboCategoria.Name = "cboCategoria";
-            cboCategoria.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            cboCategoria.ShadowDecoration.CustomizableEdges = customizableEdges4;
             cboCategoria.Size = new Size(239, 36);
             cboCategoria.TabIndex = 2;
             // 
             // btnSalvar
             // 
-            btnSalvar.CustomizableEdges = customizableEdges7;
+            btnSalvar.CustomizableEdges = customizableEdges5;
             btnSalvar.DisabledState.BorderColor = Color.DarkGray;
             btnSalvar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSalvar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -104,7 +92,7 @@
             btnSalvar.ForeColor = Color.White;
             btnSalvar.Location = new Point(169, 238);
             btnSalvar.Name = "btnSalvar";
-            btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnSalvar.Size = new Size(111, 45);
             btnSalvar.TabIndex = 3;
             btnSalvar.Text = "Salvar";
@@ -112,7 +100,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.CustomizableEdges = customizableEdges9;
+            btnCancelar.CustomizableEdges = customizableEdges7;
             btnCancelar.DisabledState.BorderColor = Color.DarkGray;
             btnCancelar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnCancelar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -122,33 +110,53 @@
             btnCancelar.ForeColor = Color.White;
             btnCancelar.Location = new Point(297, 238);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnCancelar.Size = new Size(111, 45);
             btnCancelar.TabIndex = 3;
             btnCancelar.Text = "Cancelar";
             btnCancelar.Click += btnCancelar_Click;
             // 
+            // txtPreco
+            // 
+            txtPreco.CustomizableEdges = customizableEdges9;
+            txtPreco.DefaultText = "";
+            txtPreco.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtPreco.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtPreco.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtPreco.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtPreco.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtPreco.Font = new Font("Segoe UI", 9F);
+            txtPreco.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtPreco.Location = new Point(169, 145);
+            txtPreco.Name = "txtPreco";
+            txtPreco.PlaceholderText = "";
+            txtPreco.SelectedText = "";
+            txtPreco.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            txtPreco.Size = new Size(239, 36);
+            txtPreco.TabIndex = 4;
+            txtPreco.KeyPress += txtPreco_KeyPress;
+            txtPreco.Leave += txtPreco_Leave;
+            // 
             // ucProdutos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(txtPreco);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             Controls.Add(cboCategoria);
-            Controls.Add(numPreco);
             Controls.Add(txtNome);
             Name = "ucProdutos";
             Size = new Size(642, 417);
-            ((System.ComponentModel.ISupportInitialize)numPreco).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Guna.UI2.WinForms.Guna2TextBox txtNome;
-        private Guna.UI2.WinForms.Guna2NumericUpDown numPreco;
         private Guna.UI2.WinForms.Guna2ComboBox cboCategoria;
         private Guna.UI2.WinForms.Guna2Button btnSalvar;
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
+        private Guna.UI2.WinForms.Guna2TextBox txtPreco;
     }
 }

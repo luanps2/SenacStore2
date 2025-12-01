@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             pictureBox2 = new PictureBox();
             txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             txtSenha = new Guna.UI2.WinForms.Guna2TextBox();
             btnEntrar = new Guna.UI2.WinForms.Guna2Button();
             lblCadastro = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            btnFechar = new Guna.UI2.WinForms.Guna2CircleButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
@@ -64,7 +66,7 @@
             // txtEmail
             // 
             txtEmail.BorderRadius = 20;
-            txtEmail.CustomizableEdges = customizableEdges5;
+            txtEmail.CustomizableEdges = customizableEdges6;
             txtEmail.DefaultText = "";
             txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEmail.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -77,7 +79,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Email";
             txtEmail.SelectedText = "";
-            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges7;
             txtEmail.Size = new Size(200, 36);
             txtEmail.TabIndex = 2;
             txtEmail.TextAlign = HorizontalAlignment.Center;
@@ -85,7 +87,7 @@
             // txtSenha
             // 
             txtSenha.BorderRadius = 20;
-            txtSenha.CustomizableEdges = customizableEdges3;
+            txtSenha.CustomizableEdges = customizableEdges4;
             txtSenha.DefaultText = "";
             txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSenha.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -98,7 +100,7 @@
             txtSenha.Name = "txtSenha";
             txtSenha.PlaceholderText = "Senha";
             txtSenha.SelectedText = "";
-            txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges5;
             txtSenha.Size = new Size(200, 36);
             txtSenha.TabIndex = 3;
             txtSenha.TextAlign = HorizontalAlignment.Center;
@@ -107,7 +109,7 @@
             // btnEntrar
             // 
             btnEntrar.BorderRadius = 20;
-            btnEntrar.CustomizableEdges = customizableEdges1;
+            btnEntrar.CustomizableEdges = customizableEdges2;
             btnEntrar.DisabledState.BorderColor = Color.DarkGray;
             btnEntrar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnEntrar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -116,7 +118,7 @@
             btnEntrar.ForeColor = Color.White;
             btnEntrar.Location = new Point(21, 238);
             btnEntrar.Name = "btnEntrar";
-            btnEntrar.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnEntrar.ShadowDecoration.CustomizableEdges = customizableEdges3;
             btnEntrar.Size = new Size(200, 45);
             btnEntrar.TabIndex = 5;
             btnEntrar.Text = "Entrar";
@@ -132,11 +134,29 @@
             lblCadastro.Text = "não tem conta?<a href=\"#\">Cadastre-se</a>";
             lblCadastro.Click += lblCadastro_Click;
             // 
+            // btnFechar
+            // 
+            btnFechar.DisabledState.BorderColor = Color.DarkGray;
+            btnFechar.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnFechar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnFechar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnFechar.FillColor = Color.DarkRed;
+            btnFechar.Font = new Font("Segoe UI", 9F);
+            btnFechar.ForeColor = Color.White;
+            btnFechar.Location = new Point(205, 12);
+            btnFechar.Name = "btnFechar";
+            btnFechar.ShadowDecoration.CustomizableEdges = customizableEdges1;
+            btnFechar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            btnFechar.Size = new Size(28, 28);
+            btnFechar.TabIndex = 8;
+            btnFechar.Text = "X";
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(245, 361);
+            Controls.Add(btnFechar);
             Controls.Add(lblCadastro);
             Controls.Add(btnEntrar);
             Controls.Add(txtSenha);
@@ -159,5 +179,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtSenha;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblCadastro;
+        private Guna.UI2.WinForms.Guna2CircleButton btnFechar;
     }
 }

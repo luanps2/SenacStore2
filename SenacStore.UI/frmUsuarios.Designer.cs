@@ -160,6 +160,8 @@
             pbFoto.SizeMode = PictureBoxSizeMode.Zoom;
             pbFoto.TabIndex = 3;
             pbFoto.TabStop = false;
+            pbFoto.Cursor = Cursors.Hand;
+            pbFoto.Click += pbFoto_Click;
             // 
             // guna2CircleButton1
             // 

@@ -1,0 +1,1 @@
+ALTER TABLE Usuario ADD FotoUrl VARCHAR(500) NULL;

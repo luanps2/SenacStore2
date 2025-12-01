@@ -41,22 +41,20 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             lblTitulo = new Label();
             dgvDados = new Guna.UI2.WinForms.Guna2DataGridView();
             btnNovo = new Guna.UI2.WinForms.Guna2Button();
             btnEditar = new Guna.UI2.WinForms.Guna2Button();
             btnExcluir = new Guna.UI2.WinForms.Guna2Button();
             btnAtualizar = new Guna.UI2.WinForms.Guna2Button();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvDados).BeginInit();
             SuspendLayout();
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Location = new Point(151, 11);
+            lblTitulo.Location = new Point(88, 14);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(38, 15);
             lblTitulo.TabIndex = 0;
@@ -85,10 +83,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvDados.DefaultCellStyle = dataGridViewCellStyle3;
             dgvDados.GridColor = Color.FromArgb(231, 229, 255);
-            dgvDados.Location = new Point(151, 84);
+            dgvDados.Location = new Point(88, 84);
             dgvDados.Name = "dgvDados";
             dgvDados.RowHeadersVisible = false;
-            dgvDados.Size = new Size(384, 210);
+            dgvDados.Size = new Size(447, 210);
             dgvDados.TabIndex = 1;
             dgvDados.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvDados.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -126,7 +124,7 @@
             btnNovo.Location = new Point(7, 92);
             btnNovo.Name = "btnNovo";
             btnNovo.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnNovo.Size = new Size(138, 45);
+            btnNovo.Size = new Size(75, 45);
             btnNovo.TabIndex = 2;
             btnNovo.Text = "Create";
             btnNovo.Click += btnNovo_Click_1;
@@ -145,7 +143,7 @@
             btnEditar.Location = new Point(7, 143);
             btnEditar.Name = "btnEditar";
             btnEditar.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnEditar.Size = new Size(138, 45);
+            btnEditar.Size = new Size(75, 45);
             btnEditar.TabIndex = 2;
             btnEditar.Text = "Edit";
             btnEditar.Click += btnEditar_Click_1;
@@ -164,7 +162,7 @@
             btnExcluir.Location = new Point(7, 194);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnExcluir.Size = new Size(138, 45);
+            btnExcluir.Size = new Size(75, 45);
             btnExcluir.TabIndex = 2;
             btnExcluir.Text = "Delete";
             btnExcluir.Click += btnExcluir_Click_1;
@@ -183,52 +181,35 @@
             btnAtualizar.Location = new Point(7, 245);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnAtualizar.Size = new Size(138, 45);
+            btnAtualizar.Size = new Size(75, 45);
             btnAtualizar.TabIndex = 2;
             btnAtualizar.Text = "Update";
             btnAtualizar.Click += btnAtualizar_Click_1;
             // 
-            // guna2TextBox1
+            // txtSearch
             // 
-            guna2TextBox1.CustomizableEdges = customizableEdges9;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(151, 42);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PlaceholderText = "Pesquisar";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2TextBox1.Size = new Size(384, 36);
-            guna2TextBox1.TabIndex = 3;
-            // 
-            // guna2CircleButton1
-            // 
-            guna2CircleButton1.DisabledState.BorderColor = Color.DarkGray;
-            guna2CircleButton1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2CircleButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2CircleButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2CircleButton1.Font = new Font("Segoe UI", 9F);
-            guna2CircleButton1.ForeColor = Color.White;
-            guna2CircleButton1.Location = new Point(7, 3);
-            guna2CircleButton1.Name = "guna2CircleButton1";
-            guna2CircleButton1.ShadowDecoration.CustomizableEdges = customizableEdges11;
-            guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            guna2CircleButton1.Size = new Size(59, 54);
-            guna2CircleButton1.TabIndex = 4;
-            guna2CircleButton1.Text = "Voltar";
+            txtSearch.CustomizableEdges = customizableEdges9;
+            txtSearch.DefaultText = "";
+            txtSearch.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtSearch.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtSearch.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtSearch.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtSearch.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSearch.Font = new Font("Segoe UI", 9F);
+            txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtSearch.Location = new Point(88, 42);
+            txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "Pesquisar";
+            txtSearch.SelectedText = "";
+            txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            txtSearch.Size = new Size(447, 36);
+            txtSearch.TabIndex = 3;
             // 
             // ucCrudPadrao
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(guna2CircleButton1);
-            Controls.Add(guna2TextBox1);
+            Controls.Add(txtSearch);
             Controls.Add(btnAtualizar);
             Controls.Add(btnExcluir);
             Controls.Add(btnEditar);
@@ -250,7 +231,6 @@
         private Guna.UI2.WinForms.Guna2Button btnEditar;
         private Guna.UI2.WinForms.Guna2Button btnExcluir;
         private Guna.UI2.WinForms.Guna2Button btnAtualizar;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        private Guna.UI2.WinForms.Guna2TextBox txtSearch;
     }
 }
