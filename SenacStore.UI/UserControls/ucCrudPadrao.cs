@@ -24,28 +24,10 @@ namespace SenacStore.UI.UserControls
             // garante que o evento seja chamado sempre que o DataSource for aplicado
             dgvDados.DataBindingComplete += DgvDados_DataBindingComplete;
 
-            // Associação robusta do TextChanged para o controle de busca chamado "txtSearch"
-            var search = this.Controls.Find("txtSearch", true).FirstOrDefault();
-            if (search != null)
+            // associa busca ao digitar (crie txtSearch no Designer)
+            if (this.Controls.Find("txtSearch", true).FirstOrDefault() is TextBox tb)
             {
-                // Guna2TextBox
-                if (search.GetType().FullName == "Guna.UI2.WinForms.Guna2TextBox")
-                {
-                    // usa reflection para associar sem depender do using Guna
-                    var eventInfo = search.GetType().GetEvent("TextChanged");
-                    eventInfo?.AddEventHandler(search, new EventHandler(TxtSearch_TextChanged));
-                }
-                // WinForms TextBox
-                else if (search is TextBox tb)
-                {
-                    tb.TextChanged += TxtSearch_TextChanged;
-                }
-                else
-                {
-                    // tentativa genérica por reflection (caso outro controle exponha TextChanged)
-                    var eventInfo = search.GetType().GetEvent("TextChanged");
-                    eventInfo?.AddEventHandler(search, new EventHandler(TxtSearch_TextChanged));
-                }
+                tb.TextChanged += TxtSearch_TextChanged;
             }
 
             RefreshGrid();
@@ -115,11 +97,9 @@ namespace SenacStore.UI.UserControls
                 var prop = data.GetType().GetProperty("FotoUrl");
                 if (prop == null) return;
 
-                // Remove coluna de imagem antiga para evitar duplicação
                 if (dgvDados.Columns.Contains("Foto"))
                     dgvDados.Columns.Remove("Foto");
 
-                // Insere coluna de imagem na posição 0
                 var imgCol = new DataGridViewImageColumn
                 {
                     Name = "Foto",
@@ -130,18 +110,19 @@ namespace SenacStore.UI.UserControls
                 };
                 dgvDados.Columns.Insert(0, imgCol);
 
-                // Esconde coluna bound FotoUrl se existir
                 if (dgvDados.Columns.Contains("FotoUrl"))
                     dgvDados.Columns["FotoUrl"].Visible = false;
 
-                // Preenche as imagens por linha
+                // Determina se a tabela atual é de produtos (presença de coluna Categoria ou Preco)
+                bool isProductGrid = dgvDados.Columns.Contains("Categoria") || dgvDados.Columns.Contains("Preco");
+
                 for (int i = 0; i < dgvDados.Rows.Count; i++)
                 {
                     try
                     {
                         var row = dgvDados.Rows[i];
                         var fotoVal = row.Cells["FotoUrl"]?.Value as string;
-                        var img = LoadImageForGrid(fotoVal);
+                        var img = LoadImageForGrid(fotoVal, isProductGrid);
                         row.Cells["Foto"].Value = img;
                         row.Height = 60;
                     }
@@ -160,12 +141,15 @@ namespace SenacStore.UI.UserControls
             }
         }
 
-        private static Image LoadImageForGrid(string fotoUrl)
+        private static Image LoadImageForGrid(string fotoUrl, bool isProduct = false)
         {
             try
             {
                 if (string.IsNullOrWhiteSpace(fotoUrl))
-                    return Properties.Resources.user2;
+                {
+                    // fallback por tipo: produto -> caixa, usuário/outros -> user2
+                    return isProduct ? Properties.Resources.caixa : Properties.Resources.user2;
+                }
 
                 var rel = fotoUrl.Replace('/', Path.DirectorySeparatorChar);
                 var fisico = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rel);
@@ -176,18 +160,32 @@ namespace SenacStore.UI.UserControls
                     return new Bitmap(imgTemp);
                 }
 
-                var defaultPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img", "user2.png");
-                if (File.Exists(defaultPath))
+                // fallback para arquivo padrão na pasta img (prioriza tipo produto quando aplicável)
+                if (isProduct)
                 {
-                    using var imgTemp = Image.FromFile(defaultPath);
-                    return new Bitmap(imgTemp);
+                    var defaultProd = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img", "produtos", "default.jpg");
+                    if (File.Exists(defaultProd))
+                    {
+                        using var imgTemp = Image.FromFile(defaultProd);
+                        return new Bitmap(imgTemp);
+                    }
+                    // resource caixa se não houver arquivo
+                    return Properties.Resources.caixa;
                 }
-
-                return Properties.Resources.user2;
+                else
+                {
+                    var defaultUser = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img", "user2.png");
+                    if (File.Exists(defaultUser))
+                    {
+                        using var imgTemp = Image.FromFile(defaultUser);
+                        return new Bitmap(imgTemp);
+                    }
+                    return Properties.Resources.user2;
+                }
             }
             catch
             {
-                try { return Properties.Resources.user2; } catch { return null; }
+                try { return isProduct ? Properties.Resources.caixa : Properties.Resources.user2; } catch { return null; }
             }
         }
 

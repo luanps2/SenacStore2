@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SenacStore.Domain.Entities
 {
@@ -14,6 +10,8 @@ namespace SenacStore.Domain.Entities
 
         public Guid CategoriaId { get; set; }
         public Categoria Categoria { get; set; }
-    }
 
+        // Nova propriedade: armazena apenas o caminho/URL relativo da imagem (ex: "img/produtos/{id}.jpg")
+        public string FotoUrl { get; set; }
+    }
 }

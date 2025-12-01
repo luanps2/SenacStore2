@@ -43,6 +43,8 @@
             btnSalvar = new Guna.UI2.WinForms.Guna2Button();
             btnCancelar = new Guna.UI2.WinForms.Guna2Button();
             txtPreco = new Guna.UI2.WinForms.Guna2TextBox();
+            pbFoto = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             SuspendLayout();
             // 
             // txtNome
@@ -56,7 +58,7 @@
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNome.Font = new Font("Segoe UI", 9F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(169, 103);
+            txtNome.Location = new Point(9, 100);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "";
             txtNome.SelectedText = "";
@@ -75,7 +77,7 @@
             cboCategoria.Font = new Font("Segoe UI", 10F);
             cboCategoria.ForeColor = Color.FromArgb(68, 88, 112);
             cboCategoria.ItemHeight = 30;
-            cboCategoria.Location = new Point(169, 187);
+            cboCategoria.Location = new Point(9, 184);
             cboCategoria.Name = "cboCategoria";
             cboCategoria.ShadowDecoration.CustomizableEdges = customizableEdges4;
             cboCategoria.Size = new Size(239, 36);
@@ -90,7 +92,7 @@
             btnSalvar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnSalvar.Font = new Font("Segoe UI", 9F);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(169, 238);
+            btnSalvar.Location = new Point(9, 235);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnSalvar.Size = new Size(111, 45);
@@ -108,7 +110,7 @@
             btnCancelar.FillColor = Color.DarkRed;
             btnCancelar.Font = new Font("Segoe UI", 9F);
             btnCancelar.ForeColor = Color.White;
-            btnCancelar.Location = new Point(297, 238);
+            btnCancelar.Location = new Point(137, 235);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnCancelar.Size = new Size(111, 45);
@@ -127,7 +129,7 @@
             txtPreco.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtPreco.Font = new Font("Segoe UI", 9F);
             txtPreco.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPreco.Location = new Point(169, 145);
+            txtPreco.Location = new Point(9, 142);
             txtPreco.Name = "txtPreco";
             txtPreco.PlaceholderText = "";
             txtPreco.SelectedText = "";
@@ -137,17 +139,30 @@
             txtPreco.KeyPress += txtPreco_KeyPress;
             txtPreco.Leave += txtPreco_Leave;
             // 
+            // pbFoto
+            // 
+            pbFoto.Cursor = Cursors.Hand;
+            pbFoto.Image = Properties.Resources.caixa;
+            pbFoto.Location = new Point(13, 7);
+            pbFoto.Name = "pbFoto";
+            pbFoto.Size = new Size(235, 87);
+            pbFoto.SizeMode = PictureBoxSizeMode.Zoom;
+            pbFoto.TabIndex = 4;
+            pbFoto.TabStop = false;
+            // 
             // ucProdutos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(pbFoto);
             Controls.Add(txtPreco);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             Controls.Add(cboCategoria);
             Controls.Add(txtNome);
             Name = "ucProdutos";
-            Size = new Size(642, 417);
+            Size = new Size(261, 288);
+            ((System.ComponentModel.ISupportInitialize)pbFoto).EndInit();
             ResumeLayout(false);
         }
 
@@ -158,5 +173,6 @@
         private Guna.UI2.WinForms.Guna2Button btnSalvar;
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
         private Guna.UI2.WinForms.Guna2TextBox txtPreco;
+        private PictureBox pbFoto;
     }
 }

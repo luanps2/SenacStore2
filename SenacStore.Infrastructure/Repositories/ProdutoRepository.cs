@@ -1,5 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using SenacStore.Domain.Entities;
+using System;
+using System.Collections.Generic;
 
 public class ProdutoRepository : IProdutoRepository
 {
@@ -14,13 +16,14 @@ public class ProdutoRepository : IProdutoRepository
     {
         using var conn = _conexao.ObterConexao();
         using var cmd = new SqlCommand(@"
-            INSERT INTO Produto (Id, Nome, Preco, CategoriaId)
-            VALUES (@Id, @Nome, @Preco, @CategoriaId)", conn);
+            INSERT INTO Produto (Id, Nome, Preco, CategoriaId, FotoUrl)
+            VALUES (@Id, @Nome, @Preco, @CategoriaId, @FotoUrl)", conn);
 
         cmd.Parameters.AddWithValue("@Id", produto.Id);
         cmd.Parameters.AddWithValue("@Nome", produto.Nome);
         cmd.Parameters.AddWithValue("@Preco", produto.Preco);
         cmd.Parameters.AddWithValue("@CategoriaId", produto.CategoriaId);
+        cmd.Parameters.AddWithValue("@FotoUrl", (object)produto.FotoUrl ?? DBNull.Value);
 
         cmd.ExecuteNonQuery();
     }
@@ -30,13 +33,14 @@ public class ProdutoRepository : IProdutoRepository
         using var conn = _conexao.ObterConexao();
         using var cmd = new SqlCommand(@"
             UPDATE Produto
-            SET Nome = @Nome, Preco = @Preco, CategoriaId = @CategoriaId
+            SET Nome = @Nome, Preco = @Preco, CategoriaId = @CategoriaId, FotoUrl = @FotoUrl
             WHERE Id = @Id", conn);
 
         cmd.Parameters.AddWithValue("@Id", produto.Id);
         cmd.Parameters.AddWithValue("@Nome", produto.Nome);
         cmd.Parameters.AddWithValue("@Preco", produto.Preco);
         cmd.Parameters.AddWithValue("@CategoriaId", produto.CategoriaId);
+        cmd.Parameters.AddWithValue("@FotoUrl", (object)produto.FotoUrl ?? DBNull.Value);
 
         cmd.ExecuteNonQuery();
     }
@@ -83,12 +87,24 @@ public class ProdutoRepository : IProdutoRepository
 
     private Produto Map(SqlDataReader reader)
     {
-        return new Produto
+        var produto = new Produto
         {
             Id = reader.GetGuid(reader.GetOrdinal("Id")),
             Nome = reader.GetString(reader.GetOrdinal("Nome")),
             Preco = reader.GetDecimal(reader.GetOrdinal("Preco")),
             CategoriaId = reader.GetGuid(reader.GetOrdinal("CategoriaId"))
         };
+
+        var ord = reader.GetOrdinal("FotoUrl");
+        if (!reader.IsDBNull(ord))
+        {
+            produto.FotoUrl = reader.GetString(ord);
+        }
+        else
+        {
+            produto.FotoUrl = null;
+        }
+
+        return produto;
     }
 }

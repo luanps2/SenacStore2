@@ -57,6 +57,7 @@ CREATE TABLE Produto (
     Nome VARCHAR(150) NOT NULL,
     Preco DECIMAL(10,2) NOT NULL,
     CategoriaId UNIQUEIDENTIFIER NOT NULL,
+    FotoUrl VARCHAR(500) NULL,
     FOREIGN KEY (CategoriaId) REFERENCES Categoria(Id)
 );
 GO

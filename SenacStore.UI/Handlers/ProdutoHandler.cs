@@ -1,4 +1,6 @@
-﻿using SenacStore.UI.Navigation;
+﻿using System;
+using System.Linq;
+using SenacStore.UI.Navigation;
 using SenacStore.UI.UserControls;
 
 namespace SenacStore.UI.Handlers
@@ -27,7 +29,8 @@ namespace SenacStore.UI.Handlers
                     p.Id,
                     p.Nome,
                     p.Preco,
-                    Categoria = categorias[p.CategoriaId]
+                    FotoUrl = p.FotoUrl,
+                    Categoria = categorias.ContainsKey(p.CategoriaId) ? categorias[p.CategoriaId] : "Desconhecida"
                 })
                 .ToList();
         }
@@ -39,6 +42,7 @@ namespace SenacStore.UI.Handlers
 
         public void Editar(Guid id)
         {
+            // chamada correta — usa argumentos posicionais
             _nav.Abrir(new ucProdutos(_nav, _produtoRepo, _categoriaRepo, id));
         }
 
