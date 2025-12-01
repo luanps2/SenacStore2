@@ -1,0 +1,47 @@
+﻿using System;
+using System.Linq;
+using SenacStore.Application.Interfaces;
+using SenacStore.UI.Navigation;
+using SenacStore.UI.UserControls;
+
+namespace SenacStore.UI.Handlers
+{
+    public class UsuarioHandler : ICrudHandler
+    {
+        private readonly ICrudNavigator _nav;
+        private readonly IUsuarioRepository _usuarioRepo;
+        private readonly ITipoUsuarioRepository _tipoRepo;
+
+        public string Titulo => "Usuários";
+
+        public UsuarioHandler(ICrudNavigator nav, IUsuarioRepository usuarioRepo, ITipoUsuarioRepository tipoRepo)
+        {
+            _nav = nav;
+            _usuarioRepo = usuarioRepo;
+            _tipoRepo = tipoRepo;
+        }
+
+        public object ObterTodos()
+        {
+            var tipos = _tipoRepo.ObterTodos().ToDictionary(t => t.Id, t => t.Nome);
+
+            return _usuarioRepo.ObterTodos()
+                .Select(u => new {
+                    u.Id,
+                    u.Nome,
+                    u.Email,
+                    Tipo = tipos.ContainsKey(u.TipoUsuarioId) ? tipos[u.TipoUsuarioId] : "Desconhecido"
+                })
+                .ToList();
+        }
+
+        public void Criar() =>
+            _nav.Abrir(new ucUsuario(_nav, _usuarioRepo, _tipoRepo));
+
+        public void Editar(Guid id) =>
+            _nav.Abrir(new ucUsuario(_nav, _usuarioRepo, _tipoRepo, id));
+
+        public void Deletar(Guid id) =>
+            _usuarioRepo.Deletar(id);
+    }
+}
