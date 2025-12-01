@@ -1,13 +1,5 @@
-﻿using SenacStore.UI.Navigation;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using SenacStore.Domain.Entities;
+using SenacStore.UI.Navigation;
 
 namespace SenacStore.UI.UserControls
 {
@@ -16,9 +8,13 @@ namespace SenacStore.UI.UserControls
         private readonly ICrudNavigator _nav;
         private readonly IProdutoRepository _produtoRepo;
         private readonly ICategoriaRepository _categoriaRepo;
-        private readonly Guid? _id; // se for edição
+        private readonly Guid? _id;
 
-        public ucProdutos(ICrudNavigator nav, IProdutoRepository produtoRepo, ICategoriaRepository categoriaRepo, Guid? id = null)
+        public ucProdutos(
+            ICrudNavigator nav,
+            IProdutoRepository produtoRepo,
+            ICategoriaRepository categoriaRepo,
+            Guid? id = null)
         {
             InitializeComponent();
             _nav = nav;
@@ -28,7 +24,8 @@ namespace SenacStore.UI.UserControls
 
             CarregarCategorias();
 
-            if (_id.HasValue) CarregarProduto(_id.Value);
+            if (_id.HasValue)
+                CarregarProduto(_id.Value);
         }
 
         private void CarregarCategorias()
@@ -43,6 +40,7 @@ namespace SenacStore.UI.UserControls
         {
             var p = _produtoRepo.ObterPorId(id);
             if (p == null) return;
+
             txtNome.Text = p.Nome;
             numPreco.Value = p.Preco;
             cboCategoria.SelectedValue = p.CategoriaId;
@@ -50,42 +48,27 @@ namespace SenacStore.UI.UserControls
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            try
+            if (_id.HasValue)
             {
-                if (string.IsNullOrWhiteSpace(txtNome.Text))
-                {
-                    MessageBox.Show("Nome obrigatório");
-                    return;
-                }
-
-                if (_id.HasValue)
-                {
-                    var produto = _produtoRepo.ObterPorId(_id.Value);
-                    produto.Nome = txtNome.Text.Trim();
-                    produto.Preco = numPreco.Value;
-                    produto.CategoriaId = (Guid)cboCategoria.SelectedValue;
-
-                    _produtoRepo.Atualizar(produto);
-                }
-                else
-                {
-                    var novo = new SenacStore.Domain.Entities.Produto
-                    {
-                        Id = Guid.NewGuid(),
-                        Nome = txtNome.Text.Trim(),
-                        Preco = numPreco.Value,
-                        CategoriaId = (Guid)cboCategoria.SelectedValue
-                    };
-                    _produtoRepo.Criar(novo);
-                }
-
-                // Volta para lista e força refresh
-                _nav.Voltar();
+                var p = _produtoRepo.ObterPorId(_id.Value);
+                p.Nome = txtNome.Text.Trim();
+                p.Preco = numPreco.Value;
+                p.CategoriaId = (Guid)cboCategoria.SelectedValue;
+                _produtoRepo.Atualizar(p);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"Erro ao salvar: {ex.Message}");
+                var novo = new Produto
+                {
+                    Id = Guid.NewGuid(),
+                    Nome = txtNome.Text.Trim(),
+                    Preco = numPreco.Value,
+                    CategoriaId = (Guid)cboCategoria.SelectedValue
+                };
+                _produtoRepo.Criar(novo);
             }
+
+            _nav.Voltar();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

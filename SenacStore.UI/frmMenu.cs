@@ -49,28 +49,29 @@ namespace SenacStore.UI
 
 
         // Botões do Menu
-        private void btnProdutos_Click(object sender, EventArgs e)
+
+        private void btnProdutos_Click_1(object sender, EventArgs e)
         {
             Abrir(new ucCrudPadrao(
                 new ProdutoHandler(this, IoC.ProdutoRepository(), IoC.CategoriaRepository())));
         }
 
-        private void btnUsuarios_Click(object sender, EventArgs e)
+        private void btnUsuarios_Click_1(object sender, EventArgs e)
         {
             Abrir(new ucCrudPadrao(
-                new UsuarioHandler(this, IoC.UsuarioRepository(), IoC.TipoUsuarioRepository())));
+               new UsuarioHandler(this, IoC.UsuarioRepository(), IoC.TipoUsuarioRepository())));
         }
 
-        private void btnCategorias_Click(object sender, EventArgs e)
+        private void btnCategorias_Click_1(object sender, EventArgs e)
         {
             Abrir(new ucCrudPadrao(
-                new CategoriaHandler(this, IoC.CategoriaRepository())));
+            new CategoriaHandler(this, IoC.CategoriaRepository())));
         }
 
-        private void btnTipoUsuario_Click(object sender, EventArgs e)
+        private void btnTipoUsuario_Click_1(object sender, EventArgs e)
         {
             Abrir(new ucCrudPadrao(
-                new TipoUsuarioHandler(this, IoC.TipoUsuarioRepository())));
+           new TipoUsuarioHandler(this, IoC.TipoUsuarioRepository())));
         }
     }
 }

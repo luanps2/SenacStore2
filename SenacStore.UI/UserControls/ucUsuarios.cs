@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SenacStore.UI.UserControls
 {
-    public partial class ucUsuario : UserControl
+    public partial class ucUsuarios : UserControl
     {
-        public ucUsuario()
+        public ucUsuarios()
         {
             InitializeComponent();
         }

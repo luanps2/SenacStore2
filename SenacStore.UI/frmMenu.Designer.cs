@@ -99,7 +99,7 @@
             btnUsuarios.Size = new Size(180, 45);
             btnUsuarios.TabIndex = 1;
             btnUsuarios.Text = "Usuários";
-          
+            btnUsuarios.Click += btnUsuarios_Click_1;
             // 
             // btnTipoUsuario
             // 
@@ -116,7 +116,7 @@
             btnTipoUsuario.Size = new Size(180, 45);
             btnTipoUsuario.TabIndex = 1;
             btnTipoUsuario.Text = "Tipo de Usuario";
-          
+            btnTipoUsuario.Click += btnTipoUsuario_Click_1;
             // 
             // btnCategorias
             // 
@@ -133,7 +133,7 @@
             btnCategorias.Size = new Size(180, 45);
             btnCategorias.TabIndex = 1;
             btnCategorias.Text = "Categorias";
-        
+            btnCategorias.Click += btnCategorias_Click_1;
             // 
             // btnProdutos
             // 
@@ -150,7 +150,7 @@
             btnProdutos.Size = new Size(180, 45);
             btnProdutos.TabIndex = 1;
             btnProdutos.Text = "Produtos";
-    
+            btnProdutos.Click += btnProdutos_Click_1;
             // 
             // panel
             // 
@@ -177,7 +177,6 @@
             guna2CircleButton1.Size = new Size(28, 27);
             guna2CircleButton1.TabIndex = 3;
             guna2CircleButton1.Text = "X";
-      
             // 
             // frmMenu
             // 

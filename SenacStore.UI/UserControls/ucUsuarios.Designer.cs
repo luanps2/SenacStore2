@@ -1,6 +1,6 @@
 ﻿namespace SenacStore.UI.UserControls
 {
-    partial class ucUsuario
+    partial class ucUsuarios
     {
         /// <summary> 
         /// Variável de designer necessária.

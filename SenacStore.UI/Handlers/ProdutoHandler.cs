@@ -27,13 +27,20 @@ namespace SenacStore.UI.Handlers
                     p.Id,
                     p.Nome,
                     p.Preco,
-                    Categoria = categorias.ContainsKey(p.CategoriaId) ? categorias[p.CategoriaId] : "Desconhecida"
+                    Categoria = categorias[p.CategoriaId]
                 })
                 .ToList();
         }
-        public void Criar() => _nav.Abrir(new ucProdutos(_nav, _produtoRepo, _categoriaRepo));
-        public void Editar(Guid id) => _nav.Abrir(new ucProdutos(_nav, _produtoRepo, _categoriaRepo, id));
 
+        public void Criar()
+        {
+            _nav.Abrir(new ucProdutos(_nav, _produtoRepo, _categoriaRepo));
+        }
+
+        public void Editar(Guid id)
+        {
+            _nav.Abrir(new ucProdutos(_nav, _produtoRepo, _categoriaRepo, id));
+        }
 
         public void Deletar(Guid id)
         {
