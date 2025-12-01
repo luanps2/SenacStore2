@@ -1,6 +1,6 @@
 ﻿namespace SenacStore.UI.UserControls
 {
-    partial class ucTipoUsuario
+    partial class ucCategorias
     {
         /// <summary> 
         /// Variável de designer necessária.
@@ -34,31 +34,14 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            btnSalvar = new Guna.UI2.WinForms.Guna2Button();
             txtNome = new Guna.UI2.WinForms.Guna2TextBox();
-            btnCancelar = new Guna.UI2.WinForms.Guna2Button();
+            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             SuspendLayout();
-            // 
-            // btnSalvar
-            // 
-            btnSalvar.CustomizableEdges = customizableEdges1;
-            btnSalvar.DisabledState.BorderColor = Color.DarkGray;
-            btnSalvar.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnSalvar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnSalvar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSalvar.Font = new Font("Segoe UI", 9F);
-            btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(20, 82);
-            btnSalvar.Name = "btnSalvar";
-            btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btnSalvar.Size = new Size(117, 45);
-            btnSalvar.TabIndex = 2;
-            btnSalvar.Text = "Salvar";
-            btnSalvar.Click += btnSalvar_Click_1;
             // 
             // txtNome
             // 
-            txtNome.CustomizableEdges = customizableEdges3;
+            txtNome.CustomizableEdges = customizableEdges1;
             txtNome.DefaultText = "";
             txtNome.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtNome.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -67,48 +50,66 @@
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNome.Font = new Font("Segoe UI", 9F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(20, 30);
+            txtNome.Location = new Point(16, 18);
             txtNome.Name = "txtNome";
-            txtNome.PlaceholderText = "";
+            txtNome.PlaceholderText = "Nome da Categoria";
             txtNome.SelectedText = "";
-            txtNome.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtNome.Size = new Size(239, 36);
-            txtNome.TabIndex = 3;
+            txtNome.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            txtNome.Size = new Size(200, 36);
+            txtNome.TabIndex = 0;
             // 
-            // btnCancelar
+            // guna2Button2
             // 
-            btnCancelar.CustomizableEdges = customizableEdges5;
-            btnCancelar.DisabledState.BorderColor = Color.DarkGray;
-            btnCancelar.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnCancelar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnCancelar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnCancelar.FillColor = Color.DarkRed;
-            btnCancelar.Font = new Font("Segoe UI", 9F);
-            btnCancelar.ForeColor = Color.White;
-            btnCancelar.Location = new Point(142, 82);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnCancelar.Size = new Size(117, 45);
-            btnCancelar.TabIndex = 2;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.Click += btnCancelar_Click_1;
+            guna2Button2.CustomizableEdges = customizableEdges3;
+            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button2.FillColor = Color.DarkRed;
+            guna2Button2.Font = new Font("Segoe UI", 9F);
+            guna2Button2.ForeColor = Color.White;
+            guna2Button2.Location = new Point(130, 60);
+            guna2Button2.Name = "guna2Button2";
+            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2Button2.Size = new Size(86, 45);
+            guna2Button2.TabIndex = 3;
+            guna2Button2.Text = "Cancelar";
+        
             // 
-            // ucTipoUsuario
+            // guna2Button1
+            // 
+            guna2Button1.CustomizableEdges = customizableEdges5;
+            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button1.FillColor = Color.DarkGreen;
+            guna2Button1.Font = new Font("Segoe UI", 9F);
+            guna2Button1.ForeColor = Color.White;
+            guna2Button1.Location = new Point(16, 60);
+            guna2Button1.Name = "guna2Button1";
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2Button1.Size = new Size(108, 45);
+            guna2Button1.TabIndex = 4;
+            guna2Button1.Text = "Salvar";
+        
+            // 
+            // ucCategorias
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(guna2Button2);
+            Controls.Add(guna2Button1);
             Controls.Add(txtNome);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnSalvar);
-            Name = "ucTipoUsuario";
-            Size = new Size(279, 153);
+            Name = "ucCategorias";
+            Size = new Size(237, 127);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2Button btnSalvar;
         private Guna.UI2.WinForms.Guna2TextBox txtNome;
-        private Guna.UI2.WinForms.Guna2Button btnCancelar;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

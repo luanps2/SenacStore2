@@ -3,13 +3,13 @@ using SenacStore.UI.Navigation;
 
 namespace SenacStore.UI.UserControls
 {
-    public partial class ucTipoUsuario : UserControl
+    public partial class ucCategorias : UserControl
     {
         private readonly ICrudNavigator _nav;
-        private readonly ITipoUsuarioRepository _repo;
+        private readonly ICategoriaRepository _repo;
         private readonly Guid? _id;
 
-        public ucTipoUsuario(ICrudNavigator nav, ITipoUsuarioRepository repo, Guid? id = null)
+        public ucCategorias(ICrudNavigator nav, ICategoriaRepository repo, Guid? id = null)
         {
             InitializeComponent();
             _nav = nav;
@@ -17,18 +17,18 @@ namespace SenacStore.UI.UserControls
             _id = id;
 
             if (_id.HasValue)
-                CarregarTipo(_id.Value);
+                CarregarCategoria(_id.Value);
         }
 
-        private void CarregarTipo(Guid id)
+        private void CarregarCategoria(Guid id)
         {
-            var t = _repo.ObterPorId(id);
-            if (t == null) return;
+            var c = _repo.ObterPorId(id);
+            if (c == null) return;
 
-            txtNome.Text = t.Nome;
+            txtNome.Text = c.Nome;
         }
 
-        private void btnSalvar_Click_1(object sender, EventArgs e)
+        private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
@@ -38,13 +38,13 @@ namespace SenacStore.UI.UserControls
 
             if (_id.HasValue)
             {
-                var t = _repo.ObterPorId(_id.Value);
-                t.Nome = txtNome.Text.Trim();
-                _repo.Atualizar(t);
+                var c = _repo.ObterPorId(_id.Value);
+                c.Nome = txtNome.Text.Trim();
+                _repo.Atualizar(c);
             }
             else
             {
-                var novo = new TipoUsuario
+                var novo = new Categoria
                 {
                     Id = Guid.NewGuid(),
                     Nome = txtNome.Text.Trim()
@@ -55,7 +55,7 @@ namespace SenacStore.UI.UserControls
             _nav.Voltar();
         }
 
-        private void btnCancelar_Click_1(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             _nav.Voltar();
         }

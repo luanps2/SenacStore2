@@ -46,9 +46,9 @@
             txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             txtSenha = new Guna.UI2.WinForms.Guna2TextBox();
             btnSalvar = new Guna.UI2.WinForms.Guna2Button();
-            pictureBox1 = new PictureBox();
+            pbFoto = new PictureBox();
             guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -151,15 +151,15 @@
             btnSalvar.Text = "Salvar";
             btnSalvar.Click += btnSalvar_Click_1;
             // 
-            // pictureBox1
+            // pbFoto
             // 
-            pictureBox1.Image = Properties.Resources.user2;
-            pictureBox1.Location = new Point(43, 33);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(200, 95);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
+            pbFoto.Image = Properties.Resources.user2;
+            pbFoto.Location = new Point(43, 33);
+            pbFoto.Name = "pbFoto";
+            pbFoto.Size = new Size(200, 95);
+            pbFoto.SizeMode = PictureBoxSizeMode.Zoom;
+            pbFoto.TabIndex = 3;
+            pbFoto.TabStop = false;
             // 
             // guna2CircleButton1
             // 
@@ -185,7 +185,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(283, 414);
             Controls.Add(guna2CircleButton1);
-            Controls.Add(pictureBox1);
+            Controls.Add(pbFoto);
             Controls.Add(btnSalvar);
             Controls.Add(txtSenha);
             Controls.Add(txtEmail);
@@ -196,14 +196,14 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmUsuarios";
             Load += frmUsuarios_Load_1;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbFoto).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
-        private PictureBox pictureBox1;
+        private PictureBox pbFoto;
         private Guna.UI2.WinForms.Guna2Button btnSalvar;
         private Guna.UI2.WinForms.Guna2TextBox txtSenha;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;

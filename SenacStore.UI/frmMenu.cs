@@ -73,5 +73,11 @@ namespace SenacStore.UI
             Abrir(new ucCrudPadrao(
            new TipoUsuarioHandler(this, IoC.TipoUsuarioRepository())));
         }
+
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

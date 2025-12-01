@@ -25,12 +25,12 @@ namespace SenacStore.UI.Handlers
 
         public void Criar()
         {
-            _nav.Abrir(new ucCategoria(_nav, _repo));
+            _nav.Abrir(new ucCategorias(_nav, _repo));
         }
 
         public void Editar(Guid id)
         {
-            _nav.Abrir(new ucCategoria(_nav, _repo, id));
+            _nav.Abrir(new ucCategorias(_nav, _repo, id));
         }
 
         public void Deletar(Guid id)

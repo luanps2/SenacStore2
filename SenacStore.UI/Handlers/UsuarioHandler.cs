@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using SenacStore.Application.Interfaces;
+using SenacStore.Application;
 using SenacStore.UI.Navigation;
 using SenacStore.UI.UserControls;
 
@@ -36,10 +36,10 @@ namespace SenacStore.UI.Handlers
         }
 
         public void Criar() =>
-            _nav.Abrir(new ucUsuario(_nav, _usuarioRepo, _tipoRepo));
+            _nav.Abrir(new ucUsuarios(_nav, _usuarioRepo, _tipoRepo));
 
         public void Editar(Guid id) =>
-            _nav.Abrir(new ucUsuario(_nav, _usuarioRepo, _tipoRepo, id));
+            _nav.Abrir(new ucUsuarios(_nav, _usuarioRepo, _tipoRepo, id));
 
         public void Deletar(Guid id) =>
             _usuarioRepo.Deletar(id);

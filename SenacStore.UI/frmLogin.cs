@@ -54,7 +54,8 @@ namespace SenacStore.UI
             // Esconde o login sem destruir a instância
             this.Hide();
 
-            using (var frm = new frmMenu(usuario))
+            using (var frm = new frmMenu())
+
             {
                 frm.ShowDialog(); // Mantém controle do fluxo da aplicação
             }
