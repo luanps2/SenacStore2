@@ -1,4 +1,8 @@
-﻿namespace SenacStore.Infrastructure.IoC
+﻿// Arquivo: SenacStore.Infrastructure.IoC.IoC.cs
+// Finalidade: container IoC(Inverse of Control) muito simples (fábricas estáticas) que centraliza criação de conexões
+// e fornece instâncias dos repositórios usados pela UI.
+
+namespace SenacStore.Infrastructure.IoC
 {
     // Classe estática usada como ponto único para obter dependências (repositórios)
     public static class IoC
