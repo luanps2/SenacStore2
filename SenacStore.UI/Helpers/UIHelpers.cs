@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;    // Tipos genéricos (List<T>) usados nas assinaturas dos métodos
+﻿// Arquivo: SenacStore.UI\Helpers\UIHelpers.cs
+// Propósito: coleção de métodos utilitários para preencher controles de UI (ComboBox, DataGridView).
+// Cada método aplica data binding projetando apenas os campos necessários para a exibição.
+
+using System.Collections.Generic;    // Tipos genéricos (List<T>) usados nas assinaturas dos métodos
 using System.Linq;                   // LINQ (Select) usado para projetar coleções antes de atribuir ao DataGridView
 using System.Windows.Forms;          // Controles WinForms (ComboBox, DataGridView)
 using SenacStore.Domain.Entities;    // Entidades do domínio (Categoria, TipoUsuario, Produto)

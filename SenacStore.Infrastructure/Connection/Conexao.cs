@@ -1,7 +1,7 @@
-﻿using Microsoft.Data.SqlClient;
-
-// Arquivo: SenacStore.Infrastructure\Connection\Conexao.cs
+﻿// Arquivo: SenacStore.Infrastructure\Connection\Conexao.cs
 // Propósito: encapsula a criação e abertura de uma conexão SqlServer (SqlConnection) usando uma connection string.
+using Microsoft.Data.SqlClient;
+
 
 // Classe pública simples que representa uma fábrica/encapsulamento de conexão.
 public class Conexao
