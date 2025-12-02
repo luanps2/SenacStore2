@@ -48,7 +48,7 @@
             btnSalvar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnSalvar.Font = new Font("Segoe UI", 9F);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(20, 82);
+            btnSalvar.Location = new Point(164, 158);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnSalvar.Size = new Size(117, 45);
@@ -67,7 +67,7 @@
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNome.Font = new Font("Segoe UI", 9F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(20, 30);
+            txtNome.Location = new Point(164, 106);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "";
             txtNome.SelectedText = "";
@@ -85,7 +85,7 @@
             btnCancelar.FillColor = Color.DarkRed;
             btnCancelar.Font = new Font("Segoe UI", 9F);
             btnCancelar.ForeColor = Color.White;
-            btnCancelar.Location = new Point(142, 82);
+            btnCancelar.Location = new Point(286, 158);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnCancelar.Size = new Size(117, 45);
@@ -101,7 +101,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             Name = "ucTipoUsuario";
-            Size = new Size(279, 153);
+            Size = new Size(613, 321);
             ResumeLayout(false);
         }
 

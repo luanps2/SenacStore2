@@ -50,7 +50,7 @@
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNome.Font = new Font("Segoe UI", 9F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(16, 18);
+            txtNome.Location = new Point(186, 105);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome da Categoria";
             txtNome.SelectedText = "";
@@ -68,13 +68,13 @@
             guna2Button2.FillColor = Color.DarkRed;
             guna2Button2.Font = new Font("Segoe UI", 9F);
             guna2Button2.ForeColor = Color.White;
-            guna2Button2.Location = new Point(130, 60);
+            guna2Button2.Location = new Point(300, 147);
             guna2Button2.Name = "guna2Button2";
             guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2Button2.Size = new Size(86, 45);
             guna2Button2.TabIndex = 3;
             guna2Button2.Text = "Cancelar";
-        
+            guna2Button2.Click += btnCancelar_Click;
             // 
             // guna2Button1
             // 
@@ -86,13 +86,13 @@
             guna2Button1.FillColor = Color.DarkGreen;
             guna2Button1.Font = new Font("Segoe UI", 9F);
             guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(16, 60);
+            guna2Button1.Location = new Point(186, 147);
             guna2Button1.Name = "guna2Button1";
             guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2Button1.Size = new Size(108, 45);
             guna2Button1.TabIndex = 4;
             guna2Button1.Text = "Salvar";
-        
+            guna2Button1.Click += btnSalvar_Click;
             // 
             // ucCategorias
             // 
@@ -102,7 +102,7 @@
             Controls.Add(guna2Button1);
             Controls.Add(txtNome);
             Name = "ucCategorias";
-            Size = new Size(237, 127);
+            Size = new Size(613, 321);
             ResumeLayout(false);
         }
 

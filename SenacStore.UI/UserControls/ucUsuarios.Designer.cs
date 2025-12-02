@@ -61,7 +61,7 @@
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNome.Font = new Font("Segoe UI", 9F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(15, 97);
+            txtNome.Location = new Point(203, 92);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome";
             txtNome.SelectedText = "";
@@ -80,7 +80,7 @@
             txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEmail.Font = new Font("Segoe UI", 9F);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(15, 139);
+            txtEmail.Location = new Point(203, 134);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Email";
             txtEmail.SelectedText = "";
@@ -99,7 +99,7 @@
             txtSenha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSenha.Font = new Font("Segoe UI", 9F);
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(15, 181);
+            txtSenha.Location = new Point(203, 176);
             txtSenha.Name = "txtSenha";
             txtSenha.PlaceholderText = "Senha";
             txtSenha.SelectedText = "";
@@ -119,7 +119,7 @@
             cboTipoUsuario.Font = new Font("Segoe UI", 10F);
             cboTipoUsuario.ForeColor = Color.FromArgb(68, 88, 112);
             cboTipoUsuario.ItemHeight = 30;
-            cboTipoUsuario.Location = new Point(15, 223);
+            cboTipoUsuario.Location = new Point(203, 218);
             cboTipoUsuario.Name = "cboTipoUsuario";
             cboTipoUsuario.ShadowDecoration.CustomizableEdges = customizableEdges8;
             cboTipoUsuario.Size = new Size(200, 36);
@@ -135,7 +135,7 @@
             guna2Button1.FillColor = Color.DarkGreen;
             guna2Button1.Font = new Font("Segoe UI", 9F);
             guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(15, 265);
+            guna2Button1.Location = new Point(203, 260);
             guna2Button1.Name = "guna2Button1";
             guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2Button1.Size = new Size(108, 45);
@@ -153,7 +153,7 @@
             guna2Button2.FillColor = Color.DarkRed;
             guna2Button2.Font = new Font("Segoe UI", 9F);
             guna2Button2.ForeColor = Color.White;
-            guna2Button2.Location = new Point(129, 265);
+            guna2Button2.Location = new Point(317, 260);
             guna2Button2.Name = "guna2Button2";
             guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2Button2.Size = new Size(86, 45);
@@ -165,9 +165,9 @@
             // 
             pbFoto.Cursor = Cursors.Hand;
             pbFoto.Image = Properties.Resources.user2;
-            pbFoto.Location = new Point(15, 19);
+            pbFoto.Location = new Point(203, 14);
             pbFoto.Name = "pbFoto";
-            pbFoto.Size = new Size(200, 95);
+            pbFoto.Size = new Size(200, 72);
             pbFoto.SizeMode = PictureBoxSizeMode.Zoom;
             pbFoto.TabIndex = 4;
             pbFoto.TabStop = false;
@@ -185,7 +185,7 @@
             Controls.Add(txtEmail);
             Controls.Add(txtNome);
             Name = "ucUsuarios";
-            Size = new Size(233, 321);
+            Size = new Size(613, 321);
             ((System.ComponentModel.ISupportInitialize)pbFoto).EndInit();
             ResumeLayout(false);
         }

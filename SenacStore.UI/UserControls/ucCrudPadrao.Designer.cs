@@ -54,7 +54,7 @@
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Location = new Point(88, 14);
+            lblTitulo.Location = new Point(7, 14);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(38, 15);
             lblTitulo.TabIndex = 0;
@@ -112,7 +112,6 @@
             // 
             // btnNovo
             // 
-            btnNovo.BorderRadius = 20;
             btnNovo.CustomizableEdges = customizableEdges1;
             btnNovo.DisabledState.BorderColor = Color.DarkGray;
             btnNovo.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -121,7 +120,7 @@
             btnNovo.FillColor = Color.DarkGreen;
             btnNovo.Font = new Font("Segoe UI", 9F);
             btnNovo.ForeColor = Color.White;
-            btnNovo.Location = new Point(7, 92);
+            btnNovo.Location = new Point(7, 84);
             btnNovo.Name = "btnNovo";
             btnNovo.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnNovo.Size = new Size(75, 45);
@@ -131,7 +130,6 @@
             // 
             // btnEditar
             // 
-            btnEditar.BorderRadius = 20;
             btnEditar.CustomizableEdges = customizableEdges3;
             btnEditar.DisabledState.BorderColor = Color.DarkGray;
             btnEditar.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -140,7 +138,7 @@
             btnEditar.FillColor = Color.Goldenrod;
             btnEditar.Font = new Font("Segoe UI", 9F);
             btnEditar.ForeColor = Color.White;
-            btnEditar.Location = new Point(7, 143);
+            btnEditar.Location = new Point(7, 138);
             btnEditar.Name = "btnEditar";
             btnEditar.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnEditar.Size = new Size(75, 45);
@@ -150,7 +148,6 @@
             // 
             // btnExcluir
             // 
-            btnExcluir.BorderRadius = 20;
             btnExcluir.CustomizableEdges = customizableEdges5;
             btnExcluir.DisabledState.BorderColor = Color.DarkGray;
             btnExcluir.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -159,7 +156,7 @@
             btnExcluir.FillColor = Color.DarkRed;
             btnExcluir.Font = new Font("Segoe UI", 9F);
             btnExcluir.ForeColor = Color.White;
-            btnExcluir.Location = new Point(7, 194);
+            btnExcluir.Location = new Point(7, 193);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnExcluir.Size = new Size(75, 45);
@@ -169,7 +166,6 @@
             // 
             // btnAtualizar
             // 
-            btnAtualizar.BorderRadius = 20;
             btnAtualizar.CustomizableEdges = customizableEdges7;
             btnAtualizar.DisabledState.BorderColor = Color.DarkGray;
             btnAtualizar.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -178,7 +174,7 @@
             btnAtualizar.FillColor = Color.DodgerBlue;
             btnAtualizar.Font = new Font("Segoe UI", 9F);
             btnAtualizar.ForeColor = Color.White;
-            btnAtualizar.Location = new Point(7, 245);
+            btnAtualizar.Location = new Point(7, 249);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnAtualizar.Size = new Size(75, 45);
@@ -197,12 +193,12 @@
             txtSearch.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSearch.Font = new Font("Segoe UI", 9F);
             txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSearch.Location = new Point(88, 42);
+            txtSearch.Location = new Point(7, 42);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "Pesquisar";
             txtSearch.SelectedText = "";
             txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtSearch.Size = new Size(447, 36);
+            txtSearch.Size = new Size(528, 36);
             txtSearch.TabIndex = 3;
             // 
             // ucCrudPadrao

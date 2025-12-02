@@ -88,7 +88,7 @@
             guna2CustomGradientPanel1.Location = new Point(21, 21);
             guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2CustomGradientPanel1.Size = new Size(200, 414);
+            guna2CustomGradientPanel1.Size = new Size(200, 442);
             guna2CustomGradientPanel1.TabIndex = 1;
             // 
             // pbFoto
@@ -129,7 +129,7 @@
             btnTipoUsuario.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnTipoUsuario.Font = new Font("Segoe UI", 9F);
             btnTipoUsuario.ForeColor = Color.White;
-            btnTipoUsuario.Location = new Point(10, 358);
+            btnTipoUsuario.Location = new Point(10, 373);
             btnTipoUsuario.Name = "btnTipoUsuario";
             btnTipoUsuario.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnTipoUsuario.Size = new Size(180, 45);
@@ -146,7 +146,7 @@
             btnCategorias.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnCategorias.Font = new Font("Segoe UI", 9F);
             btnCategorias.ForeColor = Color.White;
-            btnCategorias.Location = new Point(10, 292);
+            btnCategorias.Location = new Point(10, 301);
             btnCategorias.Name = "btnCategorias";
             btnCategorias.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnCategorias.Size = new Size(180, 45);
@@ -163,7 +163,7 @@
             btnProdutos.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnProdutos.Font = new Font("Segoe UI", 9F);
             btnProdutos.ForeColor = Color.White;
-            btnProdutos.Location = new Point(10, 226);
+            btnProdutos.Location = new Point(10, 227);
             btnProdutos.Name = "btnProdutos";
             btnProdutos.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnProdutos.Size = new Size(180, 45);
@@ -174,10 +174,10 @@
             // panel
             // 
             panel.CustomizableEdges = customizableEdges2;
-            panel.Location = new Point(227, 121);
+            panel.Location = new Point(227, 100);
             panel.Name = "panel";
             panel.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            panel.Size = new Size(585, 314);
+            panel.Size = new Size(585, 363);
             panel.TabIndex = 2;
             // 
             // btnFechar

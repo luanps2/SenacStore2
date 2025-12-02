@@ -58,7 +58,7 @@
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNome.Font = new Font("Segoe UI", 9F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(9, 100);
+            txtNome.Location = new Point(168, 111);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "";
             txtNome.SelectedText = "";
@@ -77,7 +77,7 @@
             cboCategoria.Font = new Font("Segoe UI", 10F);
             cboCategoria.ForeColor = Color.FromArgb(68, 88, 112);
             cboCategoria.ItemHeight = 30;
-            cboCategoria.Location = new Point(9, 184);
+            cboCategoria.Location = new Point(168, 195);
             cboCategoria.Name = "cboCategoria";
             cboCategoria.ShadowDecoration.CustomizableEdges = customizableEdges4;
             cboCategoria.Size = new Size(239, 36);
@@ -92,7 +92,7 @@
             btnSalvar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnSalvar.Font = new Font("Segoe UI", 9F);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(9, 235);
+            btnSalvar.Location = new Point(168, 246);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnSalvar.Size = new Size(111, 45);
@@ -110,7 +110,7 @@
             btnCancelar.FillColor = Color.DarkRed;
             btnCancelar.Font = new Font("Segoe UI", 9F);
             btnCancelar.ForeColor = Color.White;
-            btnCancelar.Location = new Point(137, 235);
+            btnCancelar.Location = new Point(296, 246);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnCancelar.Size = new Size(111, 45);
@@ -129,7 +129,7 @@
             txtPreco.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtPreco.Font = new Font("Segoe UI", 9F);
             txtPreco.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPreco.Location = new Point(9, 142);
+            txtPreco.Location = new Point(168, 153);
             txtPreco.Name = "txtPreco";
             txtPreco.PlaceholderText = "";
             txtPreco.SelectedText = "";
@@ -143,7 +143,7 @@
             // 
             pbFoto.Cursor = Cursors.Hand;
             pbFoto.Image = Properties.Resources.caixa;
-            pbFoto.Location = new Point(13, 7);
+            pbFoto.Location = new Point(172, 18);
             pbFoto.Name = "pbFoto";
             pbFoto.Size = new Size(235, 87);
             pbFoto.SizeMode = PictureBoxSizeMode.Zoom;
@@ -161,7 +161,7 @@
             Controls.Add(cboCategoria);
             Controls.Add(txtNome);
             Name = "ucProdutos";
-            Size = new Size(261, 288);
+            Size = new Size(613, 321);
             ((System.ComponentModel.ISupportInitialize)pbFoto).EndInit();
             ResumeLayout(false);
         }
