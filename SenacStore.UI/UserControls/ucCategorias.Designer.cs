@@ -37,6 +37,7 @@
             txtNome = new Guna.UI2.WinForms.Guna2TextBox();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            mdMessage = new Guna.UI2.WinForms.Guna2MessageDialog();
             SuspendLayout();
             // 
             // txtNome
@@ -94,6 +95,15 @@
             guna2Button1.Text = "Salvar";
             guna2Button1.Click += btnSalvar_Click;
             // 
+            // mdMessage
+            // 
+            mdMessage.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            mdMessage.Caption = null;
+            mdMessage.Icon = Guna.UI2.WinForms.MessageDialogIcon.None;
+            mdMessage.Parent = null;
+            mdMessage.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
+            mdMessage.Text = null;
+            // 
             // ucCategorias
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -111,5 +121,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtNome;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2MessageDialog mdMessage;
     }
 }

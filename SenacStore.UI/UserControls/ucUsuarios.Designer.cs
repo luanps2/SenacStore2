@@ -47,11 +47,13 @@
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             pbFoto = new PictureBox();
+            mdMessage = new Guna.UI2.WinForms.Guna2MessageDialog();
             ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             SuspendLayout();
             // 
             // txtNome
             // 
+            txtNome.BorderRadius = 10;
             txtNome.CustomizableEdges = customizableEdges1;
             txtNome.DefaultText = "";
             txtNome.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -71,6 +73,7 @@
             // 
             // txtEmail
             // 
+            txtEmail.BorderRadius = 10;
             txtEmail.CustomizableEdges = customizableEdges3;
             txtEmail.DefaultText = "";
             txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -90,6 +93,7 @@
             // 
             // txtSenha
             // 
+            txtSenha.BorderRadius = 10;
             txtSenha.CustomizableEdges = customizableEdges5;
             txtSenha.DefaultText = "";
             txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -111,6 +115,7 @@
             // cboTipoUsuario
             // 
             cboTipoUsuario.BackColor = Color.Transparent;
+            cboTipoUsuario.BorderRadius = 10;
             cboTipoUsuario.CustomizableEdges = customizableEdges7;
             cboTipoUsuario.DrawMode = DrawMode.OwnerDrawFixed;
             cboTipoUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -127,6 +132,7 @@
             // 
             // guna2Button1
             // 
+            guna2Button1.BorderRadius = 10;
             guna2Button1.CustomizableEdges = customizableEdges9;
             guna2Button1.DisabledState.BorderColor = Color.DarkGray;
             guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -145,6 +151,7 @@
             // 
             // guna2Button2
             // 
+            guna2Button2.BorderRadius = 10;
             guna2Button2.CustomizableEdges = customizableEdges11;
             guna2Button2.DisabledState.BorderColor = Color.DarkGray;
             guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -173,6 +180,15 @@
             pbFoto.TabStop = false;
             pbFoto.Click += pbFoto_Click;
             // 
+            // mdMessage
+            // 
+            mdMessage.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            mdMessage.Caption = null;
+            mdMessage.Icon = Guna.UI2.WinForms.MessageDialogIcon.None;
+            mdMessage.Parent = null;
+            mdMessage.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
+            mdMessage.Text = null;
+            // 
             // ucUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -199,5 +215,6 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private PictureBox pbFoto;
+        private Guna.UI2.WinForms.Guna2MessageDialog mdMessage;
     }
 }

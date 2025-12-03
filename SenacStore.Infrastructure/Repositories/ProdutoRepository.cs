@@ -107,4 +107,17 @@ public class ProdutoRepository : IProdutoRepository
 
         return produto;
     }
+
+    public List<Produto> BuscarPorNome(string termo)
+    {
+        var lista = new List<Produto>();
+        using var conn = _conexao.ObterConexao();
+        using var cmd = new SqlCommand(@"
+        SELECT * FROM Produto
+        WHERE Nome LIKE @Termo", conn);
+        cmd.Parameters.AddWithValue("@Termo", $"%{termo}%");
+        using var reader = cmd.ExecuteReader();
+        while (reader.Read()) lista.Add(Map(reader));
+        return lista;
+    }
 }

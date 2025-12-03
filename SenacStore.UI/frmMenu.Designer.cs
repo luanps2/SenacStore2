@@ -61,6 +61,7 @@
             btnFechar = new Guna.UI2.WinForms.Guna2CircleButton();
             pictureBox1 = new PictureBox();
             label1 = new Label();
+            mdQuestion = new Guna.UI2.WinForms.Guna2MessageDialog();
             guna2CustomGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -79,7 +80,7 @@
             lblUsuario.BackColor = Color.FromArgb(0, 85, 148);
             lblUsuario.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblUsuario.ForeColor = Color.White;
-            lblUsuario.Location = new Point(10, 135);
+            lblUsuario.Location = new Point(8, 119);
             lblUsuario.Name = "lblUsuario";
             lblUsuario.Size = new Size(65, 19);
             lblUsuario.TabIndex = 0;
@@ -111,11 +112,11 @@
             // 
             pbFoto.BackColor = Color.FromArgb(0, 85, 148);
             pbFoto.ImageRotate = 0F;
-            pbFoto.Location = new Point(48, 6);
+            pbFoto.Location = new Point(55, 13);
             pbFoto.Name = "pbFoto";
             pbFoto.ShadowDecoration.CustomizableEdges = customizableEdges4;
             pbFoto.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            pbFoto.Size = new Size(115, 115);
+            pbFoto.Size = new Size(100, 100);
             pbFoto.SizeMode = PictureBoxSizeMode.Zoom;
             pbFoto.TabIndex = 2;
             pbFoto.TabStop = false;
@@ -134,10 +135,10 @@
             btnHome.ForeColor = Color.White;
             btnHome.Image = Properties.Resources.home3;
             btnHome.ImageAlign = HorizontalAlignment.Left;
-            btnHome.Location = new Point(0, 171);
+            btnHome.Location = new Point(0, 151);
             btnHome.Name = "btnHome";
             btnHome.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            btnHome.Size = new Size(203, 32);
+            btnHome.Size = new Size(217, 47);
             btnHome.TabIndex = 1;
             btnHome.Text = "Home";
             btnHome.Click += btnHome_Click;
@@ -156,10 +157,10 @@
             btnUsuarios.ForeColor = Color.White;
             btnUsuarios.Image = Properties.Resources.addUser2;
             btnUsuarios.ImageAlign = HorizontalAlignment.Left;
-            btnUsuarios.Location = new Point(0, 220);
+            btnUsuarios.Location = new Point(0, 203);
             btnUsuarios.Name = "btnUsuarios";
             btnUsuarios.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            btnUsuarios.Size = new Size(203, 32);
+            btnUsuarios.Size = new Size(217, 47);
             btnUsuarios.TabIndex = 1;
             btnUsuarios.Text = "Usuários";
             btnUsuarios.Click += btnUsuarios_Click_1;
@@ -178,10 +179,10 @@
             btnSair.ForeColor = Color.White;
             btnSair.Image = Properties.Resources.logout2;
             btnSair.ImageAlign = HorizontalAlignment.Left;
-            btnSair.Location = new Point(0, 401);
+            btnSair.Location = new Point(0, 406);
             btnSair.Name = "btnSair";
             btnSair.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            btnSair.Size = new Size(203, 32);
+            btnSair.Size = new Size(217, 47);
             btnSair.TabIndex = 1;
             btnSair.Text = "Sair";
             btnSair.Click += btnSair_Click;
@@ -200,10 +201,10 @@
             btnTipoUsuario.ForeColor = Color.White;
             btnTipoUsuario.Image = Properties.Resources.users21;
             btnTipoUsuario.ImageAlign = HorizontalAlignment.Left;
-            btnTipoUsuario.Location = new Point(0, 354);
+            btnTipoUsuario.Location = new Point(0, 362);
             btnTipoUsuario.Name = "btnTipoUsuario";
             btnTipoUsuario.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btnTipoUsuario.Size = new Size(203, 32);
+            btnTipoUsuario.Size = new Size(217, 47);
             btnTipoUsuario.TabIndex = 1;
             btnTipoUsuario.Text = "Tipo de Usuario";
             btnTipoUsuario.Click += btnTipoUsuario_Click_1;
@@ -222,10 +223,10 @@
             btnCategorias.ForeColor = Color.White;
             btnCategorias.Image = Properties.Resources.apps2;
             btnCategorias.ImageAlign = HorizontalAlignment.Left;
-            btnCategorias.Location = new Point(0, 307);
+            btnCategorias.Location = new Point(0, 309);
             btnCategorias.Name = "btnCategorias";
             btnCategorias.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            btnCategorias.Size = new Size(203, 32);
+            btnCategorias.Size = new Size(217, 47);
             btnCategorias.TabIndex = 1;
             btnCategorias.Text = "Categorias";
             btnCategorias.Click += btnCategorias_Click_1;
@@ -244,10 +245,10 @@
             btnProdutos.ForeColor = Color.White;
             btnProdutos.Image = Properties.Resources.cursos2;
             btnProdutos.ImageAlign = HorizontalAlignment.Left;
-            btnProdutos.Location = new Point(0, 269);
+            btnProdutos.Location = new Point(0, 256);
             btnProdutos.Name = "btnProdutos";
             btnProdutos.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            btnProdutos.Size = new Size(203, 32);
+            btnProdutos.Size = new Size(217, 47);
             btnProdutos.TabIndex = 1;
             btnProdutos.Text = "Produtos";
             btnProdutos.Click += btnProdutos_Click_1;
@@ -284,7 +285,7 @@
             pictureBox1.Image = Properties.Resources.Senac_logo_svg;
             pictureBox1.Location = new Point(224, 6);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(591, 59);
+            pictureBox1.Size = new Size(591, 67);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -301,6 +302,15 @@
             label1.TabIndex = 0;
             label1.Text = "Store";
             // 
+            // mdQuestion
+            // 
+            mdQuestion.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
+            mdQuestion.Caption = null;
+            mdQuestion.Icon = Guna.UI2.WinForms.MessageDialogIcon.None;
+            mdQuestion.Parent = this;
+            mdQuestion.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
+            mdQuestion.Text = null;
+            // 
             // frmMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -313,6 +323,7 @@
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmMenu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmMenu";
             Load += frmMenu_Load_1;
             guna2CustomGradientPanel1.ResumeLayout(false);
@@ -339,5 +350,6 @@
         private Label label1;
         private Guna.UI2.WinForms.Guna2Button btnHome;
         private Guna.UI2.WinForms.Guna2Button btnSair;
+        private Guna.UI2.WinForms.Guna2MessageDialog mdQuestion;
     }
 }

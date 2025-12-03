@@ -188,7 +188,7 @@ namespace SenacStore.UI.UserControls
             catch (Exception ex)
             {
                 // Em caso de erro ao carregar/salvar imagem, mostra mensagem ao usuário
-                mdMessage.Show($"Erro ao carregar imagem: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mdMessage.Show($"Erro ao carregar imagem: {ex.Message}");
             }
         }
 

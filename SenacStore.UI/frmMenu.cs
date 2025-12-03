@@ -24,6 +24,7 @@ namespace SenacStore.UI
         public frmMenu()
         {
             InitializeComponent(); // Inicializa controles criados pelo Designer (.Designer.cs)
+            guna2BorderlessForm1.ResizeForm = false; // desabilita redimensionamento via borda
         }
 
         // Construtor que recebe o usuário autenticado
@@ -191,22 +192,26 @@ namespace SenacStore.UI
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            // FindForm(): obtém a instância do Form que contém este UserControl/controle atual.
-            // Aqui, retorna o frmMenu (janela principal), permitindo manipular a janela hospedeira.
-            var menu = this.FindForm();
-            if (menu != null)
+            // Configura (opcional) e mostra o diálogo mdQuestion já presente no Designer
+            mdQuestion.Text = "Deseja realmente sair?";
+            mdQuestion.Caption = "Confirmar saída";
+            mdQuestion.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
+            mdQuestion.Icon = Guna.UI2.WinForms.MessageDialogIcon.Question;
+            mdQuestion.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
+
+            var resposta = mdQuestion.Show(); // retorna DialogResult
+
+            if (resposta == DialogResult.Yes)
             {
-                // mostra login modal
-                using (var login = new frmLogin(SenacStore.Infrastructure.IoC.IoC.UsuarioRepository()))
+                // Fecha o menu e reabre o login (fluxo de logout)
+                this.Hide();
+                using (var login = new frmLogin(IoC.UsuarioRepository()))
                 {
-                    // opcional: esconder o menu enquanto o login é exibido
-                    menu.Hide();
                     login.ShowDialog();
                 }
-
-                // fecha o menu após retornar do login
-                menu.Close();
+                this.Close();
             }
         }
     }
 }
+

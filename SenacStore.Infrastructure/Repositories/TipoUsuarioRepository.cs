@@ -79,4 +79,27 @@ public class TipoUsuarioRepository : ITipoUsuarioRepository
 
         return lista;
     }
+
+    private TipoUsuario Map(SqlDataReader reader)
+    {
+        var tipoUsuario = new TipoUsuario
+        {
+            Id = reader.GetGuid(reader.GetOrdinal("Id")),
+            Nome = reader.GetString(reader.GetOrdinal("Nome"))
+        };
+        return tipoUsuario;
+    }
+
+    public List<TipoUsuario> BuscarPorNome(string termo)
+    {
+        var lista = new List<TipoUsuario>();
+        using var conn = _conexao.ObterConexao();
+        using var cmd = new SqlCommand(@"
+        SELECT * FROM TipoUsuario
+        WHERE Nome LIKE @Termo", conn);
+        cmd.Parameters.AddWithValue("@Termo", $"%{termo}%");
+        using var reader = cmd.ExecuteReader();
+        while (reader.Read()) lista.Add(Map(reader));
+        return lista;
+    }
 }

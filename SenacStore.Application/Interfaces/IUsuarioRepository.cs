@@ -8,4 +8,5 @@ public interface IUsuarioRepository
     Usuario ObterPorId(Guid id);
     Usuario ObterPorEmail(string email);
     List<Usuario> ObterTodos();
+    List<Usuario> BuscarPorNome(string termo);
 }

@@ -44,11 +44,13 @@
             btnCancelar = new Guna.UI2.WinForms.Guna2Button();
             txtPreco = new Guna.UI2.WinForms.Guna2TextBox();
             pbFoto = new PictureBox();
+            mdMessage = new Guna.UI2.WinForms.Guna2MessageDialog();
             ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             SuspendLayout();
             // 
             // txtNome
             // 
+            txtNome.BorderRadius = 10;
             txtNome.CustomizableEdges = customizableEdges1;
             txtNome.DefaultText = "";
             txtNome.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -69,6 +71,7 @@
             // cboCategoria
             // 
             cboCategoria.BackColor = Color.Transparent;
+            cboCategoria.BorderRadius = 10;
             cboCategoria.CustomizableEdges = customizableEdges3;
             cboCategoria.DrawMode = DrawMode.OwnerDrawFixed;
             cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -85,6 +88,7 @@
             // 
             // btnSalvar
             // 
+            btnSalvar.BorderRadius = 10;
             btnSalvar.CustomizableEdges = customizableEdges5;
             btnSalvar.DisabledState.BorderColor = Color.DarkGray;
             btnSalvar.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -102,6 +106,7 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.BorderRadius = 10;
             btnCancelar.CustomizableEdges = customizableEdges7;
             btnCancelar.DisabledState.BorderColor = Color.DarkGray;
             btnCancelar.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -120,6 +125,7 @@
             // 
             // txtPreco
             // 
+            txtPreco.BorderRadius = 10;
             txtPreco.CustomizableEdges = customizableEdges9;
             txtPreco.DefaultText = "";
             txtPreco.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -150,6 +156,15 @@
             pbFoto.TabIndex = 4;
             pbFoto.TabStop = false;
             // 
+            // mdMessage
+            // 
+            mdMessage.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            mdMessage.Caption = null;
+            mdMessage.Icon = Guna.UI2.WinForms.MessageDialogIcon.None;
+            mdMessage.Parent = null;
+            mdMessage.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
+            mdMessage.Text = null;
+            // 
             // ucProdutos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -174,5 +189,6 @@
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
         private Guna.UI2.WinForms.Guna2TextBox txtPreco;
         private PictureBox pbFoto;
+        private Guna.UI2.WinForms.Guna2MessageDialog mdMessage;
     }
 }

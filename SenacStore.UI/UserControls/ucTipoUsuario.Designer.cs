@@ -37,10 +37,12 @@
             btnSalvar = new Guna.UI2.WinForms.Guna2Button();
             txtNome = new Guna.UI2.WinForms.Guna2TextBox();
             btnCancelar = new Guna.UI2.WinForms.Guna2Button();
+            mdMessage = new Guna.UI2.WinForms.Guna2MessageDialog();
             SuspendLayout();
             // 
             // btnSalvar
             // 
+            btnSalvar.BorderRadius = 10;
             btnSalvar.CustomizableEdges = customizableEdges1;
             btnSalvar.DisabledState.BorderColor = Color.DarkGray;
             btnSalvar.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -58,6 +60,7 @@
             // 
             // txtNome
             // 
+            txtNome.BorderRadius = 10;
             txtNome.CustomizableEdges = customizableEdges3;
             txtNome.DefaultText = "";
             txtNome.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -77,6 +80,7 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.BorderRadius = 10;
             btnCancelar.CustomizableEdges = customizableEdges5;
             btnCancelar.DisabledState.BorderColor = Color.DarkGray;
             btnCancelar.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -92,6 +96,15 @@
             btnCancelar.TabIndex = 2;
             btnCancelar.Text = "Cancelar";
             btnCancelar.Click += btnCancelar_Click_1;
+            // 
+            // mdMessage
+            // 
+            mdMessage.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            mdMessage.Caption = null;
+            mdMessage.Icon = Guna.UI2.WinForms.MessageDialogIcon.None;
+            mdMessage.Parent = null;
+            mdMessage.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
+            mdMessage.Text = null;
             // 
             // ucTipoUsuario
             // 
@@ -110,5 +123,6 @@
         private Guna.UI2.WinForms.Guna2Button btnSalvar;
         private Guna.UI2.WinForms.Guna2TextBox txtNome;
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
+        private Guna.UI2.WinForms.Guna2MessageDialog mdMessage;
     }
 }

@@ -79,4 +79,22 @@ public class CategoriaRepository : ICategoriaRepository
 
         return lista;
     }
+
+    public List<Categoria> BuscarPorNome(string termo)
+    {
+        var lista = new List<Categoria>();
+        using var conn = _conexao.ObterConexao();
+        using var cmd = new SqlCommand("SELECT * FROM Categoria WHERE Nome LIKE @Termo", conn);
+        cmd.Parameters.AddWithValue("@Termo", $"%{termo}%");
+        using var reader = cmd.ExecuteReader();
+        while (reader.Read())
+        {
+            lista.Add(new Categoria
+            {
+                Id = reader.GetGuid(reader.GetOrdinal("Id")),
+                Nome = reader.GetString(reader.GetOrdinal("Nome"))
+            });
+        }
+        return lista;
+    }
 }

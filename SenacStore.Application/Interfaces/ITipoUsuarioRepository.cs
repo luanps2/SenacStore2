@@ -7,4 +7,7 @@ public interface ITipoUsuarioRepository
     void Deletar(Guid id);
     TipoUsuario ObterPorId(Guid id);
     List<TipoUsuario> ObterTodos();
+    List<TipoUsuario> BuscarPorNome(string termo);
+
+
 }

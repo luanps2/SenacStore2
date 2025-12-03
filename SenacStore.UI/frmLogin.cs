@@ -1,4 +1,5 @@
-﻿// Arquivo: SenacStore.UI\frmLogin.cs
+﻿
+// Arquivo: SenacStore.UI\frmLogin.cs
 // Função: formulário de login que valida credenciais e abre o menu principal após autenticar.
 
 using System.Windows.Forms;
@@ -15,6 +16,7 @@ namespace SenacStore.UI
         public frmLogin(IUsuarioRepository usuarioRepository)
         {
             InitializeComponent();            // Inicializa controles do Designer
+            guna2BorderlessForm1.ResizeForm = false; // desabilita redimensionamento via borda
             _usuarioRepository = usuarioRepository; // Guarda repositório para uso no login
         }
 
@@ -100,6 +102,33 @@ namespace SenacStore.UI
             if (resposta == DialogResult.Yes)
             {
                 System.Windows.Forms.Application.Exit();
+            }
+        }
+
+        private void txtSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true; // previne bip ou comportamento padrão
+                btnEntrar.PerformClick();  // aciona o clique do botão (mesmo que seja Guna2Button)
+            }
+        }
+
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (txtSenha.Text == string.Empty)
+                {
+                    txtSenha.Focus();
+                }
+                else
+                {
+                    e.Handled = true;
+                    e.SuppressKeyPress = true; // previne bip ou comportamento padrão
+                    btnEntrar.PerformClick();  // aciona o clique do botão (mesmo que seja Guna2Button)
+                }
             }
         }
     }

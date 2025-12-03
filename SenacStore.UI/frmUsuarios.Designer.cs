@@ -48,6 +48,7 @@
             btnSalvar = new Guna.UI2.WinForms.Guna2Button();
             pbFoto = new PictureBox();
             guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            mdMessage = new Guna.UI2.WinForms.Guna2MessageDialog();
             ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             SuspendLayout();
             // 
@@ -61,6 +62,7 @@
             // cboTipoUsuario
             // 
             cboTipoUsuario.BackColor = Color.Transparent;
+            cboTipoUsuario.BorderRadius = 10;
             cboTipoUsuario.CustomizableEdges = customizableEdges10;
             cboTipoUsuario.DrawMode = DrawMode.OwnerDrawFixed;
             cboTipoUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -69,7 +71,7 @@
             cboTipoUsuario.Font = new Font("Century Gothic", 8.25F);
             cboTipoUsuario.ForeColor = Color.FromArgb(68, 88, 112);
             cboTipoUsuario.ItemHeight = 30;
-            cboTipoUsuario.Location = new Point(43, 283);
+            cboTipoUsuario.Location = new Point(43, 293);
             cboTipoUsuario.Name = "cboTipoUsuario";
             cboTipoUsuario.ShadowDecoration.CustomizableEdges = customizableEdges11;
             cboTipoUsuario.Size = new Size(200, 36);
@@ -77,6 +79,7 @@
             // 
             // txtNome
             // 
+            txtNome.BorderRadius = 10;
             txtNome.CustomizableEdges = customizableEdges8;
             txtNome.DefaultText = "";
             txtNome.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -86,7 +89,7 @@
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNome.Font = new Font("Century Gothic", 8.25F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(43, 150);
+            txtNome.Location = new Point(43, 144);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome";
             txtNome.SelectedText = "";
@@ -96,6 +99,7 @@
             // 
             // txtEmail
             // 
+            txtEmail.BorderRadius = 10;
             txtEmail.CustomizableEdges = customizableEdges6;
             txtEmail.DefaultText = "";
             txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -115,6 +119,7 @@
             // 
             // txtSenha
             // 
+            txtSenha.BorderRadius = 10;
             txtSenha.CustomizableEdges = customizableEdges4;
             txtSenha.DefaultText = "";
             txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -124,7 +129,7 @@
             txtSenha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSenha.Font = new Font("Century Gothic", 8.25F);
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(43, 239);
+            txtSenha.Location = new Point(43, 245);
             txtSenha.Name = "txtSenha";
             txtSenha.PlaceholderText = "Senha";
             txtSenha.SelectedText = "";
@@ -135,15 +140,16 @@
             // 
             // btnSalvar
             // 
-            btnSalvar.BorderRadius = 20;
+            btnSalvar.BorderRadius = 10;
             btnSalvar.CustomizableEdges = customizableEdges2;
             btnSalvar.DisabledState.BorderColor = Color.DarkGray;
             btnSalvar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSalvar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSalvar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnSalvar.FillColor = Color.FromArgb(0, 85, 148);
             btnSalvar.Font = new Font("Century Gothic", 8.25F);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(43, 339);
+            btnSalvar.Location = new Point(43, 345);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges3;
             btnSalvar.Size = new Size(200, 45);
@@ -181,6 +187,15 @@
             guna2CircleButton1.Text = "X";
             guna2CircleButton1.Click += guna2CircleButton1_Click;
             // 
+            // mdMessage
+            // 
+            mdMessage.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            mdMessage.Caption = null;
+            mdMessage.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+            mdMessage.Parent = this;
+            mdMessage.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
+            mdMessage.Text = null;
+            // 
             // frmUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -212,5 +227,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtNome;
         private Guna.UI2.WinForms.Guna2ComboBox cboTipoUsuario;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        private Guna.UI2.WinForms.Guna2MessageDialog mdMessage;
     }
 }

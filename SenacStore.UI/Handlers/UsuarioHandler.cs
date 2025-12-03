@@ -59,5 +59,15 @@ namespace SenacStore.UI.Handlers
         // Deleta o usuário pelo id delegando ao repositório
         public void Deletar(Guid id) =>
             _usuarioRepo.Deletar(id);
+
+        public object BuscarPorNome(string termo)
+        {
+            var tipos = _tipoRepo.ObterTodos().ToDictionary(t => t.Id, t => t.Nome);
+            return _usuarioRepo.BuscarPorNome(termo)
+                .Select(u => new {
+                    u.Id, u.Nome, u.Email, FotoUrl = u.FotoUrl,
+                    Tipo = tipos.TryGetValue(u.TipoUsuarioId, out var nome) ? nome : "Desconhecido"
+                }).ToList();
+        }
     }
 }

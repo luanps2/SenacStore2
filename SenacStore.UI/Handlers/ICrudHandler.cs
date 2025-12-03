@@ -17,6 +17,9 @@ namespace SenacStore.UI.Handlers
         // Tipo object permite que o handler projete a lista (por exemplo, lista de objetos anônimos).
         object ObterTodos();
 
+        // NOVO: Método que busca registros pelo nome
+        object BuscarPorNome(string termo);
+
         // Abre a tela/controle para criação de um novo registro.
         void Criar();
 

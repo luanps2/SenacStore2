@@ -7,4 +7,5 @@ public interface ICategoriaRepository
     void Deletar(Guid id);
     Categoria ObterPorId(Guid id);
     List<Categoria> ObterTodos();
+    List<Categoria> BuscarPorNome(string termo);
 }

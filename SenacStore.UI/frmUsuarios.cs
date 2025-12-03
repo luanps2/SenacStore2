@@ -26,6 +26,7 @@ namespace SenacStore.UI
         public frmUsuarios(IUsuarioRepository usuarioRepo, ITipoUsuarioRepository tipoRepo)
         {
             InitializeComponent();             // Inicializa controles gerados pelo Designer
+            guna2BorderlessForm1.ResizeForm = false; // desabilita redimensionamento via borda
             _usuarioRepository = usuarioRepo;  // Armazena repositório de usuário
             _tipoUsuarioRepository = tipoRepo; // Armazena repositório de tipos
         }
@@ -85,7 +86,7 @@ namespace SenacStore.UI
             catch (Exception ex)
             {
                 // Mostra mensagem de erro caso ocorra qualquer exceção ao carregar/salvar imagem
-                mdMessage.Show($"Erro ao carregar imagem: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mdMessage.Show($"Erro ao carregar imagem: {ex.Message}", "Erro");
             }
         }
 

@@ -7,5 +7,6 @@ public interface IProdutoRepository
     void Deletar(Guid id);
     Produto ObterPorId(Guid id);
     List<Produto> ObterTodos();
+
+    List<Produto> BuscarPorNome(string termo);
 }
- 

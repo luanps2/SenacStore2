@@ -55,10 +55,11 @@
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(7, 14);
+            lblTitulo.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = Color.FromArgb(0, 85, 148);
+            lblTitulo.Location = new Point(249, 8);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(45, 17);
+            lblTitulo.Size = new Size(69, 23);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "label1";
             // 
@@ -88,7 +89,7 @@
             dgvDados.Location = new Point(88, 84);
             dgvDados.Name = "dgvDados";
             dgvDados.RowHeadersVisible = false;
-            dgvDados.Size = new Size(447, 210);
+            dgvDados.Size = new Size(497, 276);
             dgvDados.TabIndex = 1;
             dgvDados.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvDados.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -114,6 +115,7 @@
             // 
             // btnNovo
             // 
+            btnNovo.BorderRadius = 10;
             btnNovo.CustomizableEdges = customizableEdges1;
             btnNovo.DisabledState.BorderColor = Color.DarkGray;
             btnNovo.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -122,7 +124,7 @@
             btnNovo.FillColor = Color.DarkGreen;
             btnNovo.Font = new Font("Century Gothic", 9F);
             btnNovo.ForeColor = Color.White;
-            btnNovo.Location = new Point(7, 84);
+            btnNovo.Location = new Point(7, 90);
             btnNovo.Name = "btnNovo";
             btnNovo.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnNovo.Size = new Size(75, 45);
@@ -132,6 +134,7 @@
             // 
             // btnEditar
             // 
+            btnEditar.BorderRadius = 10;
             btnEditar.CustomizableEdges = customizableEdges3;
             btnEditar.DisabledState.BorderColor = Color.DarkGray;
             btnEditar.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -140,7 +143,7 @@
             btnEditar.FillColor = Color.Goldenrod;
             btnEditar.Font = new Font("Century Gothic", 9F);
             btnEditar.ForeColor = Color.White;
-            btnEditar.Location = new Point(7, 138);
+            btnEditar.Location = new Point(7, 161);
             btnEditar.Name = "btnEditar";
             btnEditar.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnEditar.Size = new Size(75, 45);
@@ -150,6 +153,7 @@
             // 
             // btnExcluir
             // 
+            btnExcluir.BorderRadius = 10;
             btnExcluir.CustomizableEdges = customizableEdges5;
             btnExcluir.DisabledState.BorderColor = Color.DarkGray;
             btnExcluir.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -158,7 +162,7 @@
             btnExcluir.FillColor = Color.DarkRed;
             btnExcluir.Font = new Font("Century Gothic", 9F);
             btnExcluir.ForeColor = Color.White;
-            btnExcluir.Location = new Point(7, 193);
+            btnExcluir.Location = new Point(7, 237);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnExcluir.Size = new Size(75, 45);
@@ -168,6 +172,7 @@
             // 
             // btnAtualizar
             // 
+            btnAtualizar.BorderRadius = 10;
             btnAtualizar.CustomizableEdges = customizableEdges7;
             btnAtualizar.DisabledState.BorderColor = Color.DarkGray;
             btnAtualizar.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -176,7 +181,7 @@
             btnAtualizar.FillColor = Color.DodgerBlue;
             btnAtualizar.Font = new Font("Century Gothic", 9F);
             btnAtualizar.ForeColor = Color.White;
-            btnAtualizar.Location = new Point(7, 249);
+            btnAtualizar.Location = new Point(7, 310);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnAtualizar.Size = new Size(75, 45);
@@ -200,8 +205,9 @@
             txtSearch.PlaceholderText = "Pesquisar";
             txtSearch.SelectedText = "";
             txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtSearch.Size = new Size(528, 41);
+            txtSearch.Size = new Size(578, 41);
             txtSearch.TabIndex = 3;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // mdMessage
             // 
@@ -224,7 +230,7 @@
             Controls.Add(dgvDados);
             Controls.Add(lblTitulo);
             Name = "ucCrudPadrao";
-            Size = new Size(551, 310);
+            Size = new Size(588, 363);
             ((System.ComponentModel.ISupportInitialize)dgvDados).EndInit();
             ResumeLayout(false);
             PerformLayout();

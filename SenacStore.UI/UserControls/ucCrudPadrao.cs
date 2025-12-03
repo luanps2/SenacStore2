@@ -32,11 +32,7 @@ namespace SenacStore.UI.UserControls // Namespace do projeto para componentes de
             // Garante que o evento DataBindingComplete será chamado quando o DataGridView terminar de bindar os dados
             dgvDados.DataBindingComplete += DgvDados_DataBindingComplete;
 
-            // Associa a caixa de busca (txtSearch) ao evento TextChanged, se existir no Designer
-            if (this.Controls.Find("txtSearch", true).FirstOrDefault() is TextBox tb)
-            {
-                tb.TextChanged += TxtSearch_TextChanged; // Vincula o handler de busca ao digitar
-            }
+
 
             RefreshGrid(); // Carrega inicialmente os dados no grid
         }
@@ -59,51 +55,17 @@ namespace SenacStore.UI.UserControls // Namespace do projeto para componentes de
             }
         }
 
-        // Handler que responde ao evento TextChanged da caixa de busca (live search)
-        private void TxtSearch_TextChanged(object? sender, EventArgs e)
-        {
-            try
-            {
-                var txt = (sender as TextBox)?.Text?.Trim(); // Texto digitado
-                if (string.IsNullOrWhiteSpace(txt))
-                {
-                    dgvDados.DataSource = _allData; // Se vazio, restaura todos os dados
-                    return;
-                }
 
-                var term = txt.ToLowerInvariant(); // Termo de busca em minúsculas para comparação case-insensitive
 
-                // Filtra o cache _allData verificando todas as propriedades string de cada item
-                var filtered = _allData.Where(item =>
-                {
-                    var props = item.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance); // obtém propriedades públicas
-                    foreach (var p in props)
-                    {
-                        if (p.PropertyType == typeof(string)) // considera apenas propriedades string
-                        {
-                            var val = p.GetValue(item) as string;
-                            if (!string.IsNullOrEmpty(val) && val.ToLowerInvariant().Contains(term))
-                                return true; // retorna true se qualquer propriedade contém o termo
-                        }
-                    }
-                    return false; // nenhum campo string contém o termo
-                }).ToList();
-
-                dgvDados.DataSource = filtered; // Aplica o resultado filtrado ao grid
-            }
-            catch
-            {
-                // Silencia exceções da busca para não quebrar a UI
-            }
-        }
 
         // Evento chamado quando o DataGridView terminou de bindar os dados
         private void DgvDados_DataBindingComplete(object? sender, DataGridViewBindingCompleteEventArgs e)
         {
             try
             {
-                // Obtém um item de exemplo da fonte retornada pelo handler para detectar se existe FotoUrl
-                var data = (_handler.ObterTodos() as System.Collections.IEnumerable)?.Cast<object>().FirstOrDefault();
+                // Usa a fonte ATUAL do grid (filtrada ou completa), não chama novamente o handler.
+                var ds = dgvDados.DataSource as System.Collections.IEnumerable;
+                var data = ds?.Cast<object>().FirstOrDefault();
                 if (data == null) return; // se não há dados, sai
                 var prop = data.GetType().GetProperty("FotoUrl"); // procura pela propriedade FotoUrl
                 if (prop == null) return; // se não existir, nada a fazer
@@ -256,5 +218,30 @@ namespace SenacStore.UI.UserControls // Namespace do projeto para componentes de
 
         // Handler do botão "Atualizar" — recarrega o grid
         private void btnAtualizar_Click_1(object sender, EventArgs e) => RefreshGrid();
+
+        private void txtSearch_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            // Pega texto do Guna2TextBox diretamente (não converter para TextBox)
+            var termo = txtSearch.Text?.Trim() ?? "";
+
+            try
+            {
+                // Quando vazio: restaura todos
+                // Quando há termo: usa BuscarPorNome do handler ativo
+                dgvDados.DataSource = string.IsNullOrWhiteSpace(termo)
+                    ? _handler.ObterTodos()
+                    : _handler.BuscarPorNome(termo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro na busca: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }

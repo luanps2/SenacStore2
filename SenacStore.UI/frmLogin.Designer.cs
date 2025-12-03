@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             pictureBox2 = new PictureBox();
             txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
@@ -68,8 +68,8 @@
             // 
             // txtEmail
             // 
-            txtEmail.BorderRadius = 20;
-            txtEmail.CustomizableEdges = customizableEdges8;
+            txtEmail.BorderRadius = 10;
+            txtEmail.CustomizableEdges = customizableEdges6;
             txtEmail.DefaultText = "";
             txtEmail.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtEmail.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -78,19 +78,20 @@
             txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEmail.Font = new Font("Century Gothic", 8.25F);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(21, 142);
+            txtEmail.Location = new Point(18, 155);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Email";
             txtEmail.SelectedText = "";
-            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges9;
+            txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges7;
             txtEmail.Size = new Size(200, 38);
             txtEmail.TabIndex = 2;
             txtEmail.TextAlign = HorizontalAlignment.Center;
+            txtEmail.KeyDown += txtEmail_KeyDown;
             // 
             // txtSenha
             // 
-            txtSenha.BorderRadius = 20;
-            txtSenha.CustomizableEdges = customizableEdges10;
+            txtSenha.BorderRadius = 10;
+            txtSenha.CustomizableEdges = customizableEdges4;
             txtSenha.DefaultText = "";
             txtSenha.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             txtSenha.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -99,29 +100,31 @@
             txtSenha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSenha.Font = new Font("Century Gothic", 8.25F);
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(21, 186);
+            txtSenha.Location = new Point(18, 199);
             txtSenha.Name = "txtSenha";
             txtSenha.PlaceholderText = "Senha";
             txtSenha.SelectedText = "";
-            txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges11;
+            txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges5;
             txtSenha.Size = new Size(200, 38);
             txtSenha.TabIndex = 3;
             txtSenha.TextAlign = HorizontalAlignment.Center;
             txtSenha.UseSystemPasswordChar = true;
+            txtSenha.KeyDown += txtSenha_KeyDown;
             // 
             // btnEntrar
             // 
-            btnEntrar.BorderRadius = 20;
-            btnEntrar.CustomizableEdges = customizableEdges12;
+            btnEntrar.BorderRadius = 10;
+            btnEntrar.CustomizableEdges = customizableEdges2;
             btnEntrar.DisabledState.BorderColor = Color.DarkGray;
             btnEntrar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnEntrar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnEntrar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnEntrar.FillColor = Color.FromArgb(0, 85, 148);
             btnEntrar.Font = new Font("Century Gothic", 8.25F);
             btnEntrar.ForeColor = Color.White;
-            btnEntrar.Location = new Point(21, 241);
+            btnEntrar.Location = new Point(18, 261);
             btnEntrar.Name = "btnEntrar";
-            btnEntrar.ShadowDecoration.CustomizableEdges = customizableEdges13;
+            btnEntrar.ShadowDecoration.CustomizableEdges = customizableEdges3;
             btnEntrar.Size = new Size(200, 45);
             btnEntrar.TabIndex = 5;
             btnEntrar.Text = "Entrar";
@@ -131,7 +134,7 @@
             // 
             lblCadastro.BackColor = Color.Transparent;
             lblCadastro.Font = new Font("Century Gothic", 8.25F);
-            lblCadastro.Location = new Point(51, 305);
+            lblCadastro.Location = new Point(43, 312);
             lblCadastro.Name = "lblCadastro";
             lblCadastro.Size = new Size(158, 18);
             lblCadastro.TabIndex = 7;
@@ -149,7 +152,7 @@
             btnFechar.ForeColor = Color.White;
             btnFechar.Location = new Point(205, 12);
             btnFechar.Name = "btnFechar";
-            btnFechar.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btnFechar.ShadowDecoration.CustomizableEdges = customizableEdges1;
             btnFechar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             btnFechar.Size = new Size(28, 28);
             btnFechar.TabIndex = 8;
@@ -173,7 +176,7 @@
             mdMessage.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
             mdMessage.Caption = null;
             mdMessage.Icon = Guna.UI2.WinForms.MessageDialogIcon.None;
-            mdMessage.Parent = null;
+            mdMessage.Parent = this;
             mdMessage.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
             mdMessage.Text = null;
             // 

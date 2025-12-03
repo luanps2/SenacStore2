@@ -49,5 +49,12 @@ namespace SenacStore.UI.Handlers
         {
             _repo.Deletar(id);
         }
+
+        public object BuscarPorNome(string termo)
+        {
+            return _repo.BuscarPorNome(termo)
+                .Select(t => new { t.Id, t.Nome })
+                .ToList();
+        }
     }
 }

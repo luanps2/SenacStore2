@@ -96,14 +96,14 @@ namespace SenacStore.UI.UserControls
             // Validações básicas do formulário
             if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
-                mdMessage.Show("Nome do produto é obrigatório.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                mdMessage.Show("Nome do produto é obrigatório.", "Atenção");
                 txtNome.Focus();
                 return;
             }
 
             if (cboCategoria.SelectedValue == null)
             {
-                mdMessage.Show("Selecione uma categoria.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                mdMessage.Show("Selecione uma categoria.", "Atenção");
                 cboCategoria.Focus();
                 return;
             }
@@ -111,7 +111,7 @@ namespace SenacStore.UI.UserControls
             // Parse seguro do preço usando a cultura corrente (aceita vírgula/ponto conforme sistema)
             if (!decimal.TryParse(txtPreco.Text.Trim(), NumberStyles.Number, CultureInfo.CurrentCulture, out var preco))
             {
-                mdMessage.Show("Preço inválido. Informe um número válido (ex.: 429,90).", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                mdMessage.Show("Preço inválido. Informe um número válido (ex.: 429,90).", "Atenção");
                 txtPreco.Focus();
                 return;
             }
@@ -124,7 +124,7 @@ namespace SenacStore.UI.UserControls
                     var p = _produtoRepo.ObterPorId(_id.Value);
                     if (p == null)
                     {
-                        mdMessage.Show("Produto não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        mdMessage.Show("Produto não encontrado.", "Erro");
                         return;
                     }
 
@@ -178,7 +178,7 @@ namespace SenacStore.UI.UserControls
             catch (Exception ex)
             {
                 // Em caso de erro durante persistência, informa usuário (útil para diagnóstico)
-                mdMessage.Show($"Erro ao salvar produto: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mdMessage.Show($"Erro ao salvar produto: {ex.Message}", "Erro");
             }
         }
 
@@ -205,7 +205,7 @@ namespace SenacStore.UI.UserControls
             catch (Exception ex)
             {
                 // Em caso de falha ao ler/carregar imagem, informa o usuário
-                mdMessage.Show($"Erro ao carregar imagem: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mdMessage.Show($"Erro ao carregar imagem: {ex.Message}", "Erro");
             }
         }
 

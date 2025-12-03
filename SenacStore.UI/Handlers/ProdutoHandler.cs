@@ -67,5 +67,22 @@ namespace SenacStore.UI.Handlers
             // Delegação direta para o repositório — o repositório executa a operação no banco
             _produtoRepo.Deletar(id);
         }
+
+        public object BuscarPorNome(string termo)
+        {
+            var categorias = _categoriaRepo.ObterTodos().ToDictionary(c => c.Id, c => c.Nome);
+
+            return _produtoRepo.BuscarPorNome(termo)
+                .Select(p => new {
+                    p.Id,
+                    p.Nome,
+                    p.Preco,
+                    FotoUrl = p.FotoUrl,
+                    Categoria = categorias.TryGetValue(p.CategoriaId, out var nomeCat) ? nomeCat : "Desconhecida"
+                })
+                .ToList();
+        }
+
+
     }
 }
