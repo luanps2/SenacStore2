@@ -283,9 +283,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Senac_logo_svg;
-            pictureBox1.Location = new Point(224, 6);
+            pictureBox1.Location = new Point(453, 6);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(591, 67);
+            pictureBox1.Size = new Size(138, 67);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
