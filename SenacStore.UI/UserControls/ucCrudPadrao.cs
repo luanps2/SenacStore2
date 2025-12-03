@@ -29,6 +29,17 @@ namespace SenacStore.UI.UserControls // Namespace do projeto para componentes de
             _handler = handler ?? throw new ArgumentNullException(nameof(handler)); // Atribui o handler ou lança se null
             lblTitulo.Text = _handler.Titulo; // Define o título do UC a partir do handler
 
+            // garante cabeçalho visível e com altura adequada (corrige valores padrão do Designer)
+            dgvDados.ColumnHeadersVisible = true;
+            dgvDados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvDados.ColumnHeadersHeight = 20; // ajuste conforme preferência
+            dgvDados.ThemeStyle.HeaderStyle.Height = 20;
+            dgvDados.EnableHeadersVisualStyles = false; // permite aplicar ColumnHeadersDefaultCellStyle
+            dgvDados.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDados.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular);
+            dgvDados.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(100, 88, 255);
+            dgvDados.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
             // Garante que o evento DataBindingComplete será chamado quando o DataGridView terminar de bindar os dados
             dgvDados.DataBindingComplete += DgvDados_DataBindingComplete;
 

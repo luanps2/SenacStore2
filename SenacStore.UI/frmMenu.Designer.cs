@@ -102,7 +102,7 @@
             guna2CustomGradientPanel1.FillColor2 = Color.FromArgb(0, 85, 148);
             guna2CustomGradientPanel1.FillColor3 = Color.FromArgb(0, 85, 148);
             guna2CustomGradientPanel1.FillColor4 = Color.FromArgb(0, 85, 148);
-            guna2CustomGradientPanel1.Location = new Point(4, 6);
+            guna2CustomGradientPanel1.Location = new Point(7, 6);
             guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges18;
             guna2CustomGradientPanel1.Size = new Size(217, 466);
@@ -256,10 +256,10 @@
             // panel
             // 
             panel.CustomizableEdges = customizableEdges2;
-            panel.Location = new Point(227, 100);
+            panel.Location = new Point(231, 100);
             panel.Name = "panel";
             panel.ShadowDecoration.CustomizableEdges = customizableEdges3;
-            panel.Size = new Size(588, 363);
+            panel.Size = new Size(584, 372);
             panel.TabIndex = 2;
             // 
             // btnFechar
@@ -283,7 +283,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Senac_logo_svg;
-            pictureBox1.Location = new Point(453, 6);
+            pictureBox1.Location = new Point(456, 6);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(138, 67);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -296,7 +296,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Vladimir Script", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(255, 128, 0);
-            label1.Location = new Point(482, 68);
+            label1.Location = new Point(485, 68);
             label1.Name = "label1";
             label1.Size = new Size(75, 39);
             label1.TabIndex = 0;
@@ -315,7 +315,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(824, 475);
+            ClientSize = new Size(824, 481);
             Controls.Add(btnFechar);
             Controls.Add(pictureBox1);
             Controls.Add(panel);

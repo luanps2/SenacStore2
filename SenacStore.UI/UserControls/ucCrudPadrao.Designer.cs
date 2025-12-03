@@ -89,7 +89,7 @@
             dgvDados.Location = new Point(88, 84);
             dgvDados.Name = "dgvDados";
             dgvDados.RowHeadersVisible = false;
-            dgvDados.Size = new Size(497, 276);
+            dgvDados.Size = new Size(493, 276);
             dgvDados.TabIndex = 1;
             dgvDados.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgvDados.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -191,6 +191,7 @@
             // 
             // txtSearch
             // 
+            txtSearch.BorderRadius = 10;
             txtSearch.CustomizableEdges = customizableEdges9;
             txtSearch.DefaultText = "";
             txtSearch.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -205,7 +206,7 @@
             txtSearch.PlaceholderText = "Pesquisar";
             txtSearch.SelectedText = "";
             txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtSearch.Size = new Size(578, 41);
+            txtSearch.Size = new Size(574, 41);
             txtSearch.TabIndex = 3;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -230,7 +231,7 @@
             Controls.Add(dgvDados);
             Controls.Add(lblTitulo);
             Name = "ucCrudPadrao";
-            Size = new Size(588, 363);
+            Size = new Size(584, 372);
             ((System.ComponentModel.ISupportInitialize)dgvDados).EndInit();
             ResumeLayout(false);
             PerformLayout();
