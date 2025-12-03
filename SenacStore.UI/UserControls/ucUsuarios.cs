@@ -48,7 +48,7 @@ namespace SenacStore.UI.UserControls
             // Assegura que o PictureBox responda ao clique para upload de foto.
             // Se o evento já estiver ligado no Designer esta linha registra um segundo handler,
             // por isso normalmente se confere para evitar duplicação. Aqui registra diretamente.
-            pbFoto.Click += pbFoto_Click;
+            //pbFoto.Click += pbFoto_Click;
         }
 
         // Carrega a lista de tipos de usuário no ComboBox
