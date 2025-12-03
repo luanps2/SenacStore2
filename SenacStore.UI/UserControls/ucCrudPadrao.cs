@@ -55,7 +55,7 @@ namespace SenacStore.UI.UserControls // Namespace do projeto para componentes de
             catch (Exception ex)
             {
                 // Mostra erro caso a recuperação falhe (ex.: problema no repositório)
-                MessageBox.Show($"Erro ao carregar dados: {ex.Message}");
+                mdMessage.Show($"Erro ao carregar dados: {ex.Message}");
             }
         }
 
@@ -229,14 +229,30 @@ namespace SenacStore.UI.UserControls // Namespace do projeto para componentes de
         // Handler do botão "Excluir" — confirma e chama handler.Deletar, depois atualiza grid
         private void btnExcluir_Click_1(object sender, EventArgs e)
         {
-            if (dgvDados.SelectedRows.Count == 0) return; // sem seleção -> nada a fazer
+            if (dgvDados.SelectedRows.Count == 0)
+                return; // sem seleção -> nada a fazer
+
             var id = (Guid)dgvDados.SelectedRows[0].Cells["Id"].Value; // obtém id da seleção
-            if (MessageBox.Show("Confirmar exclusão?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
+
+            // Confirma exclusão usando Guna2MessageDialog
+            var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+            {
+                Text = "Confirmar exclusão?",
+                Caption = "Confirmar",
+                Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo,
+                Icon = Guna.UI2.WinForms.MessageDialogIcon.Question,
+                Style = Guna.UI2.WinForms.MessageDialogStyle.Default
+            };
+
+            var resposta = dialog.Show();
+
+            if (resposta == DialogResult.Yes)
             {
                 _handler.Deletar(id); // exclui via handler
-                RefreshGrid(); // recarrega grid após exclusão
+                RefreshGrid();        // recarrega grid após exclusão
             }
         }
+
 
         // Handler do botão "Atualizar" — recarrega o grid
         private void btnAtualizar_Click_1(object sender, EventArgs e) => RefreshGrid();

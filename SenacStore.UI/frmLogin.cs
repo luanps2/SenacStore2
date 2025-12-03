@@ -1,6 +1,7 @@
 ﻿// Arquivo: SenacStore.UI\frmLogin.cs
 // Função: formulário de login que valida credenciais e abre o menu principal após autenticar.
 
+using System.Windows.Forms;
 using SenacStore.Infrastructure.IoC; // Resolve repositórios via IoC
 
 namespace SenacStore.UI
@@ -26,7 +27,7 @@ namespace SenacStore.UI
             // Validação básica de campos obrigatórios
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
             {
-                MessageBox.Show("Preencha email e senha.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                mdMessage.Show("Preencha email e senha.", "Aviso");
                 return;
             }
 
@@ -38,14 +39,14 @@ namespace SenacStore.UI
                 // Se não encontrado, informa
                 if (usuario == null)
                 {
-                    MessageBox.Show("Usuário não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mdMessage.Show("Usuário não encontrado.", "Erro");
                     return;
                 }
 
                 // Compara senha (texto plano neste exemplo)
                 if (usuario.Senha != senha)
                 {
-                    MessageBox.Show("Senha inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mdMessage.Show("Senha inválida.", "Erro");
                     return;
                 }
 
@@ -55,7 +56,7 @@ namespace SenacStore.UI
             catch (Exception ex)
             {
                 // Mostra erro inesperado (ex.: conexão com DB)
-                MessageBox.Show($"Erro ao efetuar login: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mdMessage.Show($"Erro ao efetuar login: {ex.Message}", "Erro");
             }
         }
 
@@ -80,6 +81,25 @@ namespace SenacStore.UI
                 IoC.TipoUsuarioRepository()))   // Resolve repositório de tipos
             {
                 frm.ShowDialog(); // Abre cadastro em modo modal
+            }
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            var dialog = new Guna.UI2.WinForms.Guna2MessageDialog
+            {
+                Text = "Deseja realmente sair?",
+                Caption = "Confirmar saída",
+                Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo,
+                Icon = Guna.UI2.WinForms.MessageDialogIcon.Question,
+                Style = Guna.UI2.WinForms.MessageDialogStyle.Default
+            };
+
+            var resposta = dialog.Show(); // retorna DialogResult
+
+            if (resposta == DialogResult.Yes)
+            {
+                System.Windows.Forms.Application.Exit();
             }
         }
     }

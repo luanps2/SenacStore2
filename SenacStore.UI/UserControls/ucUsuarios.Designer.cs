@@ -59,14 +59,14 @@
             txtNome.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtNome.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Font = new Font("Segoe UI", 9F);
+            txtNome.Font = new Font("Century Gothic", 8.25F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNome.Location = new Point(203, 92);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome";
             txtNome.SelectedText = "";
             txtNome.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtNome.Size = new Size(200, 36);
+            txtNome.Size = new Size(200, 38);
             txtNome.TabIndex = 0;
             // 
             // txtEmail
@@ -78,14 +78,14 @@
             txtEmail.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtEmail.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Font = new Font("Segoe UI", 9F);
+            txtEmail.Font = new Font("Century Gothic", 8.25F);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(203, 134);
+            txtEmail.Location = new Point(203, 136);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Email";
             txtEmail.SelectedText = "";
             txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtEmail.Size = new Size(200, 36);
+            txtEmail.Size = new Size(200, 38);
             txtEmail.TabIndex = 0;
             // 
             // txtSenha
@@ -97,14 +97,14 @@
             txtSenha.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtSenha.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtSenha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Font = new Font("Segoe UI", 9F);
+            txtSenha.Font = new Font("Century Gothic", 8.25F);
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(203, 176);
+            txtSenha.Location = new Point(203, 182);
             txtSenha.Name = "txtSenha";
             txtSenha.PlaceholderText = "Senha";
             txtSenha.SelectedText = "";
             txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            txtSenha.Size = new Size(200, 36);
+            txtSenha.Size = new Size(200, 38);
             txtSenha.TabIndex = 0;
             txtSenha.UseSystemPasswordChar = true;
             // 
@@ -116,10 +116,10 @@
             cboTipoUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTipoUsuario.FocusedColor = Color.FromArgb(94, 148, 255);
             cboTipoUsuario.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cboTipoUsuario.Font = new Font("Segoe UI", 10F);
+            cboTipoUsuario.Font = new Font("Century Gothic", 8.25F);
             cboTipoUsuario.ForeColor = Color.FromArgb(68, 88, 112);
             cboTipoUsuario.ItemHeight = 30;
-            cboTipoUsuario.Location = new Point(203, 218);
+            cboTipoUsuario.Location = new Point(203, 226);
             cboTipoUsuario.Name = "cboTipoUsuario";
             cboTipoUsuario.ShadowDecoration.CustomizableEdges = customizableEdges8;
             cboTipoUsuario.Size = new Size(200, 36);
@@ -133,9 +133,9 @@
             guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button1.FillColor = Color.DarkGreen;
-            guna2Button1.Font = new Font("Segoe UI", 9F);
+            guna2Button1.Font = new Font("Century Gothic", 8.25F);
             guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(203, 260);
+            guna2Button1.Location = new Point(203, 268);
             guna2Button1.Name = "guna2Button1";
             guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2Button1.Size = new Size(108, 45);
@@ -151,9 +151,9 @@
             guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button2.FillColor = Color.DarkRed;
-            guna2Button2.Font = new Font("Segoe UI", 9F);
+            guna2Button2.Font = new Font("Century Gothic", 8.25F);
             guna2Button2.ForeColor = Color.White;
-            guna2Button2.Location = new Point(317, 260);
+            guna2Button2.Location = new Point(317, 268);
             guna2Button2.Name = "guna2Button2";
             guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2Button2.Size = new Size(86, 45);

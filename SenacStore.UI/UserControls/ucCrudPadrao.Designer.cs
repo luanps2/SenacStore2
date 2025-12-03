@@ -48,15 +48,17 @@
             btnExcluir = new Guna.UI2.WinForms.Guna2Button();
             btnAtualizar = new Guna.UI2.WinForms.Guna2Button();
             txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            mdMessage = new Guna.UI2.WinForms.Guna2MessageDialog();
             ((System.ComponentModel.ISupportInitialize)dgvDados).BeginInit();
             SuspendLayout();
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
+            lblTitulo.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTitulo.Location = new Point(7, 14);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(38, 15);
+            lblTitulo.Size = new Size(45, 17);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "label1";
             // 
@@ -118,7 +120,7 @@
             btnNovo.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnNovo.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnNovo.FillColor = Color.DarkGreen;
-            btnNovo.Font = new Font("Segoe UI", 9F);
+            btnNovo.Font = new Font("Century Gothic", 9F);
             btnNovo.ForeColor = Color.White;
             btnNovo.Location = new Point(7, 84);
             btnNovo.Name = "btnNovo";
@@ -136,7 +138,7 @@
             btnEditar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnEditar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnEditar.FillColor = Color.Goldenrod;
-            btnEditar.Font = new Font("Segoe UI", 9F);
+            btnEditar.Font = new Font("Century Gothic", 9F);
             btnEditar.ForeColor = Color.White;
             btnEditar.Location = new Point(7, 138);
             btnEditar.Name = "btnEditar";
@@ -154,7 +156,7 @@
             btnExcluir.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnExcluir.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnExcluir.FillColor = Color.DarkRed;
-            btnExcluir.Font = new Font("Segoe UI", 9F);
+            btnExcluir.Font = new Font("Century Gothic", 9F);
             btnExcluir.ForeColor = Color.White;
             btnExcluir.Location = new Point(7, 193);
             btnExcluir.Name = "btnExcluir";
@@ -172,7 +174,7 @@
             btnAtualizar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnAtualizar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnAtualizar.FillColor = Color.DodgerBlue;
-            btnAtualizar.Font = new Font("Segoe UI", 9F);
+            btnAtualizar.Font = new Font("Century Gothic", 9F);
             btnAtualizar.ForeColor = Color.White;
             btnAtualizar.Location = new Point(7, 249);
             btnAtualizar.Name = "btnAtualizar";
@@ -191,15 +193,24 @@
             txtSearch.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtSearch.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtSearch.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSearch.Font = new Font("Segoe UI", 9F);
+            txtSearch.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSearch.Location = new Point(7, 42);
+            txtSearch.Location = new Point(7, 37);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "Pesquisar";
             txtSearch.SelectedText = "";
             txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtSearch.Size = new Size(528, 36);
+            txtSearch.Size = new Size(528, 41);
             txtSearch.TabIndex = 3;
+            // 
+            // mdMessage
+            // 
+            mdMessage.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            mdMessage.Caption = null;
+            mdMessage.Icon = Guna.UI2.WinForms.MessageDialogIcon.None;
+            mdMessage.Parent = null;
+            mdMessage.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
+            mdMessage.Text = null;
             // 
             // ucCrudPadrao
             // 
@@ -228,5 +239,6 @@
         private Guna.UI2.WinForms.Guna2Button btnExcluir;
         private Guna.UI2.WinForms.Guna2Button btnAtualizar;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
+        private Guna.UI2.WinForms.Guna2MessageDialog mdMessage;
     }
 }

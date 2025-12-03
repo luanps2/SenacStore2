@@ -38,7 +38,7 @@ namespace SenacStore.UI.UserControls
             // Validação: nome não pode ficar em branco
             if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
-                MessageBox.Show("Nome obrigatório."); // Feedback ao usuário
+                mdMessage.Show("Nome obrigatório."); // Feedback ao usuário
                 return;
             }
 

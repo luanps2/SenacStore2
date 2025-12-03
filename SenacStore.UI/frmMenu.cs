@@ -144,6 +144,10 @@ namespace SenacStore.UI
             RefreshUserPhoto();
         }
 
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            Abrir(new ucDashboard());
+        }
         // Handlers dos botões do menu que abrem as telas/UCs correspondentes
 
         // Ao clicar em Produtos: abre ucCrudPadrao configurado com ProdutoHandler
@@ -178,6 +182,31 @@ namespace SenacStore.UI
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmMenu_Load_1(object sender, EventArgs e)
+        {
+            Abrir(new ucDashboard());
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            // FindForm(): obtém a instância do Form que contém este UserControl/controle atual.
+            // Aqui, retorna o frmMenu (janela principal), permitindo manipular a janela hospedeira.
+            var menu = this.FindForm();
+            if (menu != null)
+            {
+                // mostra login modal
+                using (var login = new frmLogin(SenacStore.Infrastructure.IoC.IoC.UsuarioRepository()))
+                {
+                    // opcional: esconder o menu enquanto o login é exibido
+                    menu.Hide();
+                    login.ShowDialog();
+                }
+
+                // fecha o menu após retornar do login
+                menu.Close();
+            }
         }
     }
 }

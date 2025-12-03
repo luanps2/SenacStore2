@@ -104,13 +104,13 @@ namespace SenacStore.UI.UserControls
             // Validação simples de campos obrigatórios
             if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
-                MessageBox.Show("Nome obrigatório.");
+                mdMessage.Show("Nome obrigatório.");
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                MessageBox.Show("Email obrigatório.");
+                mdMessage.Show("Email obrigatório.");
                 return;
             }
 
@@ -188,7 +188,7 @@ namespace SenacStore.UI.UserControls
             catch (Exception ex)
             {
                 // Em caso de erro ao carregar/salvar imagem, mostra mensagem ao usuário
-                MessageBox.Show($"Erro ao carregar imagem: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mdMessage.Show($"Erro ao carregar imagem: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

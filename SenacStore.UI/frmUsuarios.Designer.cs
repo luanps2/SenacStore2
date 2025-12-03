@@ -66,10 +66,10 @@
             cboTipoUsuario.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTipoUsuario.FocusedColor = Color.FromArgb(94, 148, 255);
             cboTipoUsuario.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cboTipoUsuario.Font = new Font("Segoe UI", 10F);
+            cboTipoUsuario.Font = new Font("Century Gothic", 8.25F);
             cboTipoUsuario.ForeColor = Color.FromArgb(68, 88, 112);
             cboTipoUsuario.ItemHeight = 30;
-            cboTipoUsuario.Location = new Point(43, 270);
+            cboTipoUsuario.Location = new Point(43, 283);
             cboTipoUsuario.Name = "cboTipoUsuario";
             cboTipoUsuario.ShadowDecoration.CustomizableEdges = customizableEdges11;
             cboTipoUsuario.Size = new Size(200, 36);
@@ -84,14 +84,14 @@
             txtNome.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtNome.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Font = new Font("Segoe UI", 9F);
+            txtNome.Font = new Font("Century Gothic", 8.25F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(43, 144);
+            txtNome.Location = new Point(43, 150);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome";
             txtNome.SelectedText = "";
             txtNome.ShadowDecoration.CustomizableEdges = customizableEdges9;
-            txtNome.Size = new Size(200, 36);
+            txtNome.Size = new Size(200, 38);
             txtNome.TabIndex = 1;
             // 
             // txtEmail
@@ -103,14 +103,14 @@
             txtEmail.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtEmail.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Font = new Font("Segoe UI", 9F);
+            txtEmail.Font = new Font("Century Gothic", 8.25F);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(43, 186);
+            txtEmail.Location = new Point(43, 194);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Email";
             txtEmail.SelectedText = "";
             txtEmail.ShadowDecoration.CustomizableEdges = customizableEdges7;
-            txtEmail.Size = new Size(200, 36);
+            txtEmail.Size = new Size(200, 38);
             txtEmail.TabIndex = 1;
             // 
             // txtSenha
@@ -122,14 +122,14 @@
             txtSenha.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtSenha.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtSenha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Font = new Font("Segoe UI", 9F);
+            txtSenha.Font = new Font("Century Gothic", 8.25F);
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(43, 228);
+            txtSenha.Location = new Point(43, 239);
             txtSenha.Name = "txtSenha";
             txtSenha.PlaceholderText = "Senha";
             txtSenha.SelectedText = "";
             txtSenha.ShadowDecoration.CustomizableEdges = customizableEdges5;
-            txtSenha.Size = new Size(200, 36);
+            txtSenha.Size = new Size(200, 38);
             txtSenha.TabIndex = 1;
             txtSenha.UseSystemPasswordChar = true;
             // 
@@ -141,9 +141,9 @@
             btnSalvar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSalvar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSalvar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSalvar.Font = new Font("Segoe UI", 9F);
+            btnSalvar.Font = new Font("Century Gothic", 8.25F);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(43, 327);
+            btnSalvar.Location = new Point(43, 339);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges3;
             btnSalvar.Size = new Size(200, 45);
@@ -153,6 +153,7 @@
             // 
             // pbFoto
             // 
+            pbFoto.Cursor = Cursors.Hand;
             pbFoto.Image = Properties.Resources.user2;
             pbFoto.Location = new Point(43, 33);
             pbFoto.Name = "pbFoto";
@@ -160,7 +161,6 @@
             pbFoto.SizeMode = PictureBoxSizeMode.Zoom;
             pbFoto.TabIndex = 3;
             pbFoto.TabStop = false;
-            pbFoto.Cursor = Cursors.Hand;
             pbFoto.Click += pbFoto_Click;
             // 
             // guna2CircleButton1

@@ -46,7 +46,7 @@
             btnSalvar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSalvar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSalvar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSalvar.Font = new Font("Segoe UI", 9F);
+            btnSalvar.Font = new Font("Century Gothic", 9F);
             btnSalvar.ForeColor = Color.White;
             btnSalvar.Location = new Point(164, 158);
             btnSalvar.Name = "btnSalvar";
@@ -65,14 +65,14 @@
             txtNome.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtNome.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Font = new Font("Segoe UI", 9F);
+            txtNome.Font = new Font("Century Gothic", 9F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(164, 106);
+            txtNome.Location = new Point(164, 111);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "";
             txtNome.SelectedText = "";
             txtNome.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            txtNome.Size = new Size(239, 36);
+            txtNome.Size = new Size(239, 41);
             txtNome.TabIndex = 3;
             // 
             // btnCancelar
@@ -83,7 +83,7 @@
             btnCancelar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnCancelar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnCancelar.FillColor = Color.DarkRed;
-            btnCancelar.Font = new Font("Segoe UI", 9F);
+            btnCancelar.Font = new Font("Century Gothic", 9F);
             btnCancelar.ForeColor = Color.White;
             btnCancelar.Location = new Point(286, 158);
             btnCancelar.Name = "btnCancelar";

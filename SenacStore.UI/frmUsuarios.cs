@@ -85,7 +85,7 @@ namespace SenacStore.UI
             catch (Exception ex)
             {
                 // Mostra mensagem de erro caso ocorra qualquer exceção ao carregar/salvar imagem
-                MessageBox.Show($"Erro ao carregar imagem: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mdMessage.Show($"Erro ao carregar imagem: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -103,7 +103,7 @@ namespace SenacStore.UI
 
             _usuarioRepository.Criar(usuario); // Persiste usuário no repositório (DB)
 
-            MessageBox.Show("Usuário salvo com sucesso!"); // Feedback ao usuário
+            mdMessage.Show("Usuário salvo com sucesso!"); // Feedback ao usuário
         }
 
         // Função utilitária: substitui caracteres inválidos para nomes de ficheiro

@@ -56,14 +56,14 @@
             txtNome.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtNome.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Font = new Font("Segoe UI", 9F);
+            txtNome.Font = new Font("Century Gothic", 8.25F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(168, 111);
+            txtNome.Location = new Point(168, 121);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "";
             txtNome.SelectedText = "";
             txtNome.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtNome.Size = new Size(239, 36);
+            txtNome.Size = new Size(239, 38);
             txtNome.TabIndex = 0;
             // 
             // cboCategoria
@@ -74,10 +74,10 @@
             cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategoria.FocusedColor = Color.FromArgb(94, 148, 255);
             cboCategoria.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cboCategoria.Font = new Font("Segoe UI", 10F);
+            cboCategoria.Font = new Font("Century Gothic", 8.25F);
             cboCategoria.ForeColor = Color.FromArgb(68, 88, 112);
             cboCategoria.ItemHeight = 30;
-            cboCategoria.Location = new Point(168, 195);
+            cboCategoria.Location = new Point(168, 210);
             cboCategoria.Name = "cboCategoria";
             cboCategoria.ShadowDecoration.CustomizableEdges = customizableEdges4;
             cboCategoria.Size = new Size(239, 36);
@@ -90,9 +90,9 @@
             btnSalvar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnSalvar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSalvar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnSalvar.Font = new Font("Segoe UI", 9F);
+            btnSalvar.Font = new Font("Century Gothic", 8.25F);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(168, 246);
+            btnSalvar.Location = new Point(168, 252);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnSalvar.Size = new Size(111, 45);
@@ -108,9 +108,9 @@
             btnCancelar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnCancelar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnCancelar.FillColor = Color.DarkRed;
-            btnCancelar.Font = new Font("Segoe UI", 9F);
+            btnCancelar.Font = new Font("Century Gothic", 8.25F);
             btnCancelar.ForeColor = Color.White;
-            btnCancelar.Location = new Point(296, 246);
+            btnCancelar.Location = new Point(296, 252);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnCancelar.Size = new Size(111, 45);
@@ -127,14 +127,14 @@
             txtPreco.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             txtPreco.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             txtPreco.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPreco.Font = new Font("Segoe UI", 9F);
+            txtPreco.Font = new Font("Century Gothic", 8.25F);
             txtPreco.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPreco.Location = new Point(168, 153);
+            txtPreco.Location = new Point(168, 166);
             txtPreco.Name = "txtPreco";
             txtPreco.PlaceholderText = "";
             txtPreco.SelectedText = "";
             txtPreco.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtPreco.Size = new Size(239, 36);
+            txtPreco.Size = new Size(239, 38);
             txtPreco.TabIndex = 4;
             txtPreco.KeyPress += txtPreco_KeyPress;
             txtPreco.Leave += txtPreco_Leave;
@@ -143,7 +143,7 @@
             // 
             pbFoto.Cursor = Cursors.Hand;
             pbFoto.Image = Properties.Resources.caixa;
-            pbFoto.Location = new Point(172, 18);
+            pbFoto.Location = new Point(172, 21);
             pbFoto.Name = "pbFoto";
             pbFoto.Size = new Size(235, 87);
             pbFoto.SizeMode = PictureBoxSizeMode.Zoom;
