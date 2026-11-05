@@ -7,27 +7,29 @@ using SenacStore.UI.UserControls;  // ucTipoUsuario: UserControl para criar/edit
 
 namespace SenacStore.UI.Handlers
 {
-    // Handler que adapta operações de repositório para a interface ICrudHandler
+    // Handler que adapta operações do serviço para a interface ICrudHandler
     public class TipoUsuarioHandler : ICrudHandler
     {
         private readonly ICrudNavigator _nav;      // navigator para abrir UserControls no container principal
-        private readonly ITipoUsuarioRepository _repo; // repositório que realiza operações no banco
+        private readonly ITipoUsuarioService _service; // serviço que realiza as operações na API
 
         // Título que será exibido no ucCrudPadrao
         public string Titulo => "Tipos de Usuário";
 
         // Construtor recebe dependências (injetadas pelo chamador / IoC)
-        public TipoUsuarioHandler(ICrudNavigator nav, ITipoUsuarioRepository repo)
+        public TipoUsuarioHandler(ICrudNavigator nav, ITipoUsuarioService service)
         {
-            _nav = nav;   // guarda referência ao navigator
-            _repo = repo; // guarda referência ao repositório
+            _nav = nav;         // guarda referência ao navigator
+            _service = service; // guarda referência ao serviço
         }
 
         // Retorna os dados para popular o DataGridView.
         // Projeta lista de TipoUsuario em objetos anônimos com Id e Nome.
-        public object ObterTodos()
+        public async Task<object> ObterTodosAsync()
         {
-            return _repo.ObterTodos()
+            var tipos = await _service.ObterTodosAsync();
+
+            return tipos
                 .Select(t => new { t.Id, t.Nome }) // projeta apenas campos necessários para a visão
                 .ToList();                         // materializa a lista para data binding
         }
@@ -35,24 +37,26 @@ namespace SenacStore.UI.Handlers
         // Abre o UC para criação de um novo TipoUsuario
         public void Criar()
         {
-            _nav.Abrir(new ucTipoUsuario(_nav, _repo));
+            _nav.Abrir(new ucTipoUsuario(_nav, _service));
         }
 
         // Abre o UC para edição do TipoUsuario identificado por id
         public void Editar(Guid id)
         {
-            _nav.Abrir(new ucTipoUsuario(_nav, _repo, id));
+            _nav.Abrir(new ucTipoUsuario(_nav, _service, id));
         }
 
-        // Deleta o registro no repositório pelo id
-        public void Deletar(Guid id)
+        // Deleta o registro pelo id
+        public async Task DeletarAsync(Guid id)
         {
-            _repo.Deletar(id);
+            await _service.DeletarAsync(id);
         }
 
-        public object BuscarPorNome(string termo)
+        public async Task<object> BuscarPorNomeAsync(string termo)
         {
-            return _repo.BuscarPorNome(termo)
+            var tipos = await _service.BuscarPorNomeAsync(termo);
+
+            return tipos
                 .Select(t => new { t.Id, t.Nome })
                 .ToList();
         }

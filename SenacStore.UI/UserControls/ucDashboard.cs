@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using SenacStore.Infrastructure.IoC;
+using SenacStore.Infrastructure.Services;
 
 namespace SenacStore.UI.UserControls
 {
@@ -12,27 +13,25 @@ namespace SenacStore.UI.UserControls
 
         }
 
-        private void ucDashboard_Load(object sender, EventArgs e)
+        private async void ucDashboard_Load(object sender, EventArgs e)
         {
             try
             {
-                // Obtém contagens dos repositórios
-                var usuarios = IoC.UsuarioRepository().ObterTodos();
-                var produtos = IoC.ProdutoRepository().ObterTodos();
-                var categorias = IoC.CategoriaRepository().ObterTodos();
+                // Obtém as listas pela API para contar os registros
+                var usuarios = await IoC.UsuarioService().ObterTodosAsync();
+                var produtos = await IoC.ProdutoService().ObterTodosAsync();
+                var categorias = await IoC.CategoriaService().ObterTodosAsync();
 
-                int totalUsuarios = usuarios?.Count ?? 0;
-                int totalProdutos = produtos?.Count ?? 0;
-                int totalCategorias = categorias?.Count ?? 0;
+                if (IsDisposed) return; // A tela pode ter sido fechada enquanto a API respondia
 
                 // Atualiza labels (adicione estes labels no Designer com estes nomes)
-                lblUsuarios.Text = $"{totalUsuarios}";
-                lblProdutos.Text = $"{totalProdutos}";
-                lblCategorias.Text = $"{totalCategorias}";
+                lblUsuarios.Text = $"{usuarios.Count}";
+                lblProdutos.Text = $"{produtos.Count}";
+                lblCategorias.Text = $"{categorias.Count}";
             }
-            catch (Exception ex)
+            catch (ApiException ex)
             {
-                mdMessage.Show($"Erro ao carregar dashboard: {ex.Message}", "Erro");
+                mdMessage.Show(ex.Message, "Erro");
             }
         }
     }

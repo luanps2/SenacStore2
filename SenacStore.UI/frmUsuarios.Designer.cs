@@ -46,10 +46,8 @@
             txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             txtSenha = new Guna.UI2.WinForms.Guna2TextBox();
             btnSalvar = new Guna.UI2.WinForms.Guna2Button();
-            pbFoto = new PictureBox();
             guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             mdMessage = new Guna.UI2.WinForms.Guna2MessageDialog();
-            ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -71,7 +69,7 @@
             cboTipoUsuario.Font = new Font("Century Gothic", 8.25F);
             cboTipoUsuario.ForeColor = Color.FromArgb(68, 88, 112);
             cboTipoUsuario.ItemHeight = 30;
-            cboTipoUsuario.Location = new Point(43, 293);
+            cboTipoUsuario.Location = new Point(43, 194);
             cboTipoUsuario.Name = "cboTipoUsuario";
             cboTipoUsuario.ShadowDecoration.CustomizableEdges = customizableEdges11;
             cboTipoUsuario.Size = new Size(200, 36);
@@ -89,7 +87,7 @@
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNome.Font = new Font("Century Gothic", 8.25F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(43, 144);
+            txtNome.Location = new Point(43, 45);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome";
             txtNome.SelectedText = "";
@@ -109,7 +107,7 @@
             txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEmail.Font = new Font("Century Gothic", 8.25F);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(43, 194);
+            txtEmail.Location = new Point(43, 95);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Email";
             txtEmail.SelectedText = "";
@@ -129,7 +127,7 @@
             txtSenha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSenha.Font = new Font("Century Gothic", 8.25F);
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(43, 245);
+            txtSenha.Location = new Point(43, 146);
             txtSenha.Name = "txtSenha";
             txtSenha.PlaceholderText = "Senha";
             txtSenha.SelectedText = "";
@@ -149,25 +147,13 @@
             btnSalvar.FillColor = Color.FromArgb(0, 85, 148);
             btnSalvar.Font = new Font("Century Gothic", 8.25F);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(43, 345);
+            btnSalvar.Location = new Point(43, 246);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges3;
             btnSalvar.Size = new Size(200, 45);
             btnSalvar.TabIndex = 2;
             btnSalvar.Text = "Salvar";
             btnSalvar.Click += btnSalvar_Click_1;
-            // 
-            // pbFoto
-            // 
-            pbFoto.Cursor = Cursors.Hand;
-            pbFoto.Image = Properties.Resources.user2;
-            pbFoto.Location = new Point(43, 33);
-            pbFoto.Name = "pbFoto";
-            pbFoto.Size = new Size(200, 95);
-            pbFoto.SizeMode = PictureBoxSizeMode.Zoom;
-            pbFoto.TabIndex = 3;
-            pbFoto.TabStop = false;
-            pbFoto.Click += pbFoto_Click;
             // 
             // guna2CircleButton1
             // 
@@ -200,9 +186,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(283, 414);
+            ClientSize = new Size(283, 315);
             Controls.Add(guna2CircleButton1);
-            Controls.Add(pbFoto);
             Controls.Add(btnSalvar);
             Controls.Add(txtSenha);
             Controls.Add(txtEmail);
@@ -213,14 +198,12 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmUsuarios";
             Load += frmUsuarios_Load_1;
-            ((System.ComponentModel.ISupportInitialize)pbFoto).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
-        private PictureBox pbFoto;
         private Guna.UI2.WinForms.Guna2Button btnSalvar;
         private Guna.UI2.WinForms.Guna2TextBox txtSenha;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;

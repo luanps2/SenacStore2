@@ -1,0 +1,115 @@
+# Testes da API com a extensão REST Client do VS Code.
+# Para testar no Azure, troque a URL abaixo pela URL do App Service.
+@url = http://localhost:3000
+
+# 1. Rode o login e copie o valor de "token" para a linha abaixo
+@token = cole-o-token-aqui
+
+@categoriaInformatica = aaaaaaaa-0000-0000-0000-000000000002
+@tipoComprador = 33333333-3333-3333-3333-333333333333
+
+### API no ar
+GET {{url}}/
+
+### Login
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@marketplace.com",
+  "senha": "adminpass"
+}
+
+### Login com senha errada (401)
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@marketplace.com",
+  "senha": "errada"
+}
+
+### Tipos de usuário (pública)
+GET {{url}}/tipos-usuario
+
+### Criar tipo de usuário
+POST {{url}}/tipos-usuario
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nome": "Gerente"
+}
+
+### Categorias
+GET {{url}}/categorias
+Authorization: Bearer {{token}}
+
+### Sem token (401)
+GET {{url}}/categorias
+
+### Buscar categoria por nome
+GET {{url}}/categorias?nome=inform
+Authorization: Bearer {{token}}
+
+### Criar categoria
+POST {{url}}/categorias
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nome": "Esportes"
+}
+
+### Excluir categoria com produtos (409)
+DELETE {{url}}/categorias/{{categoriaInformatica}}
+Authorization: Bearer {{token}}
+
+### Produtos
+GET {{url}}/produtos
+Authorization: Bearer {{token}}
+
+### Buscar produto por nome
+GET {{url}}/produtos?nome=smart
+Authorization: Bearer {{token}}
+
+### Produto por ID
+GET {{url}}/produtos/bbbbbbbb-0000-0000-0000-000000000004
+Authorization: Bearer {{token}}
+
+### Criar produto
+POST {{url}}/produtos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nome": "Teclado Mecânico",
+  "preco": 199.90,
+  "categoriaId": "{{categoriaInformatica}}"
+}
+
+### Usuários
+GET {{url}}/usuarios
+Authorization: Bearer {{token}}
+
+### Cadastro público de Comprador
+POST {{url}}/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Novo Cliente",
+  "email": "novo@exemplo.com",
+  "senha": "123456",
+  "tipoUsuarioId": "{{tipoComprador}}"
+}
+
+### Cadastro público de Administrador (403)
+POST {{url}}/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Sem Permissão",
+  "email": "semacesso@exemplo.com",
+  "senha": "123456",
+  "tipoUsuarioId": "11111111-1111-1111-1111-111111111111"
+}

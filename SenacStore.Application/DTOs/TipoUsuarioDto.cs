@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SenacStore.Application.DTOs
+﻿namespace SenacStore.Application.DTOs
 {
-    internal class TipoUsuarioDto
+    // JSON que a API devolve para um tipo de usuário.
+    public class TipoUsuarioDto
     {
+        public Guid Id { get; set; }
+        public string Nome { get; set; } = string.Empty;
     }
 }

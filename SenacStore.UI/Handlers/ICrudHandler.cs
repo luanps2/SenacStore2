@@ -1,9 +1,9 @@
 ﻿// Arquivo: SenacStore.UI.Handlers.ICrudHandler.cs
 // Propósito: Interface que define as operações CRUD que os Handlers da UI devem implementar.
-// Cada handler adapta um repositório/entidade ao ucCrudPadrao (listar, criar, editar, deletar).
+// Cada handler adapta um serviço/entidade ao ucCrudPadrao (listar, criar, editar, deletar).
 
 using System;                // Tipos básicos (por exemplo Guid)
-using System.Collections.Generic; // Coleções genéricas (não usadas diretamente aqui, mas comum em handlers)
+using System.Threading.Tasks; // Task: operações assíncronas (chamadas à API)
 
 namespace SenacStore.UI.Handlers
 {
@@ -15,10 +15,10 @@ namespace SenacStore.UI.Handlers
 
         // Método que retorna todos os registros (usado como DataSource para o DataGridView).
         // Tipo object permite que o handler projete a lista (por exemplo, lista de objetos anônimos).
-        object ObterTodos();
+        Task<object> ObterTodosAsync();
 
-        // NOVO: Método que busca registros pelo nome
-        object BuscarPorNome(string termo);
+        // Método que busca registros pelo nome
+        Task<object> BuscarPorNomeAsync(string termo);
 
         // Abre a tela/controle para criação de um novo registro.
         void Criar();
@@ -26,7 +26,7 @@ namespace SenacStore.UI.Handlers
         // Abre a tela/controle para edição de um registro existente identificado por id.
         void Editar(Guid id);
 
-        // Remove o registro identificado por id do repositório (persistência).
-        void Deletar(Guid id);
+        // Remove o registro identificado por id.
+        Task DeletarAsync(Guid id);
     }
 }

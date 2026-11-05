@@ -1,0 +1,27 @@
+{
+  "name": "senacstore-api",
+  "version": "1.0.0",
+  "description": "API REST do SenacStore (Node.js, Express, Prisma e SQL Server)",
+  "main": "server.js",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "postinstall": "prisma generate",
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@prisma/adapter-mssql": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mssql": "^12.7.14",
+    "prisma": "^7.10.1"
+  }
+}

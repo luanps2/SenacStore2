@@ -31,7 +31,6 @@
             components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -50,7 +49,6 @@
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             lblUsuario = new Label();
             guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            pbFoto = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             btnHome = new Guna.UI2.WinForms.Guna2Button();
             btnUsuarios = new Guna.UI2.WinForms.Guna2Button();
             btnSair = new Guna.UI2.WinForms.Guna2Button();
@@ -63,7 +61,6 @@
             label1 = new Label();
             mdQuestion = new Guna.UI2.WinForms.Guna2MessageDialog();
             guna2CustomGradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -80,7 +77,7 @@
             lblUsuario.BackColor = Color.FromArgb(0, 85, 148);
             lblUsuario.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblUsuario.ForeColor = Color.White;
-            lblUsuario.Location = new Point(8, 119);
+            lblUsuario.Location = new Point(8, 26);
             lblUsuario.Name = "lblUsuario";
             lblUsuario.Size = new Size(65, 19);
             lblUsuario.TabIndex = 0;
@@ -89,7 +86,6 @@
             // guna2CustomGradientPanel1
             // 
             guna2CustomGradientPanel1.BorderRadius = 20;
-            guna2CustomGradientPanel1.Controls.Add(pbFoto);
             guna2CustomGradientPanel1.Controls.Add(btnHome);
             guna2CustomGradientPanel1.Controls.Add(btnUsuarios);
             guna2CustomGradientPanel1.Controls.Add(btnSair);
@@ -108,19 +104,6 @@
             guna2CustomGradientPanel1.Size = new Size(217, 466);
             guna2CustomGradientPanel1.TabIndex = 1;
             // 
-            // pbFoto
-            // 
-            pbFoto.BackColor = Color.FromArgb(0, 85, 148);
-            pbFoto.ImageRotate = 0F;
-            pbFoto.Location = new Point(55, 13);
-            pbFoto.Name = "pbFoto";
-            pbFoto.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            pbFoto.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            pbFoto.Size = new Size(100, 100);
-            pbFoto.SizeMode = PictureBoxSizeMode.Zoom;
-            pbFoto.TabIndex = 2;
-            pbFoto.TabStop = false;
-            // 
             // btnHome
             // 
             btnHome.BackColor = Color.FromArgb(0, 85, 148);
@@ -135,7 +118,7 @@
             btnHome.ForeColor = Color.White;
             btnHome.Image = Properties.Resources.home3;
             btnHome.ImageAlign = HorizontalAlignment.Left;
-            btnHome.Location = new Point(0, 151);
+            btnHome.Location = new Point(0, 72);
             btnHome.Name = "btnHome";
             btnHome.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnHome.Size = new Size(217, 47);
@@ -157,7 +140,7 @@
             btnUsuarios.ForeColor = Color.White;
             btnUsuarios.Image = Properties.Resources.addUser2;
             btnUsuarios.ImageAlign = HorizontalAlignment.Left;
-            btnUsuarios.Location = new Point(0, 203);
+            btnUsuarios.Location = new Point(0, 135);
             btnUsuarios.Name = "btnUsuarios";
             btnUsuarios.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnUsuarios.Size = new Size(217, 47);
@@ -179,7 +162,7 @@
             btnSair.ForeColor = Color.White;
             btnSair.Image = Properties.Resources.logout2;
             btnSair.ImageAlign = HorizontalAlignment.Left;
-            btnSair.Location = new Point(0, 406);
+            btnSair.Location = new Point(0, 387);
             btnSair.Name = "btnSair";
             btnSair.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btnSair.Size = new Size(217, 47);
@@ -201,7 +184,7 @@
             btnTipoUsuario.ForeColor = Color.White;
             btnTipoUsuario.Image = Properties.Resources.users21;
             btnTipoUsuario.ImageAlign = HorizontalAlignment.Left;
-            btnTipoUsuario.Location = new Point(0, 362);
+            btnTipoUsuario.Location = new Point(0, 324);
             btnTipoUsuario.Name = "btnTipoUsuario";
             btnTipoUsuario.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btnTipoUsuario.Size = new Size(217, 47);
@@ -223,7 +206,7 @@
             btnCategorias.ForeColor = Color.White;
             btnCategorias.Image = Properties.Resources.apps2;
             btnCategorias.ImageAlign = HorizontalAlignment.Left;
-            btnCategorias.Location = new Point(0, 309);
+            btnCategorias.Location = new Point(0, 261);
             btnCategorias.Name = "btnCategorias";
             btnCategorias.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btnCategorias.Size = new Size(217, 47);
@@ -245,7 +228,7 @@
             btnProdutos.ForeColor = Color.White;
             btnProdutos.Image = Properties.Resources.cursos2;
             btnProdutos.ImageAlign = HorizontalAlignment.Left;
-            btnProdutos.Location = new Point(0, 256);
+            btnProdutos.Location = new Point(0, 198);
             btnProdutos.Name = "btnProdutos";
             btnProdutos.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btnProdutos.Size = new Size(217, 47);
@@ -328,7 +311,6 @@
             Load += frmMenu_Load_1;
             guna2CustomGradientPanel1.ResumeLayout(false);
             guna2CustomGradientPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbFoto).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -346,7 +328,6 @@
         private Guna.UI2.WinForms.Guna2Button btnCategorias;
         private Guna.UI2.WinForms.Guna2CircleButton btnFechar;
         private PictureBox pictureBox1;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox pbFoto;
         private Label label1;
         private Guna.UI2.WinForms.Guna2Button btnHome;
         private Guna.UI2.WinForms.Guna2Button btnSair;

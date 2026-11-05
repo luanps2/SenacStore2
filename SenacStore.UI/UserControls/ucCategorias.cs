@@ -1,5 +1,6 @@
-﻿using SenacStore.Domain.Entities;   // Entidade Categoria
-using SenacStore.UI.Navigation;     // ICrudNavigator para navegar/voltar entre UCs
+﻿using SenacStore.Domain.Entities;         // Entidade Categoria
+using SenacStore.Infrastructure.Services; // ApiException: falhas de comunicação com a API
+using SenacStore.UI.Navigation;           // ICrudNavigator para navegar/voltar entre UCs
 
 namespace SenacStore.UI.UserControls
 {
@@ -7,60 +8,83 @@ namespace SenacStore.UI.UserControls
     public partial class ucCategorias : UserControl
     {
         private readonly ICrudNavigator _nav;   // Navigator para voltar/abrir outros controles
-        private readonly ICategoriaRepository _repo; // Repositório para operações de Categoria (CRUD)
+        private readonly ICategoriaService _service; // Serviço para operações de Categoria (CRUD)
         private readonly Guid? _id;            // Id opcional: se presente => modo edição
 
-        // Construtor: recebe navigator, repositório e opcionalmente o id para editar
-        public ucCategorias(ICrudNavigator nav, ICategoriaRepository repo, Guid? id = null)
+        // Construtor: recebe navigator, serviço e opcionalmente o id para editar
+        public ucCategorias(ICrudNavigator nav, ICategoriaService service, Guid? id = null)
         {
             InitializeComponent(); // Inicializa componentes do Designer (controles visuais)
             _nav = nav;            // Guarda referência ao navigator
-            _repo = repo;          // Guarda referência ao repositório
+            _service = service;    // Guarda referência ao serviço
             _id = id;              // Armazena o id (null indica criação)
 
-            // Se um id foi fornecido, carregue os dados existentes para edição
-            if (_id.HasValue)
-                CarregarCategoria(_id.Value);
+            // Construtor não pode usar await: os dados são carregados no evento Load
+            Load += ucCategorias_Load;
         }
 
-        // Busca a categoria pelo id e preenche os controles do formulário
-        private void CarregarCategoria(Guid id)
+        // Se um id foi fornecido, carrega os dados existentes para edição
+        private async void ucCategorias_Load(object? sender, EventArgs e)
         {
-            var c = _repo.ObterPorId(id); // Consulta o repositório
-            if (c == null) return;        // Se não encontrou, sai sem alterar a UI
+            if (!_id.HasValue) return;
 
-            txtNome.Text = c.Nome;        // Preenche o TextBox com o nome da categoria
+            try
+            {
+                var c = await _service.ObterPorIdAsync(_id.Value); // Consulta a API
+                if (c == null || IsDisposed) return;  // Se não encontrou, sai sem alterar a UI
+
+                txtNome.Text = c.Nome;                // Preenche o TextBox com o nome da categoria
+            }
+            catch (ApiException ex)
+            {
+                mdMessage.Show(ex.Message, "Erro");
+            }
         }
 
         // Evento do botão Salvar — cria ou atualiza a categoria
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private async void btnSalvar_Click(object sender, EventArgs e)
         {
             // Validação: nome não pode ficar em branco
             if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
-                mdMessage.Show("Nome obrigatório."); // Feedback ao usuário
+                mdMessage.Show("Nome obrigatório.", "Atenção"); // Feedback ao usuário
                 return;
             }
 
-            if (_id.HasValue)
-            {
-                // Modo edição: carrega entidade, atualiza e persiste
-                var c = _repo.ObterPorId(_id.Value); // Busca a entidade atual
-                c.Nome = txtNome.Text.Trim();        // Atualiza nome (trim para remover espaços)
-                _repo.Atualizar(c);                  // Persiste alteração no repositório
-            }
-            else
-            {
-                // Modo criação: cria nova entidade e persiste
-                var novo = new Categoria
-                {
-                    Id = Guid.NewGuid(),            // Gera novo Id
-                    Nome = txtNome.Text.Trim()      // Define nome informado
-                };
-                _repo.Criar(novo);                  // Persiste nova categoria
-            }
+            guna2Button1.Enabled = false; // Evita salvar duas vezes enquanto a API responde
 
-            _nav.Voltar(); // Retorna ao controle anterior (normalmente a lista)
+            try
+            {
+                if (_id.HasValue)
+                {
+                    // Modo edição: atualiza a categoria existente
+                    var categoria = new Categoria
+                    {
+                        Id = _id.Value,
+                        Nome = txtNome.Text.Trim()      // Atualiza nome (trim para remover espaços)
+                    };
+                    await _service.AtualizarAsync(categoria);
+                }
+                else
+                {
+                    // Modo criação: o id é gerado pelo servidor
+                    var novo = new Categoria
+                    {
+                        Nome = txtNome.Text.Trim()      // Define nome informado
+                    };
+                    await _service.CriarAsync(novo);
+                }
+
+                _nav.Voltar(); // Retorna ao controle anterior (normalmente a lista)
+            }
+            catch (ApiException ex)
+            {
+                mdMessage.Show(ex.Message, "Erro");
+            }
+            finally
+            {
+                guna2Button1.Enabled = true;
+            }
         }
 
         // Evento do botão Cancelar — volta sem salvar

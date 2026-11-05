@@ -1,0 +1,11 @@
+{
+  "appService.deploySubpath": ".",
+  "appService.zipIgnorePattern": [
+    ".env{,/**}",
+    ".vscode{,/**}",
+    "bin{,/**}",
+    "node_modules{,/**}",
+    "obj{,/**}",
+    "src/generated{,/**}"
+  ]
+}

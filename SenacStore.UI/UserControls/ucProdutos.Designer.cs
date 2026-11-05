@@ -43,9 +43,7 @@
             btnSalvar = new Guna.UI2.WinForms.Guna2Button();
             btnCancelar = new Guna.UI2.WinForms.Guna2Button();
             txtPreco = new Guna.UI2.WinForms.Guna2TextBox();
-            pbFoto = new PictureBox();
             mdMessage = new Guna.UI2.WinForms.Guna2MessageDialog();
-            ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             SuspendLayout();
             // 
             // txtNome
@@ -60,7 +58,7 @@
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNome.Font = new Font("Century Gothic", 8.25F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(168, 121);
+            txtNome.Location = new Point(168, 21);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "";
             txtNome.SelectedText = "";
@@ -80,7 +78,7 @@
             cboCategoria.Font = new Font("Century Gothic", 8.25F);
             cboCategoria.ForeColor = Color.FromArgb(68, 88, 112);
             cboCategoria.ItemHeight = 30;
-            cboCategoria.Location = new Point(168, 210);
+            cboCategoria.Location = new Point(168, 110);
             cboCategoria.Name = "cboCategoria";
             cboCategoria.ShadowDecoration.CustomizableEdges = customizableEdges4;
             cboCategoria.Size = new Size(239, 36);
@@ -96,7 +94,7 @@
             btnSalvar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnSalvar.Font = new Font("Century Gothic", 8.25F);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(168, 252);
+            btnSalvar.Location = new Point(168, 152);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnSalvar.Size = new Size(111, 45);
@@ -115,7 +113,7 @@
             btnCancelar.FillColor = Color.DarkRed;
             btnCancelar.Font = new Font("Century Gothic", 8.25F);
             btnCancelar.ForeColor = Color.White;
-            btnCancelar.Location = new Point(296, 252);
+            btnCancelar.Location = new Point(296, 152);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnCancelar.Size = new Size(111, 45);
@@ -135,7 +133,7 @@
             txtPreco.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtPreco.Font = new Font("Century Gothic", 8.25F);
             txtPreco.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtPreco.Location = new Point(168, 166);
+            txtPreco.Location = new Point(168, 66);
             txtPreco.Name = "txtPreco";
             txtPreco.PlaceholderText = "";
             txtPreco.SelectedText = "";
@@ -144,17 +142,6 @@
             txtPreco.TabIndex = 4;
             txtPreco.KeyPress += txtPreco_KeyPress;
             txtPreco.Leave += txtPreco_Leave;
-            // 
-            // pbFoto
-            // 
-            pbFoto.Cursor = Cursors.Hand;
-            pbFoto.Image = Properties.Resources.caixa;
-            pbFoto.Location = new Point(172, 21);
-            pbFoto.Name = "pbFoto";
-            pbFoto.Size = new Size(235, 87);
-            pbFoto.SizeMode = PictureBoxSizeMode.Zoom;
-            pbFoto.TabIndex = 4;
-            pbFoto.TabStop = false;
             // 
             // mdMessage
             // 
@@ -169,7 +156,6 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pbFoto);
             Controls.Add(txtPreco);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
@@ -177,7 +163,6 @@
             Controls.Add(txtNome);
             Name = "ucProdutos";
             Size = new Size(613, 321);
-            ((System.ComponentModel.ISupportInitialize)pbFoto).EndInit();
             ResumeLayout(false);
         }
 
@@ -188,7 +173,6 @@
         private Guna.UI2.WinForms.Guna2Button btnSalvar;
         private Guna.UI2.WinForms.Guna2Button btnCancelar;
         private Guna.UI2.WinForms.Guna2TextBox txtPreco;
-        private PictureBox pbFoto;
         private Guna.UI2.WinForms.Guna2MessageDialog mdMessage;
     }
 }

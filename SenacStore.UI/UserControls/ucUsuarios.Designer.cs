@@ -46,9 +46,7 @@
             cboTipoUsuario = new Guna.UI2.WinForms.Guna2ComboBox();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            pbFoto = new PictureBox();
             mdMessage = new Guna.UI2.WinForms.Guna2MessageDialog();
-            ((System.ComponentModel.ISupportInitialize)pbFoto).BeginInit();
             SuspendLayout();
             // 
             // txtNome
@@ -63,7 +61,7 @@
             txtNome.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtNome.Font = new Font("Century Gothic", 8.25F);
             txtNome.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtNome.Location = new Point(203, 92);
+            txtNome.Location = new Point(203, 21);
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Nome";
             txtNome.SelectedText = "";
@@ -83,7 +81,7 @@
             txtEmail.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtEmail.Font = new Font("Century Gothic", 8.25F);
             txtEmail.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtEmail.Location = new Point(203, 136);
+            txtEmail.Location = new Point(203, 65);
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Email";
             txtEmail.SelectedText = "";
@@ -103,7 +101,7 @@
             txtSenha.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSenha.Font = new Font("Century Gothic", 8.25F);
             txtSenha.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtSenha.Location = new Point(203, 182);
+            txtSenha.Location = new Point(203, 111);
             txtSenha.Name = "txtSenha";
             txtSenha.PlaceholderText = "Senha";
             txtSenha.SelectedText = "";
@@ -124,7 +122,7 @@
             cboTipoUsuario.Font = new Font("Century Gothic", 8.25F);
             cboTipoUsuario.ForeColor = Color.FromArgb(68, 88, 112);
             cboTipoUsuario.ItemHeight = 30;
-            cboTipoUsuario.Location = new Point(203, 226);
+            cboTipoUsuario.Location = new Point(203, 155);
             cboTipoUsuario.Name = "cboTipoUsuario";
             cboTipoUsuario.ShadowDecoration.CustomizableEdges = customizableEdges8;
             cboTipoUsuario.Size = new Size(200, 36);
@@ -141,7 +139,7 @@
             guna2Button1.FillColor = Color.DarkGreen;
             guna2Button1.Font = new Font("Century Gothic", 8.25F);
             guna2Button1.ForeColor = Color.White;
-            guna2Button1.Location = new Point(203, 268);
+            guna2Button1.Location = new Point(203, 197);
             guna2Button1.Name = "guna2Button1";
             guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2Button1.Size = new Size(108, 45);
@@ -160,25 +158,13 @@
             guna2Button2.FillColor = Color.DarkRed;
             guna2Button2.Font = new Font("Century Gothic", 8.25F);
             guna2Button2.ForeColor = Color.White;
-            guna2Button2.Location = new Point(317, 268);
+            guna2Button2.Location = new Point(317, 197);
             guna2Button2.Name = "guna2Button2";
             guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2Button2.Size = new Size(86, 45);
             guna2Button2.TabIndex = 2;
             guna2Button2.Text = "Cancelar";
             guna2Button2.Click += guna2Button2_Click;
-            // 
-            // pbFoto
-            // 
-            pbFoto.Cursor = Cursors.Hand;
-            pbFoto.Image = Properties.Resources.user2;
-            pbFoto.Location = new Point(203, 14);
-            pbFoto.Name = "pbFoto";
-            pbFoto.Size = new Size(200, 72);
-            pbFoto.SizeMode = PictureBoxSizeMode.Zoom;
-            pbFoto.TabIndex = 4;
-            pbFoto.TabStop = false;
-            pbFoto.Click += pbFoto_Click;
             // 
             // mdMessage
             // 
@@ -193,7 +179,6 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pbFoto);
             Controls.Add(guna2Button2);
             Controls.Add(guna2Button1);
             Controls.Add(cboTipoUsuario);
@@ -202,7 +187,6 @@
             Controls.Add(txtNome);
             Name = "ucUsuarios";
             Size = new Size(613, 321);
-            ((System.ComponentModel.ISupportInitialize)pbFoto).EndInit();
             ResumeLayout(false);
         }
 
@@ -214,7 +198,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox cboTipoUsuario;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private PictureBox pbFoto;
         private Guna.UI2.WinForms.Guna2MessageDialog mdMessage;
     }
 }

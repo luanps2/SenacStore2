@@ -1,15 +1,12 @@
 ﻿// Arquivo: SenacStore.UI\UserControls\ucProdutos.cs
-// Propósito: UserControl para criar/editar produtos, incluindo upload de imagem.
+// Propósito: UserControl para criar/editar produtos.
 // Comentários explicam o que cada trecho/função faz.
 
 using System;                            // Tipos básicos (.NET)
-using System.Drawing;                    // Tipos gráficos (Image, Bitmap, etc.)
-using System.Drawing.Imaging;            // Formatos de imagem (ImageFormat)
 using System.Globalization;               // Info de cultura (NumberFormatInfo, CultureInfo)
-using System.IO;                         // Operações de ficheiro e caminho (File, Path, Directory)
-using System.Linq;                       // LINQ (Select, FirstOrDefault, ToList)
-using System.Windows.Forms;              // Controles WinForms (UserControl, OpenFileDialog, MessageBox)
+using System.Windows.Forms;              // Controles WinForms (UserControl)
 using SenacStore.Domain.Entities;        // Entidades do domínio (Produto, Categoria)
+using SenacStore.Infrastructure.Services; // ApiException: falhas de comunicação com a API
 using SenacStore.UI.Navigation;          // ICrudNavigator (navegação entre UCs)
 
 namespace SenacStore.UI.UserControls
@@ -19,79 +16,68 @@ namespace SenacStore.UI.UserControls
     {
         // Dependências injetadas
         private readonly ICrudNavigator _nav;         // Navigator para abrir/voltar UCs no frmMenu
-        private readonly IProdutoRepository _produtoRepo; // Repositório para persistência de produtos
-        private readonly ICategoriaRepository _categoriaRepo; // Repositório para categorias
+        private readonly IProdutoService _produtoService; // Serviço para operações de produtos
+        private readonly ICategoriaService _categoriaService; // Serviço para categorias
         private readonly Guid? _id;                   // Id opcional: se fornecido, estamos em modo edição
 
-        // Campos para manipulação de imagem antes de persistir
-        private byte[] _fotoTempBytes;                // Armazena bytes da imagem selecionada temporariamente
-        private string _fotoRelativa;                 // Caminho relativo atual (se o produto já tiver imagem)
-
-        // Construtor: recebe navigator, repositórios e opcionalmente o id do produto para edição
+        // Construtor: recebe navigator, serviços e opcionalmente o id do produto para edição
         public ucProdutos(
             ICrudNavigator nav,
-            IProdutoRepository produtoRepo,
-            ICategoriaRepository categoriaRepo,
+            IProdutoService produtoService,
+            ICategoriaService categoriaService,
             Guid? id = null)
         {
             InitializeComponent();                    // Inicializa componentes gerados pelo Designer
             _nav = nav;                               // Armazena navigator para uso posterior
-            _produtoRepo = produtoRepo;               // Armazena repositório de produto
-            _categoriaRepo = categoriaRepo;           // Armazena repositório de categoria
+            _produtoService = produtoService;         // Armazena serviço de produto
+            _categoriaService = categoriaService;     // Armazena serviço de categoria
             _id = id;                                 // Guarda id (null = criação)
 
-            // Garante que o PictureBox responda ao clique (remove/reatribuí evita múltiplas assinaturas)
-            pbFoto.Click -= pbFoto_Click;
-            pbFoto.Click += pbFoto_Click;
 
-            CarregarCategorias();                     // Preenche ComboBox de categorias
-
-            if (_id.HasValue)                         // Se id presente, carregue o produto para edição
-                CarregarProduto(_id.Value);
+            // Construtor não pode usar await: os dados são carregados no evento Load
+            Load += ucProdutos_Load;
         }
 
-        // Carrega categorias do repositório e popula o ComboBox
-        private void CarregarCategorias()
+        // Preenche o ComboBox e, em modo edição, carrega os dados do produto
+        private async void ucProdutos_Load(object? sender, EventArgs e)
         {
-            var cats = _categoriaRepo.ObterTodos();  // Obtém todas as categorias (pode lançar)
+            try
+            {
+                await CarregarCategoriasAsync();      // Preenche ComboBox de categorias
+
+                if (_id.HasValue)                     // Se id presente, carregue o produto para edição
+                    await CarregarProdutoAsync(_id.Value);
+            }
+            catch (ApiException ex)
+            {
+                mdMessage.Show(ex.Message, "Erro");
+            }
+        }
+
+        // Carrega categorias pela API e popula o ComboBox
+        private async Task CarregarCategoriasAsync()
+        {
+            var cats = await _categoriaService.ObterTodosAsync(); // Obtém todas as categorias
+            if (IsDisposed) return;                   // A tela pode ter sido fechada enquanto a API respondia
+
             cboCategoria.DataSource = cats;           // Seta DataSource do ComboBox
             cboCategoria.DisplayMember = "Nome";      // Nome exibido para cada item
             cboCategoria.ValueMember = "Id";          // Valor associado (GUID)
         }
 
         // Carrega dados do produto para edição no formulário
-        private void CarregarProduto(Guid id)
+        private async Task CarregarProdutoAsync(Guid id)
         {
-            var p = _produtoRepo.ObterPorId(id);      // Busca produto no repositório
-            if (p == null) return;                    // Se não encontrado, sai
+            var p = await _produtoService.ObterPorIdAsync(id); // Busca produto pela API
+            if (p == null || IsDisposed) return;      // Se não encontrado, sai
 
             txtNome.Text = p.Nome;                    // Preenche nome
             txtPreco.Text = p.Preco.ToString("N2", CultureInfo.CurrentCulture); // Formata preço conforme cultura
             cboCategoria.SelectedValue = p.CategoriaId; // Seleciona categoria correspondente
-
-            // Se o produto já tem FotoUrl, tenta carregar a imagem no PictureBox
-            if (!string.IsNullOrWhiteSpace(p.FotoUrl))
-            {
-                try
-                {
-                    // Converte caminho relativo salvo no DB para caminho físico
-                    var caminhoFisico = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, p.FotoUrl.Replace('/', Path.DirectorySeparatorChar));
-                    if (File.Exists(caminhoFisico))
-                    {
-                        using var imgTemp = Image.FromFile(caminhoFisico); // Abre arquivo de imagem
-                        pbFoto.Image = new Bitmap(imgTemp);               // Atribui cópia Bitmap ao PictureBox
-                        _fotoRelativa = p.FotoUrl;                        // Guarda caminho relativo existente
-                    }
-                }
-                catch
-                {
-                    // Falha ao carregar imagem: ignoramos para não impedir edição do produto
-                }
-            }
         }
 
-        // Handler do botão Salvar: cria ou atualiza produto no repositório
-        private void btnSalvar_Click(object sender, EventArgs e)
+        // Handler do botão Salvar: cria ou atualiza produto pela API
+        private async void btnSalvar_Click(object sender, EventArgs e)
         {
             // Validações básicas do formulário
             if (string.IsNullOrWhiteSpace(txtNome.Text))
@@ -101,7 +87,8 @@ namespace SenacStore.UI.UserControls
                 return;
             }
 
-            if (cboCategoria.SelectedValue == null)
+            // O combo fica vazio se a API estava fora do ar ao abrir a tela
+            if (cboCategoria.SelectedValue is not Guid categoriaId)
             {
                 mdMessage.Show("Selecione uma categoria.", "Atenção");
                 cboCategoria.Focus();
@@ -116,12 +103,14 @@ namespace SenacStore.UI.UserControls
                 return;
             }
 
+            btnSalvar.Enabled = false; // Evita salvar duas vezes enquanto a API responde
+
             try
             {
                 if (_id.HasValue)
                 {
                     // Edição: busca entidade, atualiza campos e salva
-                    var p = _produtoRepo.ObterPorId(_id.Value);
+                    var p = await _produtoService.ObterPorIdAsync(_id.Value);
                     if (p == null)
                     {
                         mdMessage.Show("Produto não encontrado.", "Erro");
@@ -130,55 +119,33 @@ namespace SenacStore.UI.UserControls
 
                     p.Nome = txtNome.Text.Trim();                 // Atualiza nome
                     p.Preco = preco;                              // Atualiza preço
-                    p.CategoriaId = (Guid)cboCategoria.SelectedValue; // Atualiza categoria
+                    p.CategoriaId = categoriaId;                  // Atualiza categoria
 
-                    if (_fotoTempBytes != null)                   // Se houve upload de nova imagem
-                    {
-                        // Salva imagem física em "img/produtos/{produtoId}.jpg" para unicidade
-                        var pastaRel = Path.Combine("img", "produtos");
-                        var pastaFisica = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, pastaRel);
-                        if (!Directory.Exists(pastaFisica)) Directory.CreateDirectory(pastaFisica);
-
-                        var nomeArquivo = $"{p.Id}.jpg";           // Nome único baseado no Id do produto
-                        var destino = Path.Combine(pastaFisica, nomeArquivo);
-                        File.WriteAllBytes(destino, _fotoTempBytes); // Grava bytes no arquivo
-                        p.FotoUrl = Path.Combine(pastaRel, nomeArquivo).Replace('\\', '/'); // Seta caminho relativo
-                    }
-
-                    _produtoRepo.Atualizar(p);                     // Persiste alterações
+                    await _produtoService.AtualizarAsync(p);       // Grava alterações
                 }
                 else
                 {
-                    // Criação: monta nova entidade e persiste
+                    // Criação: monta nova entidade (o id é gerado pelo servidor)
                     var novo = new Produto
                     {
-                        Id = Guid.NewGuid(),
                         Nome = txtNome.Text.Trim(),
                         Preco = preco,
-                        CategoriaId = (Guid)cboCategoria.SelectedValue
+                        CategoriaId = categoriaId
                     };
 
-                    if (_fotoTempBytes != null) // Se carregou imagem antes de criar
-                    {
-                        var pastaRel = Path.Combine("img", "produtos");
-                        var pastaFisica = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, pastaRel);
-                        if (!Directory.Exists(pastaFisica)) Directory.CreateDirectory(pastaFisica);
-
-                        var nomeArquivo = $"{novo.Id}.jpg";
-                        var destino = Path.Combine(pastaFisica, nomeArquivo);
-                        File.WriteAllBytes(destino, _fotoTempBytes); // Salva arquivo físico
-                        novo.FotoUrl = Path.Combine(pastaRel, nomeArquivo).Replace('\\', '/'); // Define FotoUrl
-                    }
-
-                    _produtoRepo.Criar(novo); // Persiste novo produto no repositório
+                    await _produtoService.CriarAsync(novo); // Grava novo produto pela API
                 }
 
                 _nav.Voltar(); // Após salvar, volta para a lista (ou controle anterior)
             }
-            catch (Exception ex)
+            catch (ApiException ex)
             {
-                // Em caso de erro durante persistência, informa usuário (útil para diagnóstico)
-                mdMessage.Show($"Erro ao salvar produto: {ex.Message}", "Erro");
+                // Em caso de erro, informa o usuário e mantém os dados digitados na tela
+                mdMessage.Show(ex.Message, "Erro");
+            }
+            finally
+            {
+                btnSalvar.Enabled = true;
             }
         }
 
@@ -186,27 +153,6 @@ namespace SenacStore.UI.UserControls
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             _nav.Voltar();
-        }
-
-        // Handler para upload de imagem: abre OpenFileDialog e lê bytes para preview e posterior salvamento
-        private void pbFoto_Click(object sender, EventArgs e)
-        {
-            using var ofd = new OpenFileDialog();                  // Cria diálogo de seleção de arquivo
-            ofd.Filter = "Imagens|*.jpg;*.jpeg;*.png;*.bmp";       // Filtra tipos suportados
-            ofd.Title = "Selecione a imagem do produto";
-            if (ofd.ShowDialog() != DialogResult.OK) return;       // Se cancelar, termina
-
-            try
-            {
-                _fotoTempBytes = File.ReadAllBytes(ofd.FileName);  // Lê todos os bytes do ficheiro selecionado
-                using var ms = new MemoryStream(_fotoTempBytes);   // Cria memória stream para construir imagem
-                pbFoto.Image = Image.FromStream(ms);               // Mostra a imagem no PictureBox
-            }
-            catch (Exception ex)
-            {
-                // Em caso de falha ao ler/carregar imagem, informa o usuário
-                mdMessage.Show($"Erro ao carregar imagem: {ex.Message}", "Erro");
-            }
         }
 
         // Formata o preço ao perder foco (uniformiza para duas casas decimais conforme cultura)

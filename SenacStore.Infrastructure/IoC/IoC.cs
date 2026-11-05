@@ -1,56 +1,50 @@
 ﻿// Arquivo: SenacStore.Infrastructure.IoC.IoC.cs
-// Finalidade: container IoC(Inverse of Control) muito simples (fábricas estáticas) que centraliza criação de conexões
-// e fornece instâncias dos repositórios usados pela UI.
+// Finalidade: container IoC(Inverse of Control) muito simples (fábricas estáticas) que centraliza
+// a criação do cliente HTTP e fornece instâncias dos serviços usados pela UI.
+
+using SenacStore.Infrastructure.Services;
 
 namespace SenacStore.Infrastructure.IoC
 {
-    // Classe estática usada como ponto único para obter dependências (repositórios)
+    // Classe estática usada como ponto único para obter dependências (serviços)
     public static class IoC
     {
-        // Campo privado que guarda a connection string configurada pela aplicação (setada em startup)
-        private static string _connectionString;
+        // Cliente HTTP compartilhado por todos os serviços (criado em Configure)
+        private static ApiClient _api = null!;
 
-        // Método público chamado na inicialização da aplicação para fornecer a connection string
-        public static void Configure(string connectionString)
+        // Método público chamado na inicialização da aplicação com os dados do appsettings.json
+        public static void Configure(string baseUrl, int timeoutSegundos)
         {
-            // Armazena a connection string para uso posterior ao criar conexões
-            _connectionString = connectionString;
+            _api = new ApiClient(baseUrl, timeoutSegundos);
         }
 
-        // Função auxiliar privada que cria uma nova instância de Conexao usando a connection string configurada
-        private static Conexao CriarConexao()
+        // ---------- Fábricas de serviço ----------
+        // Cada método retorna uma nova instância do serviço, usando o mesmo ApiClient
+        // (é ele que guarda o token do usuário logado).
+
+        public static IAuthService AuthService()
         {
-            // Retorna uma nova conexão; cada repositório receberá sua própria instância
-            return new Conexao(_connectionString);
+            return new AuthService(_api);
         }
 
-        // ---------- Fábricas de repositório ----------
-        // Cada método retorna uma nova instância do repositório correspondente
-        // e injeta uma nova Conexao criada acima.
-
-        // Retorna uma instância de IUsuarioRepository pronta para uso
-        public static IUsuarioRepository UsuarioRepository()
+        public static IUsuarioService UsuarioService()
         {
-            // Cria e retorna o repositório de usuários com a conexão configurada
-            return new UsuarioRepository(CriarConexao());
+            return new UsuarioService(_api);
         }
 
-        // Retorna uma instância de ITipoUsuarioRepository pronta para uso
-        public static ITipoUsuarioRepository TipoUsuarioRepository()
+        public static ITipoUsuarioService TipoUsuarioService()
         {
-            return new TipoUsuarioRepository(CriarConexao());
+            return new TipoUsuarioService(_api);
         }
 
-        // Retorna uma instância de IProdutoRepository pronta para uso
-        public static IProdutoRepository ProdutoRepository()
+        public static IProdutoService ProdutoService()
         {
-            return new ProdutoRepository(CriarConexao());
+            return new ProdutoService(_api);
         }
 
-        // Retorna uma instância de ICategoriaRepository pronta para uso
-        public static ICategoriaRepository CategoriaRepository()
+        public static ICategoriaService CategoriaService()
         {
-            return new CategoriaRepository(CriarConexao());
+            return new CategoriaService(_api);
         }
     }
 }

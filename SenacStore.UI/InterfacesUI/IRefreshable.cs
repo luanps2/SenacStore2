@@ -4,5 +4,5 @@
 public interface IRefreshable
 {
     // Método que deve atualizar/recarregar os dados exibidos (ex.: DataGridView).
-    void RefreshGrid();
+    Task RefreshGridAsync();
 }

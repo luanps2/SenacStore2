@@ -1,0 +1,48 @@
+// O banco é criado pelo script database/script.sql, então este projeto não usa migrations.
+// Os nomes com @map ligam os campos em camelCase às colunas do SQL Server.
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlserver"
+}
+
+model TipoUsuario {
+  id       String    @id @default(uuid()) @map("Id") @db.UniqueIdentifier
+  nome     String    @map("Nome") @db.NVarChar(100)
+  usuarios Usuario[]
+
+  @@map("TipoUsuario")
+}
+
+model Usuario {
+  id            String      @id @default(uuid()) @map("Id") @db.UniqueIdentifier
+  nome          String      @map("Nome") @db.NVarChar(150)
+  email         String      @unique(map: "UQ_Usuario_Email") @map("Email") @db.NVarChar(150)
+  senha         String      @map("Senha") @db.NVarChar(200)
+  tipoUsuarioId String      @map("TipoUsuarioId") @db.UniqueIdentifier
+  tipoUsuario   TipoUsuario @relation(fields: [tipoUsuarioId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_Usuario_TipoUsuario")
+
+  @@map("Usuario")
+}
+
+model Categoria {
+  id       String    @id @default(uuid()) @map("Id") @db.UniqueIdentifier
+  nome     String    @map("Nome") @db.NVarChar(120)
+  produtos Produto[]
+
+  @@map("Categoria")
+}
+
+model Produto {
+  id          String    @id @default(uuid()) @map("Id") @db.UniqueIdentifier
+  nome        String    @map("Nome") @db.NVarChar(150)
+  preco       Decimal   @map("Preco") @db.Decimal(10, 2)
+  categoriaId String    @map("CategoriaId") @db.UniqueIdentifier
+  categoria   Categoria @relation(fields: [categoriaId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_Produto_Categoria")
+
+  @@map("Produto")
+}

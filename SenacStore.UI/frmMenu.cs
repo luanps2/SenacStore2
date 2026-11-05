@@ -1,10 +1,10 @@
 ﻿using System;                                // Tipos básicos (.NET)
 using System.Collections.Generic;            // Tipos genéricos (Stack, List)
-using System.Drawing;                        // Tipos de UI gráficos (Image, Bitmap, Point...)
-using System.IO;                             // Operações com arquivos e diretórios
+using System.Threading.Tasks;                // Task: operações assíncronas
 using System.Windows.Forms;                  // Controles do Windows Forms
 using SenacStore.UI.Navigation;               // Interfaces de navegação (ICrudNavigator, IRefreshable)
-using SenacStore.Infrastructure.IoC;          // Acesso às fábricas de repositório (IoC)
+using SenacStore.Infrastructure.IoC;          // Acesso às fábricas de serviço (IoC)
+using SenacStore.Infrastructure.Services;     // ApiException: falhas de comunicação com a API
 using SenacStore.UI.UserControls;             // UserControls usados pelo menu
 using SenacStore.UI.Handlers;                 // Handlers CRUD (ProdutoHandler, UsuarioHandler...)
 using SenacStore.Domain.Entities;             // Entidades do domínio (Usuario, Produto, Categoria)
@@ -18,7 +18,7 @@ namespace SenacStore.UI
         // _historico: pilha para manter histórico de UserControls abertos (navegação voltar)
 
         private Usuario _usuario;
-        // _usuario: referência ao usuário atualmente logado (usada para mostrar nome/foto e editar perfil)
+        // _usuario: referência ao usuário atualmente logado (usada para mostrar o nome e editar o perfil)
 
         // Construtor padrão necessário pelo Designer (mantido para compatibilidade)
         public frmMenu()
@@ -38,70 +38,46 @@ namespace SenacStore.UI
 
             // wiring: associa eventos do formulário
             Load += FrmMenu_Load;        // quando o Form terminar de carregar, chama FrmMenu_Load()
-            pbFoto.Click += PbFoto_Click; // quando usuário clicar na foto do menu abre edição do perfil
+            lblUsuario.Click += LblUsuario_Click; // clicar no nome do usuário abre a edição do perfil
+            lblUsuario.Cursor = Cursors.Hand;
         }
 
         // Handler chamado ao carregar o formulário
-        private void FrmMenu_Load(object? sender, EventArgs e)
+        private async void FrmMenu_Load(object? sender, EventArgs e)
         {
-            RefreshUserPhoto(); // atualiza a foto e o nome do usuário exibidos no menu lateral
+            await RefreshUsuarioAsync(); // atualiza o nome do usuário exibido no menu lateral
         }
 
-        // Atualiza foto e nome do usuário exibidos no menu lateral
-        private void RefreshUserPhoto()
+        // Atualiza o nome do usuário exibido no menu lateral
+        private async Task RefreshUsuarioAsync()
         {
+            if (_usuario == null) return; // se não há usuário, nada a fazer
+
             try
             {
-                if (_usuario == null) return; // se não há usuário, nada a fazer
+                // busca na API a versão atualizada do usuário
+                var u = await IoC.UsuarioService().ObterPorIdAsync(_usuario.Id) ?? _usuario;
 
-                // obtém repositório via IoC e busca a versão atualizada do usuário no banco
-                var repo = IoC.UsuarioRepository();
-                var u = repo.ObterPorId(_usuario.Id) ?? _usuario;
+                if (IsDisposed) return; // o menu pode ter sido fechado enquanto a API respondia
 
                 // atualiza a referência local e o texto do label
                 _usuario = u;
                 lblUsuario.Text = $"Bem-vindo, {_usuario.Nome}";
-
-                // decide o caminho relativo a usar: FotoUrl do usuário ou imagem padrão ("img/user2.png")
-                string rel = !string.IsNullOrWhiteSpace(_usuario.FotoUrl)
-                    ? _usuario.FotoUrl
-                    : Path.Combine("img", "user2.png").Replace('\\', '/');
-
-                // constrói caminho físico absoluto a partir do diretório base da aplicação
-                var fisico = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, rel.Replace('/', Path.DirectorySeparatorChar));
-
-                if (File.Exists(fisico))
-                {
-                    // carrega a imagem do arquivo físico e atribui ao PictureBox (usa Bitmap para evitar bloqueio)
-                    using var imgTemp = Image.FromFile(fisico);
-                    pbFoto.Image = new Bitmap(imgTemp);
-                }
-                else
-                {
-                    // se o arquivo não existe, tenta usar a imagem embutida nos recursos (fallback)
-                    try
-                    {
-                        pbFoto.Image = Properties.Resources.user2;
-                    }
-                    catch
-                    {
-                        pbFoto.Image = null; // se recurso não existir, limpa a imagem
-                    }
-                }
             }
-            catch
+            catch (ApiException)
             {
-                // evita que erro ao carregar imagem quebre a UI — falha silenciosa intencional
+                // Falha silenciosa intencional: mantém os dados que já estão na tela.
+                // A tela aberta no painel é quem avisa o usuário de que a API está fora do ar.
             }
         }
 
-        // Ao clicar na foto do menu, abre o UserControl de edição do usuário logado
-        private void PbFoto_Click(object? sender, EventArgs e)
+        // Ao clicar no nome do usuário, abre o UserControl de edição do usuário logado
+        private void LblUsuario_Click(object? sender, EventArgs e)
         {
             if (_usuario == null) return; // protege contra nulos
 
-            // abre o ucUsuarios no painel principal passando repositórios via IoC e o id do usuário
-            Abrir(new ucUsuarios(this, IoC.UsuarioRepository(), IoC.TipoUsuarioRepository(), _usuario.Id));
+            // abre o ucUsuarios no painel principal passando serviços via IoC e o id do usuário
+            Abrir(new ucUsuarios(this, IoC.UsuarioService(), IoC.TipoUsuarioService(), _usuario.Id));
         }
 
         // Método público que implementa ICrudNavigator.Abrir — adiciona um UserControl ao painel de conteúdo
@@ -113,12 +89,10 @@ namespace SenacStore.UI
 
             _historico.Push(controle);      // registra no histórico para permitir Voltar()
 
-            // Se o controle implementa IRefreshable, chama RefreshGrid() após layout/render
+            // Se o controle implementa IRefreshable, recarrega os dados após layout/render
             if (controle is IRefreshable refreshable)
             {
-                // BeginInvoke agenda a chamada para depois do ciclo atual de mensagens,
-                // garantindo que o controle já esteja adicionado/visível antes do refresh.
-                this.BeginInvoke((Action)(() => refreshable.RefreshGrid()));
+                AgendarRefresh(refreshable);
             }
         }
 
@@ -138,11 +112,18 @@ namespace SenacStore.UI
             // se o controle anterior implementa IRefreshable, pede para atualizar dados (ex.: recarregar grid)
             if (anterior is IRefreshable refreshable)
             {
-                refreshable.RefreshGrid();
+                AgendarRefresh(refreshable);
             }
 
-            // atualiza foto/nome do usuário caso tenham sido alterados (ex.: ao editar perfil)
-            RefreshUserPhoto();
+            // atualiza o nome do usuário caso tenha sido alterado (ex.: ao editar perfil)
+            _ = RefreshUsuarioAsync(); // não precisa esperar: o método já trata as próprias falhas
+        }
+
+        // BeginInvoke agenda a chamada para depois do ciclo atual de mensagens,
+        // garantindo que o controle já esteja adicionado/visível antes do refresh.
+        private void AgendarRefresh(IRefreshable refreshable)
+        {
+            this.BeginInvoke((Action)(async () => await refreshable.RefreshGridAsync()));
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -155,28 +136,28 @@ namespace SenacStore.UI
         private void btnProdutos_Click_1(object sender, EventArgs e)
         {
             Abrir(new ucCrudPadrao(
-                new ProdutoHandler(this, IoC.ProdutoRepository(), IoC.CategoriaRepository())));
+                new ProdutoHandler(this, IoC.ProdutoService(), IoC.CategoriaService())));
         }
 
         // Ao clicar em Usuários: abre ucCrudPadrao configurado com UsuarioHandler
         private void btnUsuarios_Click_1(object sender, EventArgs e)
         {
             Abrir(new ucCrudPadrao(
-               new UsuarioHandler(this, IoC.UsuarioRepository(), IoC.TipoUsuarioRepository())));
+               new UsuarioHandler(this, IoC.UsuarioService(), IoC.TipoUsuarioService())));
         }
 
         // Ao clicar em Categorias: abre ucCrudPadrao configurado com CategoriaHandler
         private void btnCategorias_Click_1(object sender, EventArgs e)
         {
             Abrir(new ucCrudPadrao(
-            new CategoriaHandler(this, IoC.CategoriaRepository())));
+            new CategoriaHandler(this, IoC.CategoriaService())));
         }
 
         // Ao clicar em Tipos de Usuário: abre ucCrudPadrao configurado com TipoUsuarioHandler
         private void btnTipoUsuario_Click_1(object sender, EventArgs e)
         {
             Abrir(new ucCrudPadrao(
-           new TipoUsuarioHandler(this, IoC.TipoUsuarioRepository())));
+           new TipoUsuarioHandler(this, IoC.TipoUsuarioService())));
         }
 
         // Fecha a aplicação (fecha a janela do menu)
@@ -203,9 +184,12 @@ namespace SenacStore.UI
 
             if (resposta == DialogResult.Yes)
             {
-                // Fecha o menu e reabre o login (fluxo de logout)
+                // Descarta o token, fecha o menu e reabre o login (fluxo de logout)
+                var authService = IoC.AuthService();
+                authService.Logout();
+
                 this.Hide();
-                using (var login = new frmLogin(IoC.UsuarioRepository()))
+                using (var login = new frmLogin(authService))
                 {
                     login.ShowDialog();
                 }

@@ -1,27 +1,28 @@
 ﻿
 // Arquivo: SenacStore.UI\frmLogin.cs
-// Função: formulário de login que valida credenciais e abre o menu principal após autenticar.
+// Função: formulário de login que valida credenciais na API e abre o menu principal após autenticar.
 
 using System.Windows.Forms;
-using SenacStore.Infrastructure.IoC; // Resolve repositórios via IoC
+using SenacStore.Infrastructure.IoC;       // Resolve serviços via IoC
+using SenacStore.Infrastructure.Services;  // ApiException: falhas de comunicação com a API
 
 namespace SenacStore.UI
 {
     public partial class frmLogin : Form
     {
-        // Repositório de usuários, injetado pelo Program.Main
-        private readonly IUsuarioRepository _usuarioRepository;
+        // Serviço de autenticação, injetado pelo Program.Main
+        private readonly IAuthService _authService;
 
-        // Construtor: recebe o repositório de usuário
-        public frmLogin(IUsuarioRepository usuarioRepository)
+        // Construtor: recebe o serviço de autenticação
+        public frmLogin(IAuthService authService)
         {
             InitializeComponent();            // Inicializa controles do Designer
             guna2BorderlessForm1.ResizeForm = false; // desabilita redimensionamento via borda
-            _usuarioRepository = usuarioRepository; // Guarda repositório para uso no login
+            _authService = authService;       // Guarda serviço para uso no login
         }
 
         // Clique no botão Entrar: executa fluxo de autenticação
-        private void btnEntrar_Click(object sender, EventArgs e)
+        private async void btnEntrar_Click(object sender, EventArgs e)
         {
             var email = txtEmail.Text?.Trim(); // Lê e normaliza email
             var senha = txtSenha.Text;         // Lê senha
@@ -33,32 +34,24 @@ namespace SenacStore.UI
                 return;
             }
 
+            btnEntrar.Enabled = false; // Evita enviar o login duas vezes enquanto a API responde
+
             try
             {
-                // Busca usuário por email
-                var usuario = _usuarioRepository.ObterPorEmail(email);
-
-                // Se não encontrado, informa
-                if (usuario == null)
-                {
-                    mdMessage.Show("Usuário não encontrado.", "Erro");
-                    return;
-                }
-
-                // Compara senha (texto plano neste exemplo)
-                if (usuario.Senha != senha)
-                {
-                    mdMessage.Show("Senha inválida.", "Erro");
-                    return;
-                }
+                // Quem confere a senha agora é a API
+                var usuario = await _authService.LoginAsync(email, senha);
 
                 // Login OK → abre menu principal com o usuário autenticado
                 AbrirMenuPrincipal(usuario);
             }
-            catch (Exception ex)
+            catch (ApiException ex)
             {
-                // Mostra erro inesperado (ex.: conexão com DB)
-                mdMessage.Show($"Erro ao efetuar login: {ex.Message}", "Erro");
+                // API offline, e-mail ou senha inválidos etc.: a mensagem já vem amigável
+                mdMessage.Show(ex.Message, "Erro");
+            }
+            finally
+            {
+                if (!IsDisposed) btnEntrar.Enabled = true; // O login pode já ter sido fechado
             }
         }
 
@@ -79,8 +72,8 @@ namespace SenacStore.UI
         private void lblCadastro_Click(object sender, EventArgs e)
         {
             using (var frm = new frmUsuarios(
-                IoC.UsuarioRepository(),        // Resolve repositório de usuário
-                IoC.TipoUsuarioRepository()))   // Resolve repositório de tipos
+                IoC.UsuarioService(),        // Resolve serviço de usuário
+                IoC.TipoUsuarioService()))   // Resolve serviço de tipos
             {
                 frm.ShowDialog(); // Abre cadastro em modo modal
             }
