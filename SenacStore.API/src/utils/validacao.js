@@ -1,6 +1,6 @@
 const FORMATO_GUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
-// Sem esta conferência, um ID fora do formato viraria erro 500 no SQL Server
+// Um ID fora do formato não existe no banco. Conferir antes evita uma consulta inútil.
 export function guidValido(valor) {
   return typeof valor === 'string' && FORMATO_GUID.test(valor)
 }
@@ -20,6 +20,7 @@ export function filtroPorNome(nome) {
     return {}
   }
 
-  // No LIKE do SQL Server, % _ e [ são curingas. Entre colchetes, valem como texto comum.
-  return { nome: { contains: nome.replace(/[%_[]/g, '[$&]') } }
+  // No LIKE do MySQL, % e _ são curingas e \ é o caractere de escape.
+  // Com uma \ na frente, eles valem como texto comum.
+  return { nome: { contains: nome.replace(/[\\%_]/g, '\\$&') } }
 }

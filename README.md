@@ -16,7 +16,7 @@ Projeto educacional: o aplicativo é um **cliente de uma API REST**. Ele não ac
 
 Requisitos: .NET 8 SDK (ou Visual Studio 2022) e a API SenacStore em execução, local ou no Azure.
 
-1. **Banco de dados:** rode `database/script.sql` no SQL Server. O script apaga e recria as tabelas.
+1. **Banco de dados:** rode `database/script.sql` no MySQL 8. O script apaga e recria as tabelas.
 2. **API:** inicie a API do projeto [SenacStore.API](SenacStore.API/README.md), que implementa o contrato de [docs/API.md](docs/API.md).
 3. **URL da API:** confira o arquivo [SenacStore.UI/appsettings.json](SenacStore.UI/appsettings.json).
 4. **Aplicativo:** abra `SenacStore.sln` no Visual Studio e execute `SenacStore.UI`, ou use:

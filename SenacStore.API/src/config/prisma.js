@@ -1,21 +1,19 @@
-import { PrismaMssql } from '@prisma/adapter-mssql'
+import { PrismaMariaDb } from '@prisma/adapter-mariadb'
 import { PrismaClient } from '../generated/prisma/index.js'
 
-// Adaptador exigido pelo Prisma 7 para falar com o SQL Server
-const adapter = new PrismaMssql({
-  server: process.env.DATABASE_HOST,
-  port: Number(process.env.DATABASE_PORT ?? 1433),
+// Adaptador exigido pelo Prisma 7 para falar com o MySQL (o mesmo pacote atende MySQL e MariaDB)
+const adapter = new PrismaMariaDb({
+  host: process.env.DATABASE_HOST,
+  port: Number(process.env.DATABASE_PORT ?? 3306),
   database: process.env.DATABASE_DB,
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASS,
-  // O Azure SQL gratuito pausa quando fica parado e leva alguns segundos para acordar
-  connectionTimeout: 30000,
-  requestTimeout: 30000,
-  options: {
-    encrypt: true, // Obrigatório no Azure SQL
-    // true só em SQL Server local, que usa certificado próprio. No Azure, deixe false.
-    trustServerCertificate: process.env.DATABASE_TRUST_CERT === 'true'
-  }
+  connectionLimit: 5,
+  connectTimeout: 30000,
+  // O MySQL 8 usa o login caching_sha2_password. Sem SSL, o driver precisa buscar a chave pública do servidor.
+  allowPublicKeyRetrieval: true,
+  // O Azure Database for MySQL exige conexão segura. No MySQL local, deixe DATABASE_SSL=false.
+  ssl: process.env.DATABASE_SSL === 'true' ? { rejectUnauthorized: true } : undefined
 })
 
 // Uma única instância para a API toda: cada PrismaClient abre o seu conjunto de conexões

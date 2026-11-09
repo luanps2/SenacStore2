@@ -1,6 +1,6 @@
 # API SenacStore: contrato
 
-Este documento descreve a API REST que você vai construir em Node.js com SQL Server. O aplicativo desktop **SenacStore** já está pronto e faz todas as chamadas descritas aqui. Se a sua API seguir este contrato, o aplicativo funciona sem nenhuma alteração.
+Este documento descreve a API REST que você vai construir em Node.js com MySQL. O aplicativo desktop **SenacStore** já está pronto e faz todas as chamadas descritas aqui. Se a sua API seguir este contrato, o aplicativo funciona sem nenhuma alteração.
 
 ## Sumário
 
@@ -18,7 +18,7 @@ Este documento descreve a API REST que você vai construir em Node.js com SQL Se
 
 ## 1. Como começar
 
-1. Crie o banco rodando `database/script.sql` no SQL Server. Ele cria as tabelas e os dados de exemplo.
+1. Crie o banco rodando `database/script.sql` no MySQL 8. Ele cria as tabelas e os dados de exemplo.
 2. Crie a API em **http://localhost:3000**. As rotas ficam na raiz, sem prefixo: `/produtos`, e não `/api/produtos`.
 3. Abra o aplicativo SenacStore e entre com um dos usuários abaixo.
 
@@ -276,16 +276,16 @@ Sem essa regra, qualquer pessoa criaria uma conta de administrador pela rota pú
 
 ## 8. Dicas de implementação
 
-### Prisma com SQL Server
+### Prisma com MySQL
 
-Use o `provider = "sqlserver"` e o pacote `@prisma/adapter-mssql`. As colunas do banco começam com letra maiúscula, então use `@map` e `@@map` para que os campos saiam em camelCase no JSON:
+Use o `provider = "mysql"` e o pacote `@prisma/adapter-mariadb` (ele atende MySQL e MariaDB). Os IDs são GUIDs guardados em `CHAR(36)`. As colunas do banco começam com letra maiúscula, então use `@map` e `@@map` para que os campos saiam em camelCase no JSON:
 
 ```prisma
 model Produto {
-  id          String    @id @default(uuid()) @map("Id") @db.UniqueIdentifier
-  nome        String    @map("Nome") @db.NVarChar(150)
+  id          String    @id @default(uuid()) @map("Id") @db.Char(36)
+  nome        String    @map("Nome") @db.VarChar(150)
   preco       Decimal   @map("Preco") @db.Decimal(10, 2)
-  categoriaId String    @map("CategoriaId") @db.UniqueIdentifier
+  categoriaId String    @map("CategoriaId") @db.Char(36)
   categoria   Categoria @relation(fields: [categoriaId], references: [id])
 
   @@map("Produto")
@@ -295,7 +295,7 @@ model Produto {
 Três cuidados com o Prisma:
 
 - **`Decimal` vira texto no JSON.** Converta antes de responder: `{ ...produto, preco: Number(produto.preco) }`.
-- **`mode: 'insensitive'` não existe no SQL Server.** Use apenas `{ contains: termo }`. A busca já ignora maiúsculas e minúsculas por causa da collation padrão do banco.
+- **`mode: 'insensitive'` não existe no MySQL.** Use apenas `{ contains: termo }`. A busca já ignora maiúsculas, minúsculas e acentos por causa da collation `utf8mb4_0900_ai_ci` do banco.
 - **Trate os códigos de erro do Prisma** para responder o status certo:
 
 | Código do Prisma | Significado | Responda |
@@ -308,7 +308,7 @@ Três cuidados com o Prisma:
 
 ### Se não usar Prisma
 
-O pacote `mssql` devolve as colunas com o nome do banco (`Nome`, `CategoriaId`). Use apelidos no `SELECT` para obter camelCase:
+O pacote `mysql2` devolve as colunas com o nome do banco (`Nome`, `CategoriaId`). Use apelidos no `SELECT` para obter camelCase:
 
 ```sql
 SELECT Id AS id, Nome AS nome, Preco AS preco, CategoriaId AS categoriaId
